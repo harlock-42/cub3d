@@ -22,7 +22,8 @@ LS		= ls -la
 
 CFLAGS		= -Werror -Wextra -Wall -c
 
-LFLAGS		= -framework OpenGL -framework AppKit
+#LFLAGS		= -framework OpenGL -framework AppKit
+LFLAGS		= -lm -lbsd -lX11 -lXext
 
 INCLUDE_NAME		= cub3d.h\
 			  ft_printf.h\
@@ -31,6 +32,7 @@ INCLUDE_NAME		= cub3d.h\
 			  mlx.h
 
 SRC_NAME		= check_map.c\
+			draw_column_px.c\
 			get_map.c\
 			get_data_id.c\
 			get_file.c\

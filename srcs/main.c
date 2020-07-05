@@ -12,6 +12,14 @@
 
 #include "./../includes/cub3d.h"
 
+static	void	new_image(t_env *env)
+{
+	env->wall.img = mlx_new_image(env->vars.mlx, env->vars.res_x,
+	env->vars.res_y);
+	env->wall.addr = mlx_get_data_addr(env->wall.img,
+	&env->wall.bits_per_px, &env->wall.line_length, &env->wall.endian);
+}
+
 static	void	init_env(t_env *env)
 {
 	env->vars.escape = 0;
@@ -19,14 +27,15 @@ static	void	init_env(t_env *env)
 	env->player.move_y = 0.0;
 }
 
-
 static	int	start_game(t_env *env)
 {
 	init_env(env);
 	env->vars.mlx = mlx_init();
 	env->vars.win = mlx_new_window(env->vars.mlx,
 	env->vars.res_x, env->vars.res_y, "Cub3d");
-	dist_ray(env);
+	new_image(env);
+	raycast(env);
+	mlx_put_image_to_window(env->vars.mlx, env->vars.win, env->wall.img, 0, 0);
 	mlx_loop(env->vars.mlx);
 	return (1);
 }
