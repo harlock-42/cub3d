@@ -31,13 +31,23 @@ INCLUDE_NAME		= cub3d.h\
 			  libft.h\
 			  mlx.h
 
-SRC_NAME		= check_map.c\
+SRC_NAME		= aie_error.c\
+			check_map.c\
+			check_path.c\
+			color.c\
+			get_color.c\
+			display.c\
 			draw_column_px.c\
+			exit_game.c\
+			free_data.c\
 			get_map.c\
 			get_data_id.c\
 			get_file.c\
 			get_texture_path.c\
+			init.c\
+			key.c\
 			main.c\
+			move_player.c\
 			parsing_map.c\
 			raycasting.c\
 			raycasting_2.c\

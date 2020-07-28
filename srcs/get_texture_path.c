@@ -15,16 +15,27 @@
 int	get_texture_path(t_env *env, char *str)
 {
 	size_t	i;
-	size_t	size;
 
 	i = 0;
-	size = 0;
-	(void)env;
-	while (str && str[i] && str[i] == ' ')
-	{
-		if (str[i] != '.' && (str[i] < 'a' || str[i] > 'z'))
-			return (-1);
+	while (str[i] && str[i] != ' ')
 		++i;
-	}
+	while (str[i] && str[i] == ' ')
+		++i;
+	if (str[i] == '\0')
+		return (-1);
+	if (check_path(str + i) < 0)
+		return (-1);
+	if (*str == 'N' && *(str + 1) == 'O')
+		if (!(env->vars.path_north = ft_strdup(str + i)))
+			return (aie_error("invalid north texture path name\n"));
+	if (*str == 'S' && *(str + 1) == 'O')
+		if (!(env->vars.path_south = ft_strdup(str + i)))
+			return (aie_error("invalid south texture path name\n"));
+	if (*str == 'E' && *(str + 1) == 'A')
+		if (!(env->vars.path_east = ft_strdup(str + i)))
+			return (aie_error("invalid east texture path name\n"));
+	if (*str == 'W' && *(str + 1) == 'E')
+		if (!(env->vars.path_west = ft_strdup(str + i)))
+			return (aie_error("invalid west texture path name\n"));
 	return (1);
 }

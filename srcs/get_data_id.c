@@ -12,13 +12,29 @@
 
 #include "../includes/cub3d.h"
 
-int	static	get_res(t_env *env, char *str)
+static	int	get_sprite_path(t_env *env, char *str)
+{
+	size_t		i;
+
+	i = 0;
+	(void)env;
+	while (*str != ' ' && *str)
+		++str;
+	while (*str == ' ' && *str)
+		++str;
+	if (check_path(str) <= 0)
+		return (aie_error("invalid sprite path in data.cub\n"));
+	if (!(env->vars.path_sprite = ft_strdup(str)))
+		return (aie_error("path sprite, malloc failed\n"));
+	return (1);
+}
+
+
+static	void	get_res(t_env *env, char *str)
 {
 	size_t	i;
 
 	i = 0;
-	env->vars.res_x = 0;
-	env->vars.res_y = 0;
 	while (str && str[i] && str[i] != ' ')
 		++i;
 	while (str && str[i] && str[i] == ' ')
@@ -37,21 +53,23 @@ int	static	get_res(t_env *env, char *str)
 		env->vars.res_y = env->vars.res_y + (str[i] - '0');
 		++i;
 	}
-	return (1);
-}
-
-int	get_data_id(t_env *env, char *str)
-{
-	int	ret;
-
-	ret = 0;
-	if (*str == 'R')
-		ret = get_res(env, str);
-	if (env->vars.res_x == 0 || env->vars.res_y == 0)
-		return (-1);
 	if (env->vars.res_x > 1920)
 		env->vars.res_x = 1920;
 	if (env->vars.res_y > 1080)
 		env->vars.res_y = 1080;
-	return (ret);
+}
+
+int	get_data_id(t_env *env, char *str)
+{
+	if (*str == 'R')
+	{
+		get_res(env, str);
+		if (env->vars.res_x == 0 || env->vars.res_y == 0)
+			return (aie_error("resolution null\n"));
+	}
+	if (*str == 'S')
+		return (get_sprite_path(env, str));
+	if (*str == 'F' || *str == 'C')
+		return (get_color_ceil_and_floor(env, str));
+	return (1);
 }

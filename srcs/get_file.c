@@ -64,6 +64,8 @@ int		get_file(t_env *env, const char *file_name)
 		realloc_file(env, line);
 		free(line);
 	}
+	if (env->vars.map == NULL)
+		return (aie_error("data.cub file empty\n"));
 	free(line);
 	return (1);
 }

@@ -12,6 +12,22 @@
 
 #include "../includes/cub3d.h"
 
+void		wall_x(t_env *env)
+{
+	if (env->ray.side == 0)
+		env->tex.wall_x = env->player.pos_y + env->ray.size *
+		env->ray.ray_dir_y;
+	else
+		env->tex.wall_x = env->player.pos_x + env->ray.size *
+		env->ray.ray_dir_x;
+	env->tex.wall_x -= floor(env->tex.wall_x);
+	env->tex.tex_x = (int)(env->tex.wall_x * env->tex.tex_width);
+	if (env->ray.side == 0 && env->ray.ray_dir_x > 0)
+		env->tex.tex_x = env->tex.tex_width - env->tex.tex_x - 1;
+	if (env->ray.side == 1 && env->ray.ray_dir_y < 0)
+		env->tex.tex_x = env->tex.tex_width - env->tex.tex_x - 1;
+}
+
 void		init_plane(t_env *env)
 {
 	float	a;
@@ -38,6 +54,7 @@ void		init_plane(t_env *env)
 		env->ray.plane_y = 0.66;
 	}
 }
+
 void		init_dir_player(t_env *env)
 {
 	float	a;

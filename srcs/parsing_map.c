@@ -38,22 +38,22 @@ int		is_map_start(char *map)
 int	static	get_param_id(t_env *env, char *str)
 {
 	size_t	i;
+	size_t	k;
 
 	i = 0;
-	if (str[0] == '\0' || is_map_start(str) > 0)
-		return (1);
+	k = 0;
 	while (str && str[i] && str[i] == ' ')
 		++i;
 	if (str[i] < 'A' || str[i] > 'Z')
 		return (-1);
-	while (str && str[i] && (str[i] >= 'A' && str[i] <= 'Z'))
-		++i;
-	if (str[i] != ' ')
+	while (str && str[i + k] && (str[i + k] >= 'A' && str[i + k] <= 'Z'))
+		++k;
+	if (str[i + k] != ' ')
 		return (-1);
-	if (i == 1)
-		return (get_data_id(env, str + i - 1));
-	if (i == 2)
-		return (get_texture_path(env, str + i - 1));
+	if (k == 1)
+		return (get_data_id(env, str + i + k - 1));
+	if (k == 2)
+		return (get_texture_path(env, str + i + k - 2));
 	return (-1);
 }
 
@@ -75,16 +75,20 @@ void		free_file(void **map)
 int	static	parsing_param(t_env *env)
 {
 	size_t	i;
+	int	ret;
 
 	i = 0;
+	ret = 0;
 	if (check_param_file(env) < 0)
 		return (-1);
-
 	while (env->vars.map[i])
 	{
-		if (get_param_id(env, env->vars.map[i]) < 0)
-			return (-1);
-		if (is_map_start(env->vars.map[i]) > 0)
+		while (env->vars.map[i][0] == '\0')
+			++i;
+		if ((ret = is_map_start(env->vars.map[i])) < 0)
+			if (get_param_id(env, env->vars.map[i]) < 0)
+				return (-1);
+		if (ret > 0)
 		{
 			if (get_pos_player(env->vars.map + i, env) < 0)
 				return (-1);
@@ -98,7 +102,7 @@ int	static	parsing_param(t_env *env)
 int		parsing_file(t_env *env)
 {
 	if (parsing_param(env) < 0)
-		return (-1);
+		return (aie_error("invalid param data.cub file\n"));
 	free_file((void **)env->vars.map);
 	return (1);
 }
