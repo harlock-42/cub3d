@@ -7,7 +7,7 @@ EA ./path_to_the_east_texture
 
 S path_to_the_sprite_texture.bmp
 
-F 220, 100, 0
+F 220, 145, 30
 C 225, 30, 0
 
 11111111

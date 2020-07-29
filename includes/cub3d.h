@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/04 18:34:19 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/07/29 16:01:27 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,10 @@ typedef	struct		s_env
 ** aie_error.c
 */
 int		aie_error(const char *str);
+/*
+** check_color_data.c
+*/
+int		check_color_data(char *str);
 
 void		free_file(void **map);
 /*

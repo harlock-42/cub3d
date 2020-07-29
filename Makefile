@@ -6,7 +6,7 @@
 #    By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/18 16:35:14 by tallaire          #+#    #+#              #
-#    Updated: 2020/07/04 16:37:30 by tallaire         ###   ########.fr        #
+#    Updated: 2020/07/29 14:35:03 by harlock          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ LS		= ls -la
 
 CFLAGS		= -Werror -Wextra -Wall -c
 
-#LFLAGS		= -framework OpenGL -framework AppKit
-LFLAGS		= -lm -lbsd -lX11 -lXext
+LFLAGS		= -framework OpenGL -framework AppKit
+#LFLAGS		= -lm -lbsd -lX11 -lXext
 
 INCLUDE_NAME		= cub3d.h\
 			  ft_printf.h\
@@ -32,6 +32,7 @@ INCLUDE_NAME		= cub3d.h\
 			  mlx.h
 
 SRC_NAME		= aie_error.c\
+			check_color_data.c\
 			check_map.c\
 			check_path.c\
 			color.c\
