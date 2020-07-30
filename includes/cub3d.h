@@ -6,13 +6,15 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/29 16:01:27 by harlock          ###   ########.fr       */
+/*   Updated: 2020/07/30 14:17:32 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEF_CUB3D_H
 # define DEF_CUB3D_H
 
+# define RES_MAX_X 1920
+# define RES_MAX_Y 1080
 # define FOV ((3 * M_PI) / 8)
 # define MOVE_SPEED 0.002
 # define ROT_SPEED 0.001
@@ -87,6 +89,8 @@ typedef	struct		s_vars
 	char **map;
 	int res_x;
 	int res_y;
+	int floor_color;
+	int ceil_color;
 	char *path_north;
 	char *path_south;
 	char *path_west;
@@ -136,6 +140,10 @@ int		check_param_file(t_env *env);
 ** check_file.c
 */
 int		check_path(char *str);
+/*
+** check_res.c
+*/
+int		check_res(char *str);
 /*
 ** color.c
 */

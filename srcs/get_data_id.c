@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 16:35:27 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/29 16:00:58 by harlock          ###   ########.fr       */
+/*   Updated: 2020/07/30 14:27:04 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,18 @@ static	void	get_res(t_env *env, char *str)
 		env->vars.res_y = env->vars.res_y + (str[i] - '0');
 		++i;
 	}
-	if (env->vars.res_x > 1920)
-		env->vars.res_x = 1920;
-	if (env->vars.res_y > 1080)
-		env->vars.res_y = 1080;
+	if (env->vars.res_x > RES_MAX_X)
+		env->vars.res_x = RES_MAX_X;
+	if (env->vars.res_y > RES_MAX_Y)
+		env->vars.res_y = RES_MAX_Y;
 }
 
 int	get_data_id(t_env *env, char *str)
 {
 	if (*str == 'R')
 	{
+		if (check_res(str) < 0)
+			return (aie_error("incorrect resolution data in data.cub\n"));
 		get_res(env, str);
 		if (env->vars.res_x == 0 || env->vars.res_y == 0)
 			return (aie_error("resolution null\n"));
@@ -71,5 +73,7 @@ int	get_data_id(t_env *env, char *str)
 		return (get_sprite_path(env, str));
 	if (*str == 'F' || *str == 'C')
 		return (get_color_ceil_and_floor(env, str));
+	ft_printf("success\n");
+	return (-1);
 	return (1);
 }

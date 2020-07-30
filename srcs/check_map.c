@@ -6,11 +6,16 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 19:58:52 by tallaire          #+#    #+#             */
-/*   Updated: 2020/05/27 19:58:53 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/07/30 14:50:08 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+/*
+** Verifie que les data dans data.cub avant la map contiennent des majuscules
+** valides en guise de titre et sont suivient par au moins un espace.
+*/
 
 int		check_param_file(t_env *env)
 {
@@ -36,7 +41,7 @@ int		check_param_file(t_env *env)
 			++k;
 		if ((k > 2 || env->vars.map[j][i + k] != ' ')
 		&& (ret = is_map_start(env->vars.map[j])) < 0)
-			return (-1);
+			return (aie_error("invalid data in data.cub\n"));
 		if (ret > 0)
 			break ;
 		++j;
