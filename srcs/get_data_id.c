@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 16:35:27 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/30 14:27:04 by harlock          ###   ########.fr       */
+/*   Updated: 2020/07/31 16:22:53 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,5 @@ int	get_data_id(t_env *env, char *str)
 		return (get_sprite_path(env, str));
 	if (*str == 'F' || *str == 'C')
 		return (get_color_ceil_and_floor(env, str));
-	ft_printf("success\n");
-	return (-1);
 	return (1);
 }

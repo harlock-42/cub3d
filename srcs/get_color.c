@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 17:34:28 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/30 12:28:36 by harlock          ###   ########.fr       */
+/*   Updated: 2020/07/31 16:21:10 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int				get_color_ceil_and_floor(t_env *env, char *str)
 	size_t	i;
 
 	i = 0;
-	(void)env;
 	if (*str == 'F' || *str == 'C')
 		++i;
 	else

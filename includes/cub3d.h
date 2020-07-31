@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/30 14:17:32 by harlock          ###   ########.fr       */
+/*   Updated: 2020/07/31 20:46:50 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,14 @@ int		aie_error(const char *str);
 */
 int		check_color_data(char *str);
 
-void		free_file(void **map);
 /*
 ** check_map.c
+*/
+int			check_map(char **map);
+
+void		free_file(void **map);
+/*
+** check_param_file.c
 */
 int		check_param_file(t_env *env);
 /*
@@ -167,11 +172,14 @@ void		free_img(t_env *env);
 
 int		is_map_start(char *map);
 int		parsing_file(t_env *env);
-int		get_data_id(t_env *env, char *str);
 /*
 ** get_color.c
 */
 int		get_color_ceil_and_floor(t_env *env, char *str);
+/*
+** get_data_id.c
+*/
+int		get_data_id(t_env *env, char *str);
 /*
 ** get_file.c
 */
@@ -201,6 +209,10 @@ int		key_released(int keycode, t_env *env);
 */
 void		move_player(t_env *env);
 /*
+** parsing_map.c
+*/
+int			parsing_file(t_env *emv);
+/*
 ** raycasting.c
 */
 int		raycast(t_env *env);
@@ -214,5 +226,6 @@ void	wall_x(t_env *env);
 ** utils.c
 */
 void		free_map(t_env *env);
+char		*strdup_path(char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:12:18 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/30 14:37:47 by harlock          ###   ########.fr       */
+/*   Updated: 2020/07/31 19:11:48 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	static	parsing_param(t_env *env)
 			++i;
 		if ((ret = is_map_start(env->vars.map[i])) < 0)
 			if (get_param_id(env, env->vars.map[i]) < 0)
-				return (-1);
+				return (aie_error("parsing error\n"));
 		if (ret > 0)
 		{
 			if (get_pos_player(env->vars.map + i, env) < 0)

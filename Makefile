@@ -6,7 +6,7 @@
 #    By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/18 16:35:14 by tallaire          #+#    #+#              #
-#    Updated: 2020/07/30 14:27:17 by harlock          ###   ########.fr        #
+#    Updated: 2020/07/31 18:31:58 by tallaire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ INCLUDE_NAME		= cub3d.h\
 SRC_NAME		= aie_error.c\
 			check_color_data.c\
 			check_map.c\
+			check_param_file.c\
 			check_path.c\
 			check_res.c\
 			color.c\

@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 20:11:26 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/04 17:53:52 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/07/31 19:10:14 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int		get_pos_player(char **map, t_env *env)
 	int	y;
 
 	y = 0;
+	if (check_map(map) < 0)
+		return (aie_error("invalid map in data.cub\n"));
 	while (map && map[y] != NULL)
 	{
 		x = 0;

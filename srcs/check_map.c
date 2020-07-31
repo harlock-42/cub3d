@@ -3,48 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/27 19:58:52 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/30 14:50:08 by harlock          ###   ########.fr       */
+/*   Created: 2020/07/31 18:29:21 by tallaire          #+#    #+#             */
+/*   Updated: 2020/07/31 20:39:49 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+int			is_space_correct(char **map, size_t y, size_t x)
+{
+	if (map[y][x + 1] == '0' || map[y][x + 1] == '2' || map[y][x + 1] == 'N' ||
+	map[y][x + 1] == 'S' || map[y][x + 1] == 'E' || map[y][x + 1] == 'W')
+		return (-1);
+	if (map[y + 1] && ft_strlen(map[y + 1]) > x)
+		if (map[y + 1][x] == '0' || map[y + 1][x] == '2' || map[y + 1][x] == 'N'
+		|| map[y + 1][x] == 'S' || map[y + 1][x] == 'E' || map[y + 1][x] == 'W')
+			return (-1);
+	map[y][x] = '1';
+	return (1);
+}
+
 /*
-** Verifie que les data dans data.cub avant la map contiennent des majuscules
-** valides en guise de titre et sont suivient par au moins un espace.
+** check si les espaces sont entouree par des 1.
+** Si c est le cas, ils sont remplace par des 1.
 */
 
-int		check_param_file(t_env *env)
+static	int	check_space(char **map)
 {
-	size_t		i;
-	size_t		j;
-	size_t		k;
-	int		ret;
+	size_t	y;
+	size_t	x;
 
-	i = 0;
-	j = 0;
-	ret = 0;
-	while (env->vars.map && env->vars.map[j])
+	y = 0;
+	while (map && map[y])
 	{
-		k = 0;
+		x = 0;
+		while (map[y] && map[y][x])
+		{
+			if (map[y][x] == ' ')
+				if (is_space_correct(map, y, x) < 0)
+				{
+					ft_printf("line %d\nchar %d\n", (int)y, (int)x);
+					return (-1);
+				}
+			++x;
+		}
+		++y;
+	}
+	return (1);
+}
+
+/*
+** check si les characteres de la map sont des characteres autorises.
+*/
+
+static	int	map_char_isok(char **map, size_t *count)
+{
+	size_t	i;
+	size_t	j;
+
+	j = 0;
+	while (map && map[j])
+	{
 		i = 0;
-		while (env->vars.map[j][0] == '\0')
-			++j;
-		while (env->vars.map[j][i] == ' ')
+		while (map[j] && map[j][i])
+		{
+			if (map[j][i] == 'N' || map[j][i] == 'S' || map[j][i] == 'E' ||
+			map[j][i] == 'W')
+				++*count;
+			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != '2' &&
+			map[j][i] != ' ' && map[j][i] != 'N' && map[j][i] != 'S' &&
+			map[j][i] != 'E' && map[j][i] != 'W')
+				return (-1);
 			++i;
-		while (env->vars.map[j][i + k] >= 'A' &&
-		env->vars.map[j][i + k] <= 'Z' &&
-		env->vars.map[j][i + k] != ' ')
-			++k;
-		if ((k > 2 || env->vars.map[j][i + k] != ' ')
-		&& (ret = is_map_start(env->vars.map[j])) < 0)
-			return (aie_error("invalid data in data.cub\n"));
-		if (ret > 0)
-			break ;
+		}
 		++j;
+	}
+	return (1);
+}
+
+/*
+** check la validite de la map.
+*/
+
+int			check_map(char **map)
+{
+	size_t		count;
+	size_t		y;
+
+	count = 0;
+	y = 0;
+	if (map_char_isok(map, &count) < 0)
+		return (aie_error("character forbidden\n"));
+	if (count == 0)
+		return (aie_error("player position missing\n"));
+	if (count > 1)
+		return (aie_error("too many position player\n"));
+	if (check_space(map) < 0)
+		return (aie_error("invalid space position\n"));
+	while (map && map[y])
+	{
+		ft_printf("%s\n", map[y]);
+		++y;
 	}
 	return (1);
 }
