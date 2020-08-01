@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 18:29:21 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/31 20:39:49 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/01 20:33:00 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,7 @@ int			check_map(char **map)
 		return (aie_error("too many position player\n"));
 	if (check_space(map) < 0)
 		return (aie_error("invalid space position\n"));
-	while (map && map[y])
-	{
-		ft_printf("%s\n", map[y]);
-		++y;
-	}
+	if (check_is_map_close(map) < 0)
+		return (aie_error("map is not close in .cub file\n"));
 	return (1);
 }

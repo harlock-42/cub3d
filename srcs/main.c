@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 16:35:24 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/31 20:46:46 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/01 20:33:13 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static	int	game(t_env *env)
 
 static	int	start_game(t_env *env)
 {
+	return (1);
 	env->vars.mlx = mlx_init();
 	env->vars.win = mlx_new_window(env->vars.mlx,
 	env->vars.res_x, env->vars.res_y, "Cub3d");

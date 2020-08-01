@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/31 20:46:50 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/01 18:53:46 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,14 @@ int		check_param_file(t_env *env);
 ** check_file.c
 */
 int		check_path(char *str);
+/*
+** check_is_map_close.c
+*/
+int		check_is_map_close(char **map);
+/*
+** check_is_map_close_last_column.c
+*/
+int		last_column(char **map);
 /*
 ** check_res.c
 */
