@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 18:29:21 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/01 20:33:00 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/02 19:11:26 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 int			is_space_correct(char **map, size_t y, size_t x)
 {
-	if (map[y][x + 1] == '0' || map[y][x + 1] == '2' || map[y][x + 1] == 'N' ||
-	map[y][x + 1] == 'S' || map[y][x + 1] == 'E' || map[y][x + 1] == 'W')
+	if (map[y][x + 1] != '\0' && map[y][x + 1] != ' ' && map[y][x + 1] != '1')
 		return (-1);
 	if (map[y + 1] && ft_strlen(map[y + 1]) > x)
-		if (map[y + 1][x] == '0' || map[y + 1][x] == '2' || map[y + 1][x] == 'N'
-		|| map[y + 1][x] == 'S' || map[y + 1][x] == 'E' || map[y + 1][x] == 'W')
+		if (map[y + 1][x] != ' ' && map[y + 1][x] != '1')
+			return (-1);
+	if (x > 0 && map[y][x - 1] != ' ' && map[y][x - 1] != '1')
+		return (-1);
+	if (y > 0 && ft_strlen(map[y - 1]) > x)
+		if (map[y - 1][x] != ' ' && map[y - 1][x] != '1')
 			return (-1);
 	map[y][x] = '1';
 	return (1);

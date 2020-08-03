@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 16:35:27 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/31 16:22:53 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/02 20:08:23 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	get_data_id(t_env *env, char *str)
 {
 	if (*str == 'R')
 	{
-		if (check_res(str) < 0)
+		if (check_res(str, env) < 0)
 			return (aie_error("incorrect resolution data in data.cub\n"));
 		get_res(env, str);
 		if (env->vars.res_x == 0 || env->vars.res_y == 0)

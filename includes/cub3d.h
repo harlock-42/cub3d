@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/01 18:53:46 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/02 20:08:35 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,21 @@ typedef	struct		s_player
 	float dir;
 }			t_player;
 
+typedef	struct		s_check
+{
+	int		r;
+	int		no;
+	int		we;
+	int		ea;
+	int		so;
+	int		s;
+	int		f;
+	int		c;
+}			t_check;
+
 typedef	struct		s_env
 {
+	t_check		check;
 	t_vars		vars;
 	t_player	player;
 	t_map		map;
@@ -156,7 +169,7 @@ int		last_column(char **map);
 /*
 ** check_res.c
 */
-int		check_res(char *str);
+int		check_res(char *str, t_env *env);
 /*
 ** color.c
 */
@@ -207,6 +220,10 @@ int		get_texture_path(t_env *env, char *str);
 ** init.c
 */
 void		init_env(t_env *env);
+/*
+** init_2.c
+*/
+void		init_env_2(t_env *env);
 /*
 ** key.c
 */

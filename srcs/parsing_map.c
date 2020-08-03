@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:12:18 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/31 19:11:48 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/02 20:08:41 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	static	get_param_id(t_env *env, char *str)
 
 	i = 0;
 	k = 0;
-	while (str && str[i] && str[i] == ' ')
-		++i;
 	if (str[i] < 'A' || str[i] > 'Z')
 		return (-1);
 	while (str && str[i + k] && (str[i + k] >= 'A' && str[i + k] <= 'Z'))

@@ -6,96 +6,111 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 16:19:30 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/01 18:45:14 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/02 19:11:23 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 /*
-** verifie que la premiere colonne de la map ne contient des 1.
+** verifie que toutes les cases de la premiere et de la derniere colonne
+** contiennent un 1.
 */
 
-static		int		first_column(char **map)
+static		int		check_left_and_right(char **map)
 {
-	size_t	i;
+	size_t	y;
+	size_t	x;
 
-	i = 0;
-	while (map && map[i])
+	y = 0;
+	while (map && map[y])
 	{
-		if (map[i][0] != '1')
+		x = 0;
+		if (map[y][0] != '1')
 		{
-			ft_printf("char : 0\nline : %d\n", (int)i);
+			ft_printf("char : %d\nline : %d\n", (int)x, (int)y);
 			return (-1);
 		}
-		++i;
+		while (map[y] && map[y][x + 1])
+			++x;
+		if (map[y][x] != '1')
+		{
+			ft_printf("char : %d\nline : %d\n", (int)x, (int)y);
+			return (-1);
+		}
+		++y;
 	}
 	return (1);
 }
 
 /*
-** verifie que la derniere ligne de la map ne contient que des 1.
+** verifie qu une case contennant un 1 existe en dessous de la case verifiee.
 */
 
-static	int			last_line(char *map)
+static		int		check_down(char **map, size_t y, size_t x)
 {
-	size_t		i;
+	size_t	size;
 
-	i = 0;
-	while (map && map[i])
+	size = y;
+	while (map[size + 1] && ft_strlen(map[size + 1]) > x && map[size + 1][x] != ' ')
+		++size;
+	while (y < size && map[y + 1])
 	{
-		if (map[i] != '1')
-		{
-			ft_printf("char : %d\n", (int)i);
-			return (-1);
-		}
-		++i;
+		if (map[y + 1][x] == '1')
+			return (1);
+		++y;
 	}
-	return (1);
+	ft_printf("char : %d\nline : %d\n", (int)x, (int)y);
+	return (-1);
 }
 
 /*
-** verifie que la premiere ligne de la map ne contient que des 1.
+** verifie qu une case contennant un 1 existe audessu de la case verifiee.
 */
 
-static	int			first_line(char *map)
+static		int		check_up(char **map, size_t y, size_t x)
 {
-	size_t		i;
-
-	i = 0;
-	while (map && map[i])
+	while (y >= 0 && ft_strlen(map[y]) >= x)
 	{
-		if (map[i] != '1')
-		{
-			ft_printf("char : %d\n", (int)i);
-			return (-1);
-		}
-		++i;
+		if (map[y][x] == '1')
+			return (1);
+		--y;
 	}
-	return (1);
+	ft_printf("char : %d\nline : %d\n", (int)x, (int)y);
+	return (-1);
 }
 
 /*
-** verifie que la map soit entouree de 1.
+** verifie que la map est entouree uniquement de 1.
+** Pour cela, la fonction verifie si un 1 existe audessus, en dessous, 
+** a droite et gauche de toute les cases qui ne sont pas des 1.
 */
 
 int			check_is_map_close(char **map)
 {
-	size_t	size;
+	size_t		y;
+	size_t		x;
 
-	size = 0;
-	while (map && map[size])
-		++size;
-	if (first_line(map[0]) < 0)
-		return (aie_error("line : 1\n"));
-	if (last_line(map[size - 1]) < 0)
+	y = 0;
+	ft_printf("debut teste\n");
+	if (check_left_and_right(map) < 0)
+		return (-1);
+	while (map && map[y])
 	{
-		ft_printf("line : %d\n", (int)size);
-		return (-1);
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] != '1')
+			{
+				if (check_up(map, y, x) < 0)
+					return (-1);
+				if (check_down(map, y, x) < 0)
+					return (-1);
+			}
+			++x;
+		}
+		++y;
 	}
-	if (first_column(map) < 0)
-		return (-1);
-	if (last_column(map) < 0)
-		return (-1);
+	ft_printf("success\n");
 	return (1);
 }

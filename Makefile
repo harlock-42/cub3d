@@ -6,7 +6,7 @@
 #    By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/18 16:35:14 by tallaire          #+#    #+#              #
-#    Updated: 2020/08/01 20:33:09 by tallaire         ###   ########.fr        #
+#    Updated: 2020/08/02 19:59:31 by tallaire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC_NAME		= aie_error.c\
 			get_file.c\
 			get_texture_path.c\
 			init.c\
+			init_2.c\
 			key.c\
 			main.c\
 			move_player.c\
