@@ -6,11 +6,44 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 16:51:52 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/31 17:20:38 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/03 16:36:01 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+/*
+** verifie que les chemins des textures ont ete referencee qu une seul fois.
+*/
+
+static	int	check_several_reference(t_env *env, char *str)
+{
+	if (str[0] == 'N' && str[1] == 'O')
+	{
+		if (env->check.no == 1)
+			return (aie_error("several north texture path refered\n"));
+		env->check.no = 1;
+	}
+	if (str[0] == 'S' && str[1] == 'O')
+	{
+		if (env->check.so == 1)
+			return (aie_error("several south texture path refered\n"));
+		env->check.so = 1;
+	}
+	if (str[0] == 'W' && str[1] == 'E')
+	{
+		if (env->check.we == 1)
+			return (aie_error("several west texture path refered\n"));
+		env->check.we = 1;
+	}
+	if (str[0] == 'E' && str[1] == 'A')
+	{
+		if (env->check.ea == 1)
+			return (aie_error("several east texture path refered\n"));
+		env->check.ea = 1;
+	}
+	return (1);
+}
 
 int	get_texture_path(t_env *env, char *str)
 {
@@ -37,5 +70,5 @@ int	get_texture_path(t_env *env, char *str)
 	if (*str == 'W' && *(str + 1) == 'E')
 		if (!(env->vars.path_west = strdup_path(str + i)))
 			return (aie_error("invalid west texture path name\n"));
-	return (1);
+	return (check_several_reference(env, str));
 }

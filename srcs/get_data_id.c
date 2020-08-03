@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 16:35:27 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/02 20:08:23 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/03 14:50:27 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static	int	get_sprite_path(t_env *env, char *str)
 	size_t		i;
 
 	i = 0;
-	(void)env;
+	if (env->check.s == 1)
+		return (aie_error("several sprite path refered\n"));
+	env->check.s = 1;
 	while (*str != ' ' && *str)
 		++str;
 	while (*str == ' ' && *str)

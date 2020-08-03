@@ -1,12 +1,12 @@
-R      1920      1080
+R      1920      1080  
 NO ./path_to_the_north_texture
 WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
 
 S path_to_the_sprite_texture.bmp
 
-F 220,145,30,25
-C 225,255,255,255
+F 220,145
+C 225,255,255
 SO ./path_to_the_south_texture
 
 111
