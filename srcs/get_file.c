@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 09:54:40 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/03 19:24:38 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/04 15:00:39 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,29 @@ static	int	realloc_file(t_env *env, char *line)
 	return (1);
 }
 
+/*
+** Verifie que le fichier passer en paramettre possede l extention .cub
+*/
+
+static	int	file_is_cub(const char *str)
+{
+	size_t		i;
+
+	i = ft_strlen(str);
+	if (i <= 4)
+		return (-1);
+	if (str[i - 1] != 'b')
+		return (-1);
+	if (str[i - 2] != 'u')
+		return (-1);
+	if (str[i - 3] != 'c')
+		return (-1);
+	if (str[i - 4] != '.')
+		return (-1);
+	ft_printf("test\n");
+	return (1);
+}
+
 int		get_file(t_env *env, const char *file_name)
 {
 	int	fd;
@@ -56,6 +79,8 @@ int		get_file(t_env *env, const char *file_name)
 	char	*line;
 
 	env->vars.map = NULL;
+	if (file_is_cub(file_name) < 0)
+		return (aie_error("wrong file type\n"));
 	fd = open(file_name, O_RDONLY);
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{

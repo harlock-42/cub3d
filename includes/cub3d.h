@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/04 10:25:14 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/04 14:50:36 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define RES_MAX_X 1920
 # define RES_MAX_Y 1080
 # define FOV ((3 * M_PI) / 8)
-# define MOVE_SPEED 0.002
-# define ROT_SPEED 0.001
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.05
 # include <fcntl.h>
 # include <math.h>
 # include "libft.h"
@@ -34,8 +34,8 @@
 #define KEY_Q 12
 #define KEY_W 13
 #define KEY_E 14
-#define KEY_GAUCHE 123
-#define KEY_DROITE 124
+#define KEY_LEFT 123
+#define KEY_RIGHT 124
 #define KEY_UP 126
 #define KEY_DOWN 125
 #define KEY_PRESS 2
@@ -43,7 +43,22 @@
 #define KEY_EXPOSE_HOOK 12
 #define KEY_EXIT_HOOK 17
 
-typede	struct		s_tex
+
+/*
+** key for linux
+*/
+
+/*
+#define KEY_A 97
+#define KEY_D 100
+#define KEY_S 115
+#define KEY_W 119
+#define KEY_LEFT 65361
+#define KEY_RIGHT 65363
+#define KEY_EXIT_HOOK 65307
+*/
+
+typedef	struct		s_tex
 {
 	int	tex_width;
 	int	tex_height;

@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 22:57:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/05 22:57:46 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/04 15:09:29 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void		draw_column_px(t_env *env, int x, int start, int end)
 	x = abs(x - env->vars.res_x + 1);
 	while (y < env->vars.res_y)
 	{
-		if (y >= start && y <= end)
+		if (y < start)
+			my_mlx_pixel_put(env, x, y, env->vars.ceil_color);
+		else if (y >= start && y <= end)
 		{
 			env->tex.tex_y =
 			(int)tex_pos & (env->tex.tex_height - 1);
@@ -41,6 +43,8 @@ void		draw_column_px(t_env *env, int x, int start, int end)
 			pixel_color(env);
 			my_mlx_pixel_put(env, x, y, env->wall.color);
 		}
+		else if (y > end)
+			my_mlx_pixel_put(env, x, y, env->vars.floor_color);
 		++y;
 	}
 }

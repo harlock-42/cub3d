@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:33:59 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/06 13:34:01 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/04 11:44:57 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	key_released(int keycode, t_env *env)
 {
-	if (keycode == 119)
+	if (keycode == KEY_W)
 		env->key.forward = 0;
-	else if (keycode == 115)
+	else if (keycode == KEY_S)
 		env->key.back = 0;
-	else if (keycode == 97)
+	else if (keycode == KEY_A)
 		env->key.left = 0;
-	else if (keycode == 100)
+	else if (keycode == KEY_D)
 		env->key.right = 0;
-	else if (keycode == 65361)
+	else if (keycode == KEY_LEFT)
 		env->key.rot_left = 0;
-	else if (keycode == 65363)
+	else if (keycode == KEY_RIGHT)
 		env->key.rot_right = 0;
-	else if (keycode == 65307)
+	else if (keycode == KEY_EXIT_HOOK)
 		env->key.escape = 1;
 //	printf("release = %d\n", keycode);
 	return (keycode);
@@ -34,19 +34,19 @@ int	key_released(int keycode, t_env *env)
 
 int	key_pressed(int keycode, t_env *env)
 {
-	if (keycode == 65307)
+	if (keycode == KEY_EXIT_HOOK)
 		exit_game(env);
-	else if (keycode == 119)
+	else if (keycode == KEY_W)
 		env->key.forward = 1;
-	else if (keycode == 115)
+	else if (keycode == KEY_S)
 		env->key.back = 1;
-	else if (keycode == 97)
+	else if (keycode == KEY_A)
 		env->key.left = 1;
-	else if (keycode == 100)
+	else if (keycode == KEY_D)
 		env->key.right = 1;
-	else if (keycode == 65361)
+	else if (keycode == KEY_LEFT)
 		env->key.rot_left = 1;
-	else if (keycode == 65363)
+	else if (keycode == KEY_RIGHT)
 		env->key.rot_right = 1;
 //	printf("press = %d\n", keycode);
 	return (keycode);
