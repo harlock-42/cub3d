@@ -6,7 +6,7 @@
 #    By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/18 16:35:14 by tallaire          #+#    #+#              #
-#    Updated: 2020/08/02 19:59:31 by tallaire         ###   ########.fr        #
+#    Updated: 2020/08/04 18:58:52 by tallaire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,14 +40,15 @@ SRC_NAME		= aie_error.c\
 			check_path.c\
 			check_res.c\
 			color.c\
-			get_color.c\
 			display.c\
 			draw_column_px.c\
 			exit_game.c\
 			free_data.c\
-			get_map.c\
+			get_color.c\
 			get_data_id.c\
 			get_file.c\
+			get_map.c\
+			get_texture_and_sprite.c\
 			get_texture_path.c\
 			init.c\
 			init_2.c\

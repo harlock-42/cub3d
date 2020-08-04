@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/04 14:50:36 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/04 18:59:07 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,6 +246,10 @@ int		get_north(t_vars *vars, char * str);
 ** get_map.c
 */
 int		get_pos_player(char **map, t_env *env);
+/*
+** get_texture_and_sprite.c
+*/
+int		get_texture_and_sprite(t_env *env);
 /*
 ** get_texture_path.c
 */
