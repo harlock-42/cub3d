@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/02 20:08:35 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/04 10:25:14 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,26 @@
 # include "ft_printf.h"
 # include "mlx.h"
 
-typedef	struct		s_tex
+/*
+** key for mac
+*/
+
+#define KEY_A 0
+#define KEY_D 2
+#define KEY_S 1
+#define KEY_Q 12
+#define KEY_W 13
+#define KEY_E 14
+#define KEY_GAUCHE 123
+#define KEY_DROITE 124
+#define KEY_UP 126
+#define KEY_DOWN 125
+#define KEY_PRESS 2
+#define KEY_RELEASE 3
+#define KEY_EXPOSE_HOOK 12
+#define KEY_EXIT_HOOK 17
+
+typede	struct		s_tex
 {
 	int	tex_width;
 	int	tex_height;

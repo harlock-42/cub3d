@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 16:19:30 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/02 19:11:23 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/03 20:04:34 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ int			check_is_map_close(char **map)
 	size_t		x;
 
 	y = 0;
-	ft_printf("debut teste\n");
 	if (check_left_and_right(map) < 0)
 		return (-1);
 	while (map && map[y])
@@ -111,6 +110,5 @@ int			check_is_map_close(char **map)
 		}
 		++y;
 	}
-	ft_printf("success\n");
 	return (1);
 }

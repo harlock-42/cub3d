@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:56:50 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/02 20:03:09 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/03 19:18:55 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static	void	init_env_other(t_env *env)
 {
 	env->vars.res_x = 0;
-	env->vars.res_x = 0;
+	env->vars.res_y = 0;
 }
 
 static	void	init_env_tex(t_env *env)
