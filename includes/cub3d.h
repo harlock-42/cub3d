@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/04 18:59:07 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/05 16:11:43 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 #define KEY_PRESS 2
 #define KEY_RELEASE 3
 #define KEY_EXPOSE_HOOK 12
-#define KEY_EXIT_HOOK 17
+#define KEY_EXIT_HOOK 53
 
 
 /*

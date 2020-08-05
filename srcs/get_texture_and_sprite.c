@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 18:16:00 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/04 18:58:43 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/05 15:30:27 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ int			get_texture_and_sprite(t_env *env)
 	endian = 0;
 	width = 0;
 	height = 0;
-	if ((img = mlx_xpm_file_to_image(env->vars.win, env->vars.path_north, &width, &height)) == 0)
-		ft_printf("echec\n");
+	ft_printf("%s\n", env->vars.path_north);
+	ft_printf("%p\n", mlx_xpm_file_to_image(env->vars.mlx, env->vars.path_north, &width, &height));
+	/*
 	if ((tex = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian)) == 0)
 		ft_printf("non non non\n");
 	ft_printf("bpp = %d\n", bits_per_pixel);
+	*/
 	return (1);
 }
