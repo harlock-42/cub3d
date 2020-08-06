@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 09:54:40 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/04 15:00:39 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/06 12:22:41 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ static	int	file_is_cub(const char *str)
 		return (-1);
 	if (str[i - 4] != '.')
 		return (-1);
-	ft_printf("test\n");
 	return (1);
 }
 

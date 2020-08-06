@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 20:11:26 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/03 19:24:50 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/06 12:18:58 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	static	get_map(char **file, t_env *env)
 				env->map.map[y][x] = 0;
 			++x;
 		}
-		env->map.map[y][x] = -1;
+		env->map.map[y][x] = (-1);
 		++y;
 	}
 	env->map.map[y] = NULL;
@@ -65,7 +65,6 @@ int	static	get_map(char **file, t_env *env)
 
 void	static	get_dir_player(t_env *env, char pos)
 {
-	env->player.dir = 0;
 	if (pos == 'S')
 		env->player.dir = 0;
 	else if (pos == 'N')
