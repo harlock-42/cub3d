@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 17:11:42 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/06 12:19:46 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/07 15:13:45 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void		wall_x(t_env *env)
 		env->tex.wall_x = env->player.pos_x + env->ray.size *
 		env->ray.ray_dir_x;
 	env->tex.wall_x -= floor(env->tex.wall_x);
-	env->tex.tex_x = (int)(env->tex.wall_x * env->tex.tex_width);
+	env->tex.tex_x = (int)(env->tex.wall_x * env->tex.width);
 	if (env->ray.side == 0 && env->ray.ray_dir_x > 0)
-		env->tex.tex_x = env->tex.tex_width - env->tex.tex_x - 1;
+		env->tex.tex_x = env->tex.width - env->tex.tex_x - 1;
 	if (env->ray.side == 1 && env->ray.ray_dir_y < 0)
-		env->tex.tex_x = env->tex.tex_width - env->tex.tex_x - 1;
+		env->tex.tex_x = env->tex.width - env->tex.tex_x - 1;
 }
 
 void		init_plane(t_env *env)

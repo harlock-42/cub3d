@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/06 15:02:08 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/07 16:30:16 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,14 @@
 
 typedef	struct		s_tex
 {
-	int	tex_width;
-	int	tex_height;
+	void	*img;
+	unsigned int	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+	int		line_height;
+	int	width;
+	int	height;
 	int	tex_x;
 	int	tex_y;
 	int	texture[4][1080];
@@ -83,8 +89,8 @@ typedef	struct		s_key
 typedef	struct		s_wall
 {
 	void		*img;
-	char		*addr;
-	int		bits_per_px;
+	unsigned int		*addr;
+	int		bpp;
 	int		line_length;
 	int		endian;
 	int		line_height;
