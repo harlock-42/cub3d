@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/07 16:30:16 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/08 21:01:09 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,7 @@ int		check_res(char *str, t_env *env);
 /*
 ** color.c
 */
-void		pixel_color(t_env *env);
+int		pixel_color(t_env *env, int y, int x);
 /*
 ** display.c
 */
@@ -222,6 +222,7 @@ void		new_image(t_env *env);
 ** draw_column_px.c
 */
 void		draw_column_px(t_env *env, int x, int start, int end);
+void		my_mlx_pixel_put(t_env *env, int x, int y, int color);
 /*
 ** exit_game.c
 */

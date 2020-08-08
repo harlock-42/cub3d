@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 16:35:24 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/07 16:30:12 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/08 19:29:41 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static	int	game(t_env *env)
 
 static	int	start_game(t_env *env)
 {
-//	env->vars.mlx = mlx_init();
-//	env->vars.win = mlx_new_window(env->vars.mlx,
-//	env->vars.res_x, env->vars.res_y, "Cub3d");
+	env->vars.mlx = mlx_init();
+	env->vars.win = mlx_new_window(env->vars.mlx,
+	env->vars.res_x, env->vars.res_y, "Cub3d");
 	if (get_texture_and_sprite(env) < 0)
 		return (0);
-	return (1);
+//	return (1);
 	mlx_hook(env->vars.win, 2, 1L << 0, key_pressed, env);
 	mlx_hook(env->vars.win, 3, 1L << 1, key_released, env);
 	mlx_loop_hook(env->vars.mlx, game, env);

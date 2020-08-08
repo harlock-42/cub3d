@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 17:58:33 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/07 13:34:14 by tallaire         ###   ########.fr       */
+/*   Created: 2020/08/08 16:39:44 by tallaire          #+#    #+#             */
+/*   Updated: 2020/08/08 19:24:21 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/cub3d.h"
 
@@ -101,20 +102,17 @@ static	void	init_env_ray(t_env *env, float x, float w)
 
 int				raycast(t_env *env)
 {
-	int		buffer[env->vars.res_y][env->vars.res_x];
 	int		x;
 	int		w;
 
 	x = 0;
 	w = env->vars.res_x;
-	(void)buffer;
 	while (x < w)
 	{
 		init_env_ray(env, x, w);
 		init_side_dist_and_step(env, env->player.pos_x,
 		env->player.pos_y);
 		dda(env);
-		wall_x(env);
 		wall_size(env);
 		draw_column_px(env, x, env->wall.draw_start,
 		env->wall.draw_end);
