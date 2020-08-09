@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/08 21:01:09 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/09 15:59:24 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 typedef	struct		s_tex
 {
 	void	*img;
+	int				**buffer;
 	unsigned int	*addr;
 	int		bpp;
 	int		line_length;
@@ -70,7 +71,7 @@ typedef	struct		s_tex
 	int	height;
 	int	tex_x;
 	int	tex_y;
-	int	texture[4][1080];
+	int	texture[4][4096];
 	float	wall_x;
 	float	step;
 }					t_tex;
@@ -116,7 +117,7 @@ typedef	struct		s_ray
 	float	step_y;
 	float	side_dist_x;
 	float	side_dist_y;
-	float	size;
+	float	perp_wall_dist;
 	int		map_x;
 	int		map_y;
 	int		side;
@@ -268,7 +269,8 @@ void		init_env(t_env *env);
 /*
 ** init_2.c
 */
-void		init_env_2(t_env *env);
+void		init_check(t_env *env);
+int			init_raycaster(t_env *env);
 /*
 ** key.c
 */

@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 16:16:55 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/08 21:03:57 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/09 15:59:18 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,26 @@ static	int	texel_coordinate(t_env *env, int y, int x)
 
 //	calcul de wall_x : indice de la position de la colonne dans la case la map.
 	if (env->ray.side == 0)
-		wall_x = env->player.pos_y + env->ray.size * env->ray.dir_y;
+		wall_x = env->player.pos_y + env->ray.perp_wall_dist * env->ray.dir_y;
 	else
-		wall_x = env->player.pos_x + env->ray.size * env->ray.dir_x;
+		wall_x = env->player.pos_x + env->ray.perp_wall_dist * env->ray.dir_x;
 	wall_x = wall_x - floor(wall_x);
 
 //	position du texel en x
-	tex_x = env->tex.width * wall_x;
+	tex_x = 64 * wall_x;
 	if (env->ray.side == 0 && env->ray.dir_x > 0)
-		tex_x = env->tex.width - tex_x - 1;
+		tex_x = 64 - tex_x - 1;
 	if (env->ray.side == 1 && env->ray.dir_y < 0)
-		tex_x = env->tex.width - tex_x - 1;
+		tex_x = 64 - tex_x - 1;
 
 
-	step = 1.0 * env->tex.height / env->wall.line_height;
+	step = 1.0 * 64 / env->wall.line_height;
 	tex_pos = (env->wall.draw_start - env->vars.res_y + env->wall.line_height) * step;
 	while (y <= env->wall.draw_end)
 	{
-		tex_y = (int)tex_pos & (env->tex.height - 1);
+		tex_y = (int)tex_pos & (64 - 1);
 		tex_pos = tex_pos + step;
-		color = env->tex.addr[env->tex.height * tex_y + tex_x];
+		color = env->tex.addr[env->vars.res_y * tex_y + tex_x];
 		my_mlx_pixel_put(env, x, y, color);
 		++y;
 	}

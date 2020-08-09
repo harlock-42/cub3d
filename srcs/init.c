@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:56:50 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/07 14:40:43 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/09 14:55:37 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ void		init_env(t_env *env)
 	init_env_tex(env);
 	init_env_other(env);
 	init_plane(env);
-	init_env_2(env);
+	init_check(env);
 }

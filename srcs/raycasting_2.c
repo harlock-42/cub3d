@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 17:11:42 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/08 15:05:09 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/09 15:59:08 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void		wall_x(t_env *env)
 {
 	if (env->ray.side == 0)
-		env->tex.wall_x = env->player.pos_y + env->ray.size *
+		env->tex.wall_x = env->player.pos_y + env->ray.perp_wall_dist *
 		env->ray.ray_dir_y;
 	else
-		env->tex.wall_x = env->player.pos_x + env->ray.size *
+		env->tex.wall_x = env->player.pos_x + env->ray.perp_wall_dist *
 		env->ray.ray_dir_x;
 	env->tex.wall_x -= floor(env->tex.wall_x);
 	env->tex.tex_x = (int)(env->tex.wall_x * env->tex.width);
