@@ -6,15 +6,15 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/09 15:59:24 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/10 21:32:09 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEF_CUB3D_H
 # define DEF_CUB3D_H
 
-# define RES_MAX_X 1920
-# define RES_MAX_Y 1080
+# define RES_MAX_X 2560
+# define RES_MAX_Y 1440
 # define FOV ((3 * M_PI) / 8)
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.05
@@ -61,7 +61,7 @@
 typedef	struct		s_tex
 {
 	void	*img;
-	int				**buffer;
+	unsigned	int			**buffer;
 	unsigned int	*addr;
 	int		bpp;
 	int		line_length;
@@ -214,7 +214,8 @@ int		check_res(char *str, t_env *env);
 /*
 ** color.c
 */
-int		pixel_color(t_env *env, int y, int x);
+void		pixel_color(t_env *env, int y, int x);
+void		texture_column(t_env *env, int x);
 /*
 ** display.c
 */
@@ -223,7 +224,7 @@ void		new_image(t_env *env);
 ** draw_column_px.c
 */
 void		draw_column_px(t_env *env, int x, int start, int end);
-void		my_mlx_pixel_put(t_env *env, int x, int y, int color);
+void		my_mlx_pixel_put(t_env *env, int x, int y, unsigned int color);
 /*
 ** exit_game.c
 */

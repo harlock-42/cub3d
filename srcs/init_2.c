@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 13:15:13 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/09 15:59:22 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/09 18:32:23 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ static	int		alloc_buffer_texture(t_env *env)
 	size_t	y;
 
 	y = 0;
-	if (!(env->tex.buffer = (int **)malloc(sizeof(int *) * env->vars.res_y)))
+	if (!(env->tex.buffer = (unsigned int **)malloc(sizeof(unsigned int *)
+	* env->vars.res_y)))
 		return (aie_error("alloc memory for buffer texture failed\n"));
 	while (y < (size_t)env->vars.res_y)
 	{
-		if (!(env->tex.buffer[y] = malloc(sizeof(int) * env->vars.res_x)))
+		if (!(env->tex.buffer[y] = malloc(sizeof(unsigned int)
+		* env->vars.res_x)))
 			return (aie_error("alloc memory for buffer texture failed\n"));
 		++y;
 	}
