@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/10 21:32:09 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/12 17:05:47 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,6 @@ int		check_res(char *str, t_env *env);
 ** color.c
 */
 void		pixel_color(t_env *env, int y, int x);
-void		texture_column(t_env *env, int x);
 /*
 ** display.c
 */
@@ -285,6 +284,10 @@ void		move_player(t_env *env);
 ** parsing_map.c
 */
 int			parsing_file(t_env *emv);
+/*
+** print_texture.c
+*/
+void			print_texture(t_env *env, int x, int start, int end);
 /*
 ** raycasting.c
 */

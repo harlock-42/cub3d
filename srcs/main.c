@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 16:35:24 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/10 21:31:27 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/11 18:06:44 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static	int	start_game(t_env *env)
 	env->vars.res_x, env->vars.res_y, "Cub3d");
 	if (get_texture_and_sprite(env) < 0)
 		return (0);
-	return (1);
 	mlx_hook(env->vars.win, 2, 1L << 0, key_pressed, env);
 	mlx_hook(env->vars.win, 3, 1L << 1, key_released, env);
 	mlx_loop_hook(env->vars.mlx, game, env);

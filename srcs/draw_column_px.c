@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 22:57:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/10 17:53:31 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/12 17:21:49 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void		draw_column_px(t_env *env, int x, int start, int end)
 
 	y = 0;
 	x = abs(x - env->vars.res_x + 1);
-	texture_column(env, x);
+	if (env->ray.side != 0 && env->ray.step_y <= 0)
+		return (print_texture(env, x, start, end));
 	while (y < env->vars.res_y)
 	{
 		if (y < start)

@@ -6,12 +6,12 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 18:16:00 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/10 21:33:30 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/11 18:15:28 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
+/*
 static	void	open_window(t_env *env)
 {
 	int		y;
@@ -56,10 +56,8 @@ static	void	open_window(t_env *env)
 //			if (y < env->tex.height && x < env->tex.width)
 //			{
 				color = env->tex.buffer[y][x];
-/*
 				color = env->tex.buffer[(int)floor((float)y * step_y)]
 				[(int)floor((float)x * step_x)];
-*/
 				dst = env->wall.addr + (y * env->vars.res_x + x);
 				*dst = color;
 //			}
@@ -67,11 +65,10 @@ static	void	open_window(t_env *env)
 		}
 		++x;
 	}
-
 	mlx_put_image_to_window(env->vars.mlx, env->vars.win, env->wall.img, 0, 0);
 	mlx_loop(env->vars.mlx);
 }
-
+*/
 int				get_texture_and_sprite(t_env *env)
 {
 	int		x;
@@ -87,8 +84,8 @@ int				get_texture_and_sprite(t_env *env)
 
 // recuperation des adresses et des donnees des images de la tex et de la fenetre.
 
-	env->tex.addr = (unsigned int *)mlx_get_data_addr(env->tex.img, &env->tex.bpp, &env->tex.line_length, &env->tex.endian);
+//	env->tex.addr = (unsigned int *)mlx_get_data_addr(env->tex.img, &env->tex.bpp, &env->tex.line_length, &env->tex.endian);
 
-	open_window(env);
+//	open_window(env);
 	return (1);
 }

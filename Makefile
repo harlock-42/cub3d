@@ -6,7 +6,7 @@
 #    By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/18 16:35:14 by tallaire          #+#    #+#              #
-#    Updated: 2020/08/04 18:58:52 by tallaire         ###   ########.fr        #
+#    Updated: 2020/08/12 19:48:34 by harlock          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRC_NAME		= aie_error.c\
 			main.c\
 			move_player.c\
 			parsing_map.c\
+			print_texture.c\
 			raycasting.c\
 			raycasting_2.c\
 			utils.c
