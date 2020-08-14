@@ -6,20 +6,52 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 16:36:49 by harlock           #+#    #+#             */
-/*   Updated: 2020/08/12 19:48:30 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/14 16:34:40 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	float			step_y_calcul(t_env *env)
+static	int			print_tex_wall(t_env *env, int side, int y, int x)
 {
-	float	step_y;
-	int		diviseur;
+	float			tex_y;
+	unsigned	int	color;
 
-	diviseur = env->vars.res_y - (env->wall.draw_start * 2);
-	step_y = env->tex.height / diviseur;
-	return (step_y);
+	tex_y = 0.0;
+	color = 0;
+	(void)side;
+	while (y >= env->wall.draw_start && y <= env->wall.draw_end)
+	{
+		tex_y = ((y - env->vars.res_y / 2 + env->wall.line_height / 2) *
+		env->tex.height) / env->wall.line_height;
+		color = env->tex.addr[2][env->tex.width * (int)floor(tex_y) +
+		env->tex.tex_x];
+		my_mlx_pixel_put(env, x, y, color);
+		++y;
+	}
+	return (y);
+}
+
+static	int			wich_plan(t_env *env)
+{
+	int		side;
+
+	side = 0;
+	if (env->ray.side == 1)
+	{
+		if (env->ray.step_y > 0)
+			side = 0;
+		else
+			side = 2;
+	}
+	else
+	{
+		if (env->ray.step_y > 0)
+			side = 3;
+		else
+			side = 2;
+	}
+	return (side);
 }
 
 static	int			tex_x_calcul(t_env *env)
@@ -34,7 +66,7 @@ static	int			tex_x_calcul(t_env *env)
 	else
 		wall_x = env->player.pos_x + env->ray.perp_wall_dist * env->ray.ray_dir_x;
 	wall_x = wall_x - floor(wall_x);
-	tex_x = (int)(wall_x * env->tex.width);
+	tex_x = (int)(wall_x * (float)env->tex.width);
 	if (env->ray.side == 0 && env->ray.dir_x > 0)
 		tex_x = env->tex.width - tex_x - 1;
 	if (env->ray.side == 1 && env->ray.dir_x < 0)
@@ -44,33 +76,25 @@ static	int			tex_x_calcul(t_env *env)
 
 void				print_texture(t_env *env, int x, int start, int end)
 {
-	int		y;
-	int			tex_x;
-	float			tex_y;
+	int				y;
+	int				tex_y;
+	int				side;
 	unsigned	int	color;
-	(void)x;
-	float	step_y;
 
 	y = 0;
-	tex_x = tex_x_calcul(env);
-	tex_y = 0.0;
-	step_y = step_y_calcul(env);
+	env->tex.tex_x = tex_x_calcul(env);
+	tex_y = 0;
 	color = 0;
-		while (y < start)
-		{
-			my_mlx_pixel_put(env, x, y, env->vars.ceil_color);
-			++y;
-		}
-		while (y >= start && y <= end)
-		{
-			tex_y += step_y;
-			color = env->tex.buffer[(int)floor(step_y)][tex_x];
-			my_mlx_pixel_put(env, x, y, color);
-			++y;
-		}
-		while (y > end && y < env->vars.res_y)
-		{
-			my_mlx_pixel_put(env, x, y, env->vars.floor_color);
-			++y;
-		}
+	side = wich_plan(env);
+	while (y < start)
+	{
+		my_mlx_pixel_put(env, x, y, env->vars.ceil_color);
+		++y;
+	}
+		y = print_tex_wall(env, side, y, x);
+	while (y > end && y < env->vars.res_y)
+	{
+		my_mlx_pixel_put(env, x, y, env->vars.floor_color);
+		++y;
+	}
 }

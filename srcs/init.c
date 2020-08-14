@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:56:50 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/09 14:55:37 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/14 16:32:50 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,15 @@ static	void	init_env_other(t_env *env)
 
 static	void	init_env_tex(t_env *env)
 {
+	int		i;
+
+	i = 0;
+	while (i < 4)
+	{
+		env->tex.addr[i] = 0;
+		++i;
+	}
 	env->tex.img = NULL;
-	env->tex.addr = NULL;
 	env->tex.bpp = 0;
 	env->tex.line_length = 0;
 	env->tex.endian = 0;

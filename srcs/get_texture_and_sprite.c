@@ -6,11 +6,12 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 18:16:00 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/11 18:15:28 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/14 16:35:33 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
 /*
 static	void	open_window(t_env *env)
 {
@@ -36,12 +37,13 @@ static	void	open_window(t_env *env)
 		y = 0;
 		while (y < env->tex.height)
 		{
-			if (y < env->tex.height && x < env->tex.width)
-			{
+//			if (y < env->tex.height && x < env->tex.width)
+//			{
 				color = env->tex.addr[y * env->tex.width + x];
-				env->tex.buffer[(int)floor((float)y * step_y)]
-				[(int)floor((float)x * step_x)] = color;
-			}
+				env->tex.buffer[y][x] = color;
+//				env->tex.buffer[(int)floor((float)y * step_y)]
+//				[(int)floor((float)x * step_x)] = color;
+//			}
 			++y;
 		}
 		++x;
@@ -53,9 +55,9 @@ static	void	open_window(t_env *env)
 		y = 0;
 		while (y < env->vars.res_y)
 		{
-//			if (y < env->tex.height && x < env->tex.width)
+//		if (y < env->tex.height && x < env->tex.width)
 //			{
-				color = env->tex.buffer[y][x];
+//				color = env->tex.buffer[y][x];
 				color = env->tex.buffer[(int)floor((float)y * step_y)]
 				[(int)floor((float)x * step_x)];
 				dst = env->wall.addr + (y * env->vars.res_x + x);
@@ -73,14 +75,20 @@ int				get_texture_and_sprite(t_env *env)
 {
 	int		x;
 	int		y;
+	unsigned	int	color;
 
 	x = 0;
 	y = 0;
+	color = 0;
 
 // creation image contenant la texture
 	if (!(env->tex.img = mlx_xpm_file_to_image(env->vars.mlx,
 	env->vars.path_north, &env->tex.width, &env->tex.height)))
 		return (aie_error("tex not download\n"));
+
+// recuperation des adresses et des donnees des images de la tex et de la fenetre
+
+	env->tex.addr[2] = (unsigned int *)mlx_get_data_addr(env->tex.img, &env->tex.bpp, &env->tex.line_length, &env->tex.endian);
 
 // recuperation des adresses et des donnees des images de la tex et de la fenetre.
 

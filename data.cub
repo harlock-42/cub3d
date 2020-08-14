@@ -1,5 +1,5 @@
 R      2560      1440
-NO ./texture/Rammstein_logo.xpm
+NO ./texture/harlock.xpm
 WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
 SO ./path_to_the_south_texture

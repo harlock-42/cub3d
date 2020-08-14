@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/12 17:05:47 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/14 16:35:46 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef	struct		s_tex
 {
 	void	*img;
 	unsigned	int			**buffer;
-	unsigned int	*addr;
+	unsigned int	*addr[4];
 	int		bpp;
 	int		line_length;
 	int		endian;
