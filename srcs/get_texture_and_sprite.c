@@ -6,94 +6,97 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 18:16:00 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/14 16:35:33 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/15 19:38:53 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-/*
-static	void	open_window(t_env *env)
+static	void	texture_copy(t_env *env)
 {
-	int		y;
-	int		x;
-	float	step_x;
-	float	step_y;
-	unsigned	int	color;
-	unsigned	int	*dst;
+	int		end;
+	int		i;
 
-	y = 0;
-	x = 0;
-	color = 0;
-	step_x = (float)env->tex.width / (float)env->vars.res_x;
-	step_y = (float)env->tex.height / (float)env->vars.res_y;
+	end = env->tex.width_north * env->tex.height_north;
+	i = 0;
+	while (i < end)
+	{
+		env->tex.tex_north[i] = env->tex.addr_north[i];
+		++i;
+	}
 
-	env->wall.img =
-	mlx_new_image(env->vars.mlx, env->vars.res_x, env->vars.res_y);
-	env->wall.addr = (unsigned int *)mlx_get_data_addr(env->wall.img,
-	&env->wall.bpp, &env->wall.line_length, &env->wall.endian);
-	while (x < env->tex.width)
+	end = env->tex.width_south * env->tex.height_south;
+	i = 0;
+	while (i < end)
 	{
-		y = 0;
-		while (y < env->tex.height)
-		{
-//			if (y < env->tex.height && x < env->tex.width)
-//			{
-				color = env->tex.addr[y * env->tex.width + x];
-				env->tex.buffer[y][x] = color;
-//				env->tex.buffer[(int)floor((float)y * step_y)]
-//				[(int)floor((float)x * step_x)] = color;
-//			}
-			++y;
-		}
-		++x;
+		env->tex.tex_south[i] = env->tex.addr_south[i];
+		++i;
 	}
-	y = 0;
-	x = 0;
-	while (x < env->vars.res_x)
+
+	end = env->tex.width_east * env->tex.height_east;
+	i = 0;
+	while (i < end)
 	{
-		y = 0;
-		while (y < env->vars.res_y)
-		{
-//		if (y < env->tex.height && x < env->tex.width)
-//			{
-//				color = env->tex.buffer[y][x];
-				color = env->tex.buffer[(int)floor((float)y * step_y)]
-				[(int)floor((float)x * step_x)];
-				dst = env->wall.addr + (y * env->vars.res_x + x);
-				*dst = color;
-//			}
-			++y;
-		}
-		++x;
+		env->tex.tex_east[i] = env->tex.addr_east[i];
+		++i;
 	}
-	mlx_put_image_to_window(env->vars.mlx, env->vars.win, env->wall.img, 0, 0);
-	mlx_loop(env->vars.mlx);
+
+	end = env->tex.width_west * env->tex.height_west;
+	i = 0;
+	while (i < end)
+	{
+		env->tex.tex_west[i] = env->tex.addr_west[i];
+		++i;
+	}
+
 }
-*/
+
 int				get_texture_and_sprite(t_env *env)
 {
-	int		x;
-	int		y;
-	unsigned	int	color;
-
-	x = 0;
-	y = 0;
-	color = 0;
 
 // creation image contenant la texture
-	if (!(env->tex.img = mlx_xpm_file_to_image(env->vars.mlx,
-	env->vars.path_north, &env->tex.width, &env->tex.height)))
+	if (!(env->tex.img_north = mlx_xpm_file_to_image(env->vars.mlx,
+	env->vars.path_north, &env->tex.width_north, &env->tex.height_north)))
+		return (aie_error("tex not download\n"));
+
+	if (!(env->tex.img_east = mlx_xpm_file_to_image(env->vars.mlx,
+	env->vars.path_east, &env->tex.width_east, &env->tex.height_east)))
+		return (aie_error("tex not download\n"));
+
+	if (!(env->tex.img_south = mlx_xpm_file_to_image(env->vars.mlx,
+	env->vars.path_south, &env->tex.width_south, &env->tex.height_south)))
+		return (aie_error("tex not download\n"));
+
+	if (!(env->tex.img_west = mlx_xpm_file_to_image(env->vars.mlx,
+	env->vars.path_west, &env->tex.width_west, &env->tex.height_west)))
 		return (aie_error("tex not download\n"));
 
 // recuperation des adresses et des donnees des images de la tex et de la fenetre
 
-	env->tex.addr[2] = (unsigned int *)mlx_get_data_addr(env->tex.img, &env->tex.bpp, &env->tex.line_length, &env->tex.endian);
+	env->tex.addr_north = (unsigned int *)mlx_get_data_addr(env->tex.img_north,
+	&env->tex.bpp, &env->tex.line_length, &env->tex.endian);
 
-// recuperation des adresses et des donnees des images de la tex et de la fenetre.
+	env->tex.addr_south = (unsigned int *)mlx_get_data_addr(env->tex.img_south,
+	&env->tex.bpp, &env->tex.line_length, &env->tex.endian);
 
-//	env->tex.addr = (unsigned int *)mlx_get_data_addr(env->tex.img, &env->tex.bpp, &env->tex.line_length, &env->tex.endian);
+	env->tex.addr_west = (unsigned int *)mlx_get_data_addr(env->tex.img_west,
+	&env->tex.bpp, &env->tex.line_length, &env->tex.endian);
 
-//	open_window(env);
+	env->tex.addr_east = (unsigned int *)mlx_get_data_addr(env->tex.img_east,
+	&env->tex.bpp, &env->tex.line_length, &env->tex.endian);
+
+
+
+	env->tex.width[0] = env->tex.width_south;
+	env->tex.width[1] = env->tex.width_east;
+	env->tex.width[2] = env->tex.width_north;
+	env->tex.width[3] = env->tex.width_west;
+
+	env->tex.tex_north = ft_calloc(env->tex.width[2] * env->tex.height_north, sizeof(unsigned int));
+	env->tex.tex_east = ft_calloc(env->tex.width[1] * env->tex.height_east, sizeof(unsigned int));
+	env->tex.tex_south = ft_calloc(env->tex.width[0] * env->tex.height_south, sizeof(unsigned int));
+	env->tex.tex_west = ft_calloc(env->tex.width[3] * env->tex.height_west, sizeof(unsigned int));
+
+	texture_copy(env);
 	return (1);
 }

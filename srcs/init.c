@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:56:50 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/14 16:32:50 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/15 19:57:10 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,26 @@ static	void	init_env_tex(t_env *env)
 	i = 0;
 	while (i < 4)
 	{
-		env->tex.addr[i] = 0;
+		env->tex.width[i] = 0;
+		env->tex.height[i] = 0;
 		++i;
 	}
-	env->tex.img = NULL;
+	env->tex.img_north = NULL;
+	env->tex.img_east = NULL;
+	env->tex.img_south = NULL;
+	env->tex.img_west = NULL;
 	env->tex.bpp = 0;
 	env->tex.line_length = 0;
 	env->tex.endian = 0;
 	env->tex.line_height = 0;
-	env->tex.width = 0;
-	env->tex.height = 0;
+	env->tex.width_north = 0;
+	env->tex.width_east = 0;
+	env->tex.width_south = 0;
+	env->tex.width_west = 0;
+	env->tex.height_north = 0;
+	env->tex.height_east = 0;
+	env->tex.height_south = 0;
+	env->tex.height_west = 0;
 	env->tex.tex_x = 0;
 	env->tex.tex_y = 0;
 	env->tex.wall_x = 0.0;

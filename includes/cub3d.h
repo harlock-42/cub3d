@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/14 16:35:46 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/15 19:57:19 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define RES_MAX_X 2560
 # define RES_MAX_Y 1440
 # define FOV ((3 * M_PI) / 8)
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.1
 # define ROT_SPEED 0.05
 # include <fcntl.h>
 # include <math.h>
@@ -60,15 +60,34 @@
 
 typedef	struct		s_tex
 {
-	void	*img;
+	void	*img_north;
+	void	*img_east;
+	void	*img_south;
+	void	*img_west;
 	unsigned	int			**buffer;
-	unsigned int	*addr[4];
+	unsigned int	*addr;
+	unsigned int	*addr_north;
+	unsigned int	*addr_east;
+	unsigned int	*addr_south;
+	unsigned int	*addr_west;
 	int		bpp;
 	int		line_length;
 	int		endian;
 	int		line_height;
-	int	width;
-	int	height;
+	int	width[4];
+	int	width_north;
+	int	width_east;
+	int	width_south;
+	int	width_west;
+	int	height[4];
+	int	height_north;
+	int	height_east;
+	int	height_south;
+	int	height_west;
+	unsigned int	*tex_north;
+	unsigned int	*tex_east;
+	unsigned int	*tex_south;
+	unsigned int	*tex_west;
 	int	tex_x;
 	int	tex_y;
 	int	texture[4][4096];
@@ -297,7 +316,7 @@ int		raycast(t_env *env);
 */
 void	init_dir_player(t_env *env);
 void	init_plane(t_env *env);
-void	wall_x(t_env *env);
+void	wall_x(t_env *env, int tex_width);
 /*
 ** utils.c
 */

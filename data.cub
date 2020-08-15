@@ -1,8 +1,8 @@
 R      2560      1440
 NO ./texture/harlock.xpm
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
-SO ./path_to_the_south_texture
+EA ./texture/Atlantis_harlock_dessus.xpm
+SO ./texture/nausica_harlock.xpm
+WE ./texture/sylvidra_buste_harlock.xpm
 
 S path_to_the_sprite_texture.bmp
 
