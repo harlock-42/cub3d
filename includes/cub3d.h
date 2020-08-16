@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/15 19:57:19 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/16 20:32:50 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,37 +60,18 @@
 
 typedef	struct		s_tex
 {
-	void	*img_north;
-	void	*img_east;
-	void	*img_south;
-	void	*img_west;
+	void	**img;
 	unsigned	int			**buffer;
-	unsigned int	*addr;
-	unsigned int	*addr_north;
-	unsigned int	*addr_east;
-	unsigned int	*addr_south;
-	unsigned int	*addr_west;
+	unsigned int	**addr;
 	int		bpp;
 	int		line_length;
 	int		endian;
 	int		line_height;
 	int	width[4];
-	int	width_north;
-	int	width_east;
-	int	width_south;
-	int	width_west;
 	int	height[4];
-	int	height_north;
-	int	height_east;
-	int	height_south;
-	int	height_west;
-	unsigned int	*tex_north;
-	unsigned int	*tex_east;
-	unsigned int	*tex_south;
-	unsigned int	*tex_west;
+	unsigned int	**tex;
 	int	tex_x;
 	int	tex_y;
-	int	texture[4][4096];
 	float	wall_x;
 	float	step;
 }					t_tex;
@@ -151,10 +132,7 @@ typedef	struct		s_vars
 	int res_y;
 	int floor_color;
 	int ceil_color;
-	char *path_north;
-	char *path_south;
-	char *path_west;
-	char *path_east;
+	char **path_tex;
 	char *path_sprite;
 }		t_vars;
 
@@ -284,7 +262,8 @@ int		get_texture_path(t_env *env, char *str);
 /*
 ** init.c
 */
-void		init_env(t_env *env);
+int			init_env(t_env *env);
+int			init_vars(t_env *env);
 /*
 ** init_2.c
 */

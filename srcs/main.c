@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 16:35:24 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/14 13:08:01 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/16 20:28:23 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,12 @@ int	main(int argc, char **argv)
 	init_env(&env);
 	if (get_file(&env, argv[1]) < 0)
 		return (0);
+	if (init_vars(&env) < 0)
+		return (0);
 	if (parsing_file(&env) < 0)
 		return (0);
-	init_raycaster(&env);
+	if (init_raycaster(&env) < 0)
+		return (0);
 	start_game(&env);
 	return (0);
 }

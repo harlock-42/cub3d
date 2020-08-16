@@ -6,85 +6,24 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 16:36:49 by harlock           #+#    #+#             */
-/*   Updated: 2020/08/16 15:49:44 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/16 20:32:37 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	int			print_tex_wall_west(t_env *env, int side, int y, int x)
+static	int			print_tex_wall(t_env *env, int side, int y, int x)
 {
 	float			tex_y;
 	unsigned	int	color;
 
 	tex_y = 0.0;
 	color = 0;
-	(void)side;
 	while (y >= env->wall.draw_start && y < env->wall.draw_end)
 	{
 		tex_y = ((y - env->vars.res_y / 2 + env->wall.line_height / 2) *
-		env->tex.height_west) / env->wall.line_height;
-		color = env->tex.tex_west[env->tex.width_west * (int)floor(tex_y) +
-		env->tex.tex_x];
-		my_mlx_pixel_put(env, x, y, color);
-		++y;
-	}
-	return (y);
-}
-
-static	int			print_tex_wall_south(t_env *env, int side, int y, int x)
-{
-	float			tex_y;
-	unsigned	int	color;
-
-	tex_y = 0.0;
-	color = 0;
-	(void)side;
-	while (y >= env->wall.draw_start && y < env->wall.draw_end)
-	{
-		tex_y = ((y - env->vars.res_y / 2 + env->wall.line_height / 2) *
-		env->tex.height_south) / env->wall.line_height;
-		color = env->tex.tex_south[env->tex.width_south * (int)floor(tex_y) +
-		env->tex.tex_x];
-		my_mlx_pixel_put(env, x, y, color);
-		++y;
-	}
-	return (y);
-}
-
-static	int			print_tex_wall_east(t_env *env, int side, int y, int x)
-{
-	float			tex_y;
-	unsigned	int	color;
-
-	tex_y = 0.0;
-	color = 0;
-	(void)side;
-	while (y >= env->wall.draw_start && y < env->wall.draw_end)
-	{
-		tex_y = ((y - env->vars.res_y / 2 + env->wall.line_height / 2) *
-		env->tex.height_east) / env->wall.line_height;
-		color = env->tex.tex_east[env->tex.width_east * (int)floor(tex_y) +
-		env->tex.tex_x];
-		my_mlx_pixel_put(env, x, y, color);
-		++y;
-	}
-	return (y);
-}
-
-static	int			print_tex_wall_north(t_env *env, int side, int y, int x)
-{
-	float			tex_y;
-	unsigned	int	color;
-
-	tex_y = 0.0;
-	color = 0;
-	(void)side;
-	while (y >= env->wall.draw_start && y < env->wall.draw_end)
-	{
-		tex_y = ((y - env->vars.res_y / 2 + env->wall.line_height / 2) *
-		env->tex.height_north) / env->wall.line_height;
-		color = env->tex.tex_north[env->tex.width_north * (int)floor(tex_y) +
+		env->tex.height[side]) / env->wall.line_height;
+		color = env->tex.tex[side][env->tex.width[side] * (int)floor(tex_y) +
 		env->tex.tex_x];
 		my_mlx_pixel_put(env, x, y, color);
 		++y;
@@ -114,15 +53,13 @@ static	int			wich_plan(t_env *env)
 	return (side);
 }
 
-static	int			tex_x_calcul(t_env *env)
+static	int			tex_x_calcul(t_env *env, int side)
 {
 	int		tex_x;
-	int		side;
 	float	wall_x;
 
 	tex_x = 0;
 	wall_x = 0;
-	side = wich_plan(env);
 	if (env->ray.side == 0)
 		wall_x = env->player.pos_y + env->ray.perp_wall_dist * env->ray.ray_dir_y;
 	else
@@ -141,26 +78,17 @@ void				print_texture(t_env *env, int x, int start, int end)
 	int				y;
 	int				tex_y;
 	int				side;
-	unsigned	int	color;
 
 	y = 0;
-	env->tex.tex_x = tex_x_calcul(env);
-	tex_y = 0;
-	color = 0;
 	side = wich_plan(env);
+	env->tex.tex_x = tex_x_calcul(env, side);
+	tex_y = 0;
 	while (y < start)
 	{
 		my_mlx_pixel_put(env, x, y, env->vars.ceil_color);
 		++y;
 	}
-	if (side == 0)
-		y = print_tex_wall_south(env, side, y, x);
-	else if (side == 1)
-		y = print_tex_wall_east(env, side, y, x);
-	else if (side == 2)
-		y = print_tex_wall_north(env, side, y, x);
-	else if (side == 3)
-		y = print_tex_wall_west(env, side, y, x);
+	y = print_tex_wall(env, side, y, x);
 	while (y >= end && y < env->vars.res_y)
 	{
 		my_mlx_pixel_put(env, x, y, env->vars.floor_color);
