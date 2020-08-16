@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 16:36:49 by harlock           #+#    #+#             */
-/*   Updated: 2020/08/15 19:57:14 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/16 15:49:44 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static	int			wich_plan(t_env *env)
 		if (env->ray.step_x < 0)
 			side = 0;
 		else
-			side = 2;
+			side = 1;
 	}
 	else
 	{
@@ -153,7 +153,6 @@ void				print_texture(t_env *env, int x, int start, int end)
 		my_mlx_pixel_put(env, x, y, env->vars.ceil_color);
 		++y;
 	}
-	ft_printf("side = %d\n", side);
 	if (side == 0)
 		y = print_tex_wall_south(env, side, y, x);
 	else if (side == 1)

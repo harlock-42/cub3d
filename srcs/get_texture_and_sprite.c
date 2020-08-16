@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 18:16:00 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/15 19:38:53 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/16 16:01:59 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static	void	texture_copy(t_env *env)
 		env->tex.tex_south[i] = env->tex.addr_south[i];
 		++i;
 	}
+
 
 	end = env->tex.width_east * env->tex.height_east;
 	i = 0;

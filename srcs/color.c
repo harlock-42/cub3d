@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 16:16:55 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/15 19:27:53 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/16 15:39:54 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void			pixel_color(t_env *env, int y, int x)
 	{
 		if (env->ray.step_y > 0)
 			env->wall.color = 0X000000FF;
-//		else
-//		{
-//			env->wall.color = 0X00000000;
-//		}
+		else
+		{
+			env->wall.color = 0X00000000;
+		}
 	}
 }
