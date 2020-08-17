@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 22:57:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/16 16:12:52 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/17 17:47:17 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		draw_column_px(t_env *env, int x, int start, int end)
 	int	y;
 
 	y = 0;
-	x = abs(x - env->vars.res_x + 1);
+	//x = abs(x - env->vars.res_x + 1);
 	return (print_texture(env, x, start, end));
 
 

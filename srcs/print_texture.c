@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 16:36:49 by harlock           #+#    #+#             */
-/*   Updated: 2020/08/16 20:32:37 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/17 17:47:24 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ static	int			wich_plan(t_env *env)
 	if (env->ray.side == 0)
 	{
 		if (env->ray.step_x < 0)
-			side = 0;
+			side = 3;
 		else
 			side = 1;
 	}
 	else
 	{
 		if (env->ray.step_y > 0)
-			side = 3;
+			side = 0;
 		else
 			side = 2;
 	}

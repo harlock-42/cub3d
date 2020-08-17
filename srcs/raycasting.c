@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 16:39:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/16 19:10:37 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/17 18:11:16 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ static	void	init_side_dist_and_step(t_env *env, float pos_x, float pos_y)
 ** delta_dist_x = Si j avance de 1 en y, de combien j avance en x ?
 ** delta_dist_x = Si j avance de 1 en x, de combien j avance en y ?
 */
+
 static	void	init_env_ray(t_env *env, float x, float w)
 {
 	env->ray.camera_x = (2 * x) / (float)w - 1;
@@ -136,6 +137,7 @@ int				raycast(t_env *env)
 
 	x = 0;
 	w = env->vars.res_x;
+	printf("plane_x = %f\nplane_y = %f\n", env->ray.plane_x, env->ray.plane_y);
 	while (x < w)
 	{
 		init_env_ray(env, x, w);
