@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 16:39:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/17 18:11:16 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/18 15:36:07 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static	void	wall_size(t_env *env)
 		env->ray.perp_wall_dist = (env->ray.map_y - env->player.pos_y +
 		(1 - env->ray.step_y) / 2) / env->ray.ray_dir_y;
 	}
-	env->wall.line_height = floor(env->vars.res_y / env->ray.perp_wall_dist);
+	env->wall.line_height =
+	(int)floor(env->vars.res_y / env->ray.perp_wall_dist);
 	env->wall.draw_start = (env->wall.line_height * (-1)) / 2 +
 	env->vars.res_y / 2;
 	if (env->wall.draw_start < 0)
@@ -137,7 +138,6 @@ int				raycast(t_env *env)
 
 	x = 0;
 	w = env->vars.res_x;
-	printf("plane_x = %f\nplane_y = %f\n", env->ray.plane_x, env->ray.plane_y);
 	while (x < w)
 	{
 		init_env_ray(env, x, w);

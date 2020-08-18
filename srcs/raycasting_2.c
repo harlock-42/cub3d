@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 17:11:42 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/17 18:22:04 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/18 16:03:11 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		init_plane(t_env *env)
 	a = env->player.dir;
 	if (a < M_PI / 4 || a >= (7 * M_PI) / 4)
 	{
-		env->ray.plane_x = 0.66;
+		env->ray.plane_x = -0.66;
 		env->ray.plane_y = 0.0;
 	}
 	else if (a > M_PI / 4 && a <= (3 * M_PI) / 4)
