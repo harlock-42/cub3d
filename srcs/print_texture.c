@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 16:36:49 by harlock           #+#    #+#             */
-/*   Updated: 2020/08/18 16:06:58 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/19 11:33:34 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ static	int			tex_x_calcul(t_env *env, int side)
 	wall_x = wall_x - floor(wall_x);
 	tex_x = (int)(wall_x * (float)env->tex.width[side]);
 
-	if (env->ray.side == 0 && env->ray.dir_x > 0)
+	if (side == 3)
 		tex_x = env->tex.width[side] - tex_x - 1;
-//	if (env->ray.side == 1 && env->ray.dir_x < 0)
-//		tex_x = env->tex.width[side] - tex_x - 1;
+	if (side == 0)
+		tex_x = env->tex.width[side] - tex_x - 1;
 
 	return (tex_x);
 }

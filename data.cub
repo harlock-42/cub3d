@@ -1,8 +1,8 @@
 R      2560      1440
-SO ./texture/harlock.xpm
+SO ./texture/harlock_drinking.xpm
 NO ./texture/nausica_harlock.xpm
-EA ./texture/Atlantis_harlock_dessus.xpm
-WE ./texture/sylvidra_buste_harlock.xpm
+EA ./texture/harlock_personnage.xpm
+WE ./texture/harlock_atlantis.xpm
 
 S path_to_the_sprite_texture.bmp
 
