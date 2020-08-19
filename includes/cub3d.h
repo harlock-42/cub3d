@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/18 16:07:08 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/19 16:51:37 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,19 @@
 #define KEY_RIGHT 65363
 #define KEY_EXIT_HOOK 65307
 */
+
+typedef	struct		s_sprite
+{
+	int			num_sprite;
+	void			*img;
+	int			width;
+	int			height;
+	unsigned	int	*addr;
+	int			bpp;
+	int			line_length;
+	int			endian;
+	unsigned	int	*sprite;
+}			t_sprite;
 
 typedef	struct		s_tex
 {
@@ -125,15 +138,15 @@ typedef	struct		s_ray
 
 typedef	struct		s_vars
 {
-	void *mlx;
-	void *win;
-	char **map;
-	int res_x;
-	int res_y;
-	int floor_color;
-	int ceil_color;
-	char **path_tex;
-	char *path_sprite;
+	void 	*mlx;
+	void 	*win;
+	char 	**map;
+	int 	res_x;
+	int 	res_y;
+	int 	floor_color;
+	int 	ceil_color;
+	char 	**path_tex;
+	char 	*path_sprite;
 }		t_vars;
 
 typedef	struct		s_map
@@ -144,9 +157,9 @@ typedef	struct		s_map
 
 typedef	struct		s_player
 {
-	float pos_x;
-	float pos_y;
-	float dir;
+	float 		pos_x;
+	float 		pos_y;
+	float 		dir;
 }			t_player;
 
 typedef	struct		s_check
@@ -163,6 +176,7 @@ typedef	struct		s_check
 
 typedef	struct		s_env
 {
+	t_sprite	sprite;
 	t_check		check;
 	t_vars		vars;
 	t_player	player;
@@ -172,6 +186,14 @@ typedef	struct		s_env
 	t_key		key;
 	t_tex		tex;
 }			t_env;
+
+typedef	enum		e_point
+{
+			SOUTH,
+			EAST,
+			NORTH,
+			WEST
+}			t_point;
 
 /*
 ** aie_error.c

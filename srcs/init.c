@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:56:50 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/19 11:26:12 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/19 13:56:01 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int			init_vars(t_env *env)
 	i = 0;
 	env->vars.res_x = 0;
 	env->vars.res_y = 0;
+	env->sprite.num_sprite = 0;
 	if (!(env->vars.path_tex = (char **)malloc(sizeof(char *) * 4)))
 		return (-1);
 	while (i < 4)

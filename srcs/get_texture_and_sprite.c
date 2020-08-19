@@ -6,11 +6,35 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 18:16:00 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/17 17:41:38 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:51:33 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static	int		sprite_copy(t_env * env)
+{
+	int		end;
+	int		i;
+	
+	end = 0;
+	i = 0;
+	if (!(env->sprite.img = mlx_xpm_file_to_image(env->vars.mlx,
+	env->vars.path_sprite, &env->sprite.width, &env->sprite.height)))
+		return (-1);
+	env->sprite.addr = (unsigned int *)mlx_get_data_addr(env->sprite.img,
+	&env->sprite.bpp, &env->sprite.line_length, &env->sprite.endian);
+	if (!(env->sprite.sprite = ft_calloc(env->sprite.width *
+	env->sprite.width, sizeof(unsigned int))))
+		return (-1);
+	end = env->sprite.width * env->sprite.height;
+	while (i < end)
+	{
+		env->sprite.sprite[i] = env->sprite.addr[i];
+		++i;
+	}
+	return (1);
+}
 
 static	int		texture_copy(t_env *env)
 {
@@ -44,6 +68,8 @@ static	int		texture_copy(t_env *env)
 int				get_texture_and_sprite(t_env *env)
 {
 	if (texture_copy(env) < 0)
+		return (-1);
+	if (sprite_copy(env) < 0)
 		return (-1);
 	return (1);
 }

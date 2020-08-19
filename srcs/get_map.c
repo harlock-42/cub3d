@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 20:11:26 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/17 18:13:04 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:51:30 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	static	get_map(char **file, t_env *env)
 		x = 0;
 		while (file[y][x])
 		{
+			if (file[y][x] == '2')
+				++env->sprite.num_sprite;
 			if (file[y][x] == ' ' || file[y][x] == '1')
 				env->map.map[y][x] = 1;
 			else
@@ -91,8 +93,8 @@ int		get_pos_player(char **map, t_env *env)
 			if (map[y][x] == 'N' || map[y][x] == 'S'
 			|| map[y][x] == 'W' || map[y][x] == 'E')
 			{
-				env->player.pos_y = (float)y;
-				env->player.pos_x = (float)x;
+				env->player.pos_y = (float)y + 0.5;
+				env->player.pos_x = (float)x + 0.5;
 				get_dir_player(env, map[y][x]);
 			}
 			++x;
