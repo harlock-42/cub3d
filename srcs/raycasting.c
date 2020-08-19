@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 16:39:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/19 09:54:21 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/19 20:27:12 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ int				raycast(t_env *env)
 		wall_size(env);
 		draw_column_px(env, x, env->wall.draw_start,
 		env->wall.draw_end);
+		sprite(env, x);
 		++x;
 	}
 	return (1);

@@ -6,23 +6,43 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 13:15:13 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/19 13:49:06 by harlock          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init_2.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 19:53:53 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/09 13:04:46 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/19 19:51:40 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static	int		init_env_sprite(t_env *env)
+{
+	if (!(env->sprite.z_buffer = (int *)ft_calloc(env->vars.res_x,
+	sizeof(int))))
+		return (-1);
+	env->sprite.img = NULL;
+	env->sprite.width = 0;
+	env->sprite.height = 0;
+	env->sprite.addr = NULL;
+	env->sprite.bpp = 0;
+	env->sprite.line_length = 0;
+	env->sprite.endian = 0;
+	return (1);
+}
+
+void			init_env_ray(t_env *env)
+{
+	env->ray.camera_x = 0.0;
+	env->ray.ray_dir_x = 0.0;
+	env->ray.ray_dir_y = 0.0;
+	env->ray.delta_dist_x = 0.0;
+	env->ray.delta_dist_y = 0.0;
+	env->ray.step_x = 0.0;
+	env->ray.step_y = 0.0;
+	env->ray.side_dist_x = 0.0;
+	env->ray.side_dist_y = 0.0;
+	env->ray.perp_wall_dist = 0.0;
+	env->ray.map_x = 0;
+	env->ray.map_y = 0;
+	env->ray.side = 0;
+}
 
 void			init_check(t_env *env)
 {
@@ -61,18 +81,8 @@ int				init_raycaster(t_env *env)
 		return (-1);
 	init_plane(env);
 	init_dir_player(env);
-	env->ray.camera_x = 0.0;
-	env->ray.ray_dir_x = 0.0;
-	env->ray.ray_dir_y = 0.0;
-	env->ray.delta_dist_x = 0.0;
-	env->ray.delta_dist_y = 0.0;
-	env->ray.step_x = 0.0;
-	env->ray.step_y = 0.0;
-	env->ray.side_dist_x = 0.0;
-	env->ray.side_dist_y = 0.0;
-	env->ray.perp_wall_dist = 0.0;
-	env->ray.map_x = 0;
-	env->ray.map_y = 0;
-	env->ray.side = 0;
+	init_env_ray(env);
+	if (init_env_sprite(env) < 0)
+		return (-1);
 	return (1);
 }
