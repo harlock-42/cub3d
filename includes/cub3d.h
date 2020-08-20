@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/19 20:27:02 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/20 22:25:06 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@
 
 typedef	struct		s_sprite
 {
-	int				num_sprite;
+	int				num;
 	void			*img;
+	float			*x;
+	float			*y;
 	int				width;
 	int				height;
 	unsigned	int	*addr;
@@ -70,8 +72,8 @@ typedef	struct		s_sprite
 	int				endian;
 	unsigned	int	*sprite;
 	int				*z_buffer;
-	int				*sprite_distance;
-	int				*sprite_order;
+	float			*distance;
+	int				*order;
 }			t_sprite;
 
 typedef	struct		s_tex
@@ -322,6 +324,11 @@ void	init_dir_player(t_env *env);
 void	init_plane(t_env *env);
 void	sprite(t_env *env, int x);
 void	wall_x(t_env *env, int tex_width);
+/*
+** sprite.c
+*/
+int		sprite_pos(t_env *env, int x, int y);
+void	sprite_distance(t_env *env);
 /*
 ** utils.c
 */

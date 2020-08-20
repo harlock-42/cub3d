@@ -6,13 +6,13 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 20:11:26 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/19 16:51:30 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/20 18:52:18 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	static	**alloc_map(char **map)
+static	int		**alloc_map(char **map)
 {
 	int	**new_map;
 	size_t	y;
@@ -36,7 +36,7 @@ int	static	**alloc_map(char **map)
 	return (new_map);
 }
 
-int	static	get_map(char **file, t_env *env)
+static	int	get_map(char **file, t_env *env)
 {
 	size_t	x;
 	size_t	y;
@@ -50,7 +50,7 @@ int	static	get_map(char **file, t_env *env)
 		while (file[y][x])
 		{
 			if (file[y][x] == '2')
-				++env->sprite.num_sprite;
+				sprite_pos(env, y, x);
 			if (file[y][x] == ' ' || file[y][x] == '1')
 				env->map.map[y][x] = 1;
 			else
@@ -65,7 +65,7 @@ int	static	get_map(char **file, t_env *env)
 	return (1);
 }
 
-void	static	get_dir_player(t_env *env, char pos)
+static	void	get_dir_player(t_env *env, char pos)
 {
 	if (pos == 'S')
 		env->player.dir = 0;

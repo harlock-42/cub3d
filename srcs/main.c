@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 16:35:24 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/19 20:27:06 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/20 22:24:58 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static	int	game(t_env *env)
 {
-	env->wall.color = 0X00FF0000;
 	free_img(env);
 	new_image(env);
 	move_player(env);
+	sprite_distance(env);
 	raycast(env);
 	mlx_put_image_to_window(env->vars.mlx, env->vars.win, env->wall.img, 0,
 	0);
