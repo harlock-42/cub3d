@@ -6,16 +6,11 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 17:11:42 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/20 18:51:22 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/21 14:27:04 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void		sprite(t_env *env, int x)
-{
-	env->sprite.z_buffer[x] = env->ray.perp_wall_dist;
-}
 
 void		wall_x(t_env *env, int tex_width)
 {

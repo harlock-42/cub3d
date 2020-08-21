@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:35:15 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/20 22:25:11 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/21 16:53:37 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,29 @@
 
 static	void		sort_sprite(t_env *env)
 {
-	int			tmp;
 	int			i;
 	int			j;
+	int			tmp;
 
 	i = 0;
 	tmp = 0;
-	j = 0;
 	while (i < env->sprite.num)
 	{
 		j = 0;
-		++i;
-		while (j < env->sprite.num)
+		while (j < env->sprite.num - 1)
 		{
-			if (env->sprite.distance[i] < env->sprite.distance[j])
+			if (env->sprite.distance[j] > env->sprite.distance[j + 1])
 			{
-				tmp = env->sprite.order[j];
-				env->sprite.order[j] = env->sprite.order[i];
-				env->sprite.order[i] = tmp;
+				tmp = env->sprite.distance[j];
+				env->sprite.distance[j] = env->sprite.distance[j + 1];
+				env->sprite.distance[j + 1] = tmp;
+				tmp = env->sprite.order[j];;
+				env->sprite.order[j] = env->sprite.order[j + 1];
+				env->sprite.order[j + 1] = tmp;
 			}
 			++j;
 		}
+		++i;
 	}
 }
 
@@ -84,34 +86,20 @@ int				sprite_pos(t_env *env, int x, int y)
 void			sprite_distance(t_env *env)
 {
 	int		i;
+	int		j;
 
 	i = 0;
-	(void)env;
+	j = 0;
 	while (i < env->sprite.num)
 	{
-//		printf("x = %f | y = %f\n", env->sprite.x[i], env->sprite.y[i]);
-//		printf("pos_x = %f | pos_y = %f\n", env->player.pos_x, env->player.pos_y);
 		env->sprite.order[i] = i;
-		env->sprite.distance[i] = ((env->player.pos_x - env->sprite.x[i]) *
+		env->sprite.distance[i] = (int)((env->player.pos_x - env->sprite.x[i]) *
 		(env->player.pos_x - env->sprite.x[i])) +
 		((env->player.pos_y - env->sprite.y[i]) *
 		(env->player.pos_y - env->sprite.y[i]));
-//		printf("%d = %f\n", i, env->sprite.distance[i]);
 		++i;
 	}
 	sort_sprite(env);
-	i = 0;
-	while (i < env->sprite.num)
-	{
-		printf("%d = %f\n", i, env->sprite.distance[i]);
-		++i;
-	}
-	i = 0;
-	while (i < env->sprite.num)
-	{
-		printf("%d = %d\n", i, env->sprite.order[i]);
-		++i;
-	}
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 13:15:13 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/20 22:25:02 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/21 16:53:51 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,24 @@ static	int		init_env_sprite(t_env *env)
 		return (-1);
 	if (!(env->sprite.order = (int *)ft_calloc(env->sprite.num, sizeof(int))))
 		return (-1);
-	if (!(env->sprite.distance = (float *)ft_calloc(env->sprite.num,
-	sizeof(float))))
+	if (!(env->sprite.distance = (int *)ft_calloc(env->sprite.num, sizeof(int))))
+		return (-1);
+	if (!(env->sprite.first = (int *)ft_calloc(env->sprite.num, sizeof(int))))
+		return (-1);
+	if (!(env->sprite.second = (int *)ft_calloc(env->sprite.num, sizeof(int))))
 		return (-1);
 	env->sprite.img = NULL;
+	env->sprite.X = 0;
+	env->sprite.Y = 0;
+	env->sprite.inv_det = 0;
+	env->sprite.transform_x = 0;
+	env->sprite.transform_y = 0;
+	env->sprite.screen_x = 0;
+	env->sprite.height_sprite = 0;
+	env->sprite.draw_start_x = 0;
+	env->sprite.draw_start_y = 0;
+	env->sprite.draw_end_x = 0;
+	env->sprite.draw_end_y = 0;
 	env->sprite.width = 0;
 	env->sprite.height = 0;
 	env->sprite.addr = NULL;
