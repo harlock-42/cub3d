@@ -6,7 +6,7 @@
 #    By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/18 16:35:14 by tallaire          #+#    #+#              #
-#    Updated: 2020/08/20 18:53:13 by tallaire         ###   ########.fr        #
+#    Updated: 2020/08/22 20:12:50 by tallaire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ SRC_NAME		= aie_error.c\
 			raycasting.c\
 			raycasting_2.c\
 			sprite.c\
+			sprite_2.c\
 			utils.c
 
 OBJ_NAME		= $(SRC_NAME:.c=.o)

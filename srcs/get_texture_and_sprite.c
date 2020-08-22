@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 18:16:00 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/21 16:30:38 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/22 21:08:35 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static	int		sprite_copy(t_env * env)
 {
 	int		end;
 	int		i;
-	
+
 	end = 0;
 	i = 0;
 	if (!(env->sprite.img = mlx_xpm_file_to_image(env->vars.mlx,

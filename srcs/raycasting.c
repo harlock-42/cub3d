@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 16:39:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/21 15:06:50 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/22 20:25:17 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static	void	wall_size(t_env *env)
 		env->wall.draw_end = env->vars.res_y - 1;
 }
 
-static	void	dda(t_env *env)
+static	int		dda(t_env *env)
 {
 	int		hit;
 
@@ -61,9 +61,13 @@ static	void	dda(t_env *env)
 			env->ray.map_y += env->ray.step_y;
 			env->ray.side = 1;
 		}
-		if (env->map.map[(int)env->ray.map_y][(int)env->ray.map_x] > 0)
+//		if (env->map.map[(int)env->ray.map_y][(int)env->ray.map_x] == 2)
+//			if (get_sprite_data(env, (int)env->ray.map_y, (int)env->ray.map_x) < 0)
+//				return (-1);
+		if (env->map.map[(int)env->ray.map_y][(int)env->ray.map_x] == 1)
 			hit = 1;
 	}
+	return (1);
 }
 
 static	void	init_side_dist_and_step(t_env *env, float pos_x, float pos_y)
@@ -143,7 +147,8 @@ int				raycast(t_env *env)
 		init_env_ray(env, x, w);
 		init_side_dist_and_step(env, env->player.pos_x,
 		env->player.pos_y);
-		dda(env);
+		if (dda(env) < 0)
+			return (-1);
 		wall_size(env);
 		draw_column_px(env, x, env->wall.draw_start,
 		env->wall.draw_end);

@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/20 22:25:06 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/22 21:11:42 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,31 @@
 #define KEY_EXIT_HOOK 65307
 */
 
+typedef	struct		s_lsprite
+{
+	int			x;
+	int			y;
+	t_lsprite	*next;
+}				:w	t_lsprite;
+
 typedef	struct		s_sprite
 {
 	int				num;
 	void			*img;
 	float			*x;
 	float			*y;
+	float			X;
+	float			Y;
+	float			inv_det;
+	float			transform_x;
+	float			transform_y;
+	int				screen_x;
+	int				height_sprite;
+	int				width_sprite;
+	int				draw_start_x;
+	int				draw_start_y;
+	int				draw_end_x;
+	int				draw_end_y;
 	int				width;
 	int				height;
 	unsigned	int	*addr;
@@ -71,8 +90,10 @@ typedef	struct		s_sprite
 	int				line_length;
 	int				endian;
 	unsigned	int	*sprite;
+	int				*first;
+	int				*second;
 	int				*z_buffer;
-	float			*distance;
+	int				*distance;
 	int				*order;
 }			t_sprite;
 
@@ -322,13 +343,16 @@ int		raycast(t_env *env);
 */
 void	init_dir_player(t_env *env);
 void	init_plane(t_env *env);
-void	sprite(t_env *env, int x);
 void	wall_x(t_env *env, int tex_width);
 /*
 ** sprite.c
 */
 int		sprite_pos(t_env *env, int x, int y);
 void	sprite_distance(t_env *env);
+/*
+** sprite_2.c
+*/
+void	sprite(t_env *env);
 /*
 ** utils.c
 */

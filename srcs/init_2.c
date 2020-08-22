@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 13:15:13 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/21 16:53:51 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/22 21:11:44 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static	int		init_env_sprite(t_env *env)
 	env->sprite.transform_y = 0;
 	env->sprite.screen_x = 0;
 	env->sprite.height_sprite = 0;
+	env->sprite.width_sprite = 0;
 	env->sprite.draw_start_x = 0;
 	env->sprite.draw_start_y = 0;
 	env->sprite.draw_end_x = 0;
