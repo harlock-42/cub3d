@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/22 21:11:42 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/23 18:49:45 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,6 @@
 #define KEY_RIGHT 65363
 #define KEY_EXIT_HOOK 65307
 */
-
-typedef	struct		s_lsprite
-{
-	int			x;
-	int			y;
-	t_lsprite	*next;
-}				:w	t_lsprite;
 
 typedef	struct		s_sprite
 {
