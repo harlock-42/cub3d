@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 22:11:07 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/19 11:28:05 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/25 18:28:06 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static	void	move_rot(t_env *env)
 	int	rot;
 
 	if (env->key.rot_left == 1)
-		rot = (-1);
-	else
 		rot = 1;
+	else
+		rot = (-1);
 	old_dir_x = env->ray.dir_x;
 	old_plane_x = env->ray.plane_x;
 	env->ray.dir_x = env->ray.dir_x * cos(ROT_SPEED * rot) -

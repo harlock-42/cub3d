@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 13:15:13 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/22 21:11:44 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:41:28 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 static	int		init_env_sprite(t_env *env)
 {
-	if (!(env->sprite.z_buffer = (int *)ft_calloc(env->vars.res_x,
-	sizeof(int))))
+	if (!(env->sprite.z_buffer = (float *)ft_calloc(env->vars.res_x,
+	sizeof(float))))
 		return (-1);
-	if (!(env->sprite.order = (int *)ft_calloc(env->sprite.num, sizeof(int))))
-		return (-1);
-	if (!(env->sprite.distance = (int *)ft_calloc(env->sprite.num, sizeof(int))))
-		return (-1);
-	if (!(env->sprite.first = (int *)ft_calloc(env->sprite.num, sizeof(int))))
-		return (-1);
-	if (!(env->sprite.second = (int *)ft_calloc(env->sprite.num, sizeof(int))))
-		return (-1);
+	if (env->sprite.num > 0)
+	{
+		if (!(env->sprite.order = (int *)ft_calloc(env->sprite.num, sizeof(int))))
+			return (-1);
+		if (!(env->sprite.distance = (float *)ft_calloc(env->sprite.num, sizeof(float))))
+			return (-1);
+		if (!(env->sprite.first = (int *)ft_calloc(env->sprite.num, sizeof(int))))
+			return (-1);
+		if (!(env->sprite.second = (int *)ft_calloc(env->sprite.num, sizeof(int))))
+			return (-1);
+	}
 	env->sprite.img = NULL;
 	env->sprite.X = 0;
 	env->sprite.Y = 0;
