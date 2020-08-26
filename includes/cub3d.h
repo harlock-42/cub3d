@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/24 18:08:26 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/26 16:54:51 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ typedef	struct		s_sprite
 {
 	int				num;
 	void			*img;
-	float			*x;
-	float			*y;
+	float				*x;
+	float				*y;
 	float			X;
 	float			Y;
 	float			inv_det;
@@ -85,8 +85,8 @@ typedef	struct		s_sprite
 	unsigned	int	*sprite;
 	int				*first;
 	int				*second;
-	int				*z_buffer;
-	int				*distance;
+	float			*z_buffer;
+	float			*distance;
 	int				*order;
 }			t_sprite;
 

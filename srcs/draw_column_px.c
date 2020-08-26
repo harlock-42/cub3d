@@ -22,5 +22,6 @@ void	my_mlx_pixel_put(t_env *env, int x, int y, unsigned int color)
 
 void		draw_column_px(t_env *env, int x, int start, int end)
 {
+//	x = env->vars.res_x - x - 1;
 	return (print_texture(env, x, start, end));
 }

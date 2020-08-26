@@ -12,6 +12,20 @@
 
 #include "../includes/cub3d.h"
 
+static	void		print_map(t_env *env)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (env->vars.map[x] != NULL)
+	{
+		ft_printf("%s\n", env->vars.map[x]);
+		++x;
+	}
+}
+
 static	int		**alloc_map(char **map)
 {
 	int	**new_map;
@@ -103,5 +117,6 @@ int		get_pos_player(char **map, t_env *env)
 	}
 	if (get_map(map, env) < 0)
 		return (-1);
+	print_map(env);
 	return (1);
 }

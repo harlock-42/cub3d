@@ -24,12 +24,12 @@ static	void	wall_size(t_env *env)
 	if (env->ray.side == 0)
 	{
 		env->ray.perp_wall_dist = (env->ray.map_x - env->player.pos_x +
-		(1 - env->ray.step_x) / 2) / env->ray.ray_dir_x;
+		(1 - (int)env->ray.step_x) / 2) / env->ray.ray_dir_x;
 	}
 	else
 	{
 		env->ray.perp_wall_dist = (env->ray.map_y - env->player.pos_y +
-		(1 - env->ray.step_y) / 2) / env->ray.ray_dir_y;
+		(1 - (int)env->ray.step_y) / 2) / env->ray.ray_dir_y;
 	}
 	env->wall.line_height =
 	(int)floor(env->vars.res_y / env->ray.perp_wall_dist);
@@ -70,25 +70,25 @@ static	void	init_side_dist_and_step(t_env *env, float pos_x, float pos_y)
 {
 	if (env->ray.ray_dir_x < 0)
 	{
-		env->ray.step_x = (-1);
+		env->ray.step_x = (-1.0);
 		env->ray.side_dist_x = (pos_x - env->ray.map_x) *
 		env->ray.delta_dist_x;
 	}
 	else
 	{
-		env->ray.step_x = 1;
+		env->ray.step_x = 1.0;
 		env->ray.side_dist_x = (env->ray.map_x + 1 - pos_x) *
 		env->ray.delta_dist_x;
 	}
 	if (env->ray.ray_dir_y < 0)
 	{
-		env->ray.step_y = (-1);
+		env->ray.step_y = (-1.0);
 		env->ray.side_dist_y = (pos_y - env->ray.map_y) *
 		env->ray.delta_dist_y;
 	}
 	else
 	{
-		env->ray.step_y = 1;
+		env->ray.step_y = 1.0;
 		env->ray.side_dist_y = (env->ray.map_y + 1 - pos_y) *
 		env->ray.delta_dist_y;
 	}
@@ -138,7 +138,8 @@ int				raycast(t_env *env)
 
 	x = 0;
 	w = env->vars.res_x;
-	while (x < w)
+	x = w - 1;
+	while (x >= 0)
 	{
 		init_env_ray(env, x, w);
 		init_side_dist_and_step(env, env->player.pos_x,
@@ -148,7 +149,7 @@ int				raycast(t_env *env)
 		draw_column_px(env, x, env->wall.draw_start,
 		env->wall.draw_end);
 		env->sprite.z_buffer[x] = env->ray.perp_wall_dist;
-		++x;
+		--x;
 	}
 	if (env->sprite.num > 0)
 	{

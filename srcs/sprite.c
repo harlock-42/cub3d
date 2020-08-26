@@ -40,13 +40,13 @@ static	void		sort_sprite(t_env *env)
 	}
 }
 
-static	int		*realloc_sprite_pos(t_env *env, int *tab)
+static	float		*realloc_sprite_pos(t_env *env, float *tab)
 {
-	int		*new;
+	float		*new;
 	int		i;
 
 	i = 0;
-	if (!(new = (int *)malloc(sizeof(int) * env->sprite.num)))
+	if (!(new = (float *)malloc(sizeof(float) * env->sprite.num)))
 		return (NULL);
 	while (i < env->sprite.num - 1)
 	{
@@ -66,7 +66,7 @@ int				sprite_pos(t_env *env, int x, int y)
 			return (-1);
 	}
 	else
-		if (!(env->sprite.x = (int *)malloc(sizeof(int) *
+		if (!(env->sprite.x = (float *)malloc(sizeof(float) *
 		env->sprite.num)))
 			return (-1);
 	if (env->sprite.x != NULL)
@@ -75,11 +75,11 @@ int				sprite_pos(t_env *env, int x, int y)
 			return (-1);
 	}
 	else
-		if (!(env->sprite.y = (int *)malloc(sizeof(int) *
+		if (!(env->sprite.y = (float *)malloc(sizeof(float) *
 		env->sprite.num)))
 			return (-1);
-	env->sprite.x[env->sprite.num - 1] = x;
-	env->sprite.y[env->sprite.num - 1] = y;
+	env->sprite.x[env->sprite.num - 1] = x + 0.5;
+	env->sprite.y[env->sprite.num - 1] = y + 0.5;
 	return (1);
 }
 

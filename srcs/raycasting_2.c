@@ -33,15 +33,18 @@ void		init_plane(t_env *env)
 	float	a;
 
 	a = env->player.dir;
+	env->ray.plane_x = 0;
+	env->ray.plane_y = 0.66;
+/*
 	if (a < M_PI / 4 || a >= (7 * M_PI) / 4)
 	{
-		env->ray.plane_x = -0.66;
+		env->ray.plane_x = 0.66;
 		env->ray.plane_y = 0.0;
 	}
 	else if (a > M_PI / 4 && a <= (3 * M_PI) / 4)
 	{
 		env->ray.plane_x = 0.0;
-		env->ray.plane_y = (-0.66);
+		env->ray.plane_y = 0.66;
 	}
 	else if (a > (3 * M_PI) / 4 && a < (5 * M_PI) / 4)
 	{
@@ -53,6 +56,7 @@ void		init_plane(t_env *env)
 		env->ray.plane_x = 0.0;
 		env->ray.plane_y = 0.66;
 	}
+*/
 }
 
 void		init_dir_player(t_env *env)
@@ -60,6 +64,9 @@ void		init_dir_player(t_env *env)
 	float	a;
 
 	a = env->player.dir;
+	env->ray.dir_x = (-1);
+	env->ray.dir_y = 0;
+/*
 	if (a < M_PI / 4 || a >= (7 * M_PI) / 4)
 	{
 		env->ray.dir_x = 0;
@@ -80,4 +87,5 @@ void		init_dir_player(t_env *env)
 		env->ray.dir_x = (-1);
 		env->ray.dir_y = 0;
 	}
+*/
 }
