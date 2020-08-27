@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 16:36:49 by harlock           #+#    #+#             */
-/*   Updated: 2020/08/25 18:07:39 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/27 14:07:56 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void				print_texture(t_env *env, int x, int start, int end)
 	y = 0;
 	side = wich_plan(env);
 	env->tex.tex_x = tex_x_calcul(env, side);
+//	ft_printf("%d\n", env->wall.draw_start);
 	tex_y = 0;
 	while (y < start)
 	{

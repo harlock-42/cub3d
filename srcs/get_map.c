@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 20:11:26 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/20 18:52:18 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/27 16:58:10 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static	int	get_map(char **file, t_env *env)
 		while (file[y][x])
 		{
 			if (file[y][x] == '2')
-				sprite_pos(env, y, x);
+				env->sprite.num += 1;
 			if (file[y][x] == ' ' || file[y][x] == '1')
 				env->map.map[y][x] = 1;
 			else
@@ -116,6 +116,8 @@ int		get_pos_player(char **map, t_env *env)
 		++y;
 	}
 	if (get_map(map, env) < 0)
+		return (-1);
+	if (sprite_pos(env) < 0)
 		return (-1);
 	print_map(env);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 16:35:24 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/25 19:35:52 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/27 17:22:01 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 static	int	game(t_env *env)
 {
+	int	i;
+	i = 0;
 	free_img(env);
 	new_image(env);
 	move_player(env);
 	raycast(env);
 	mlx_put_image_to_window(env->vars.mlx, env->vars.win, env->wall.img, 0,
-	0);
+		0);
 	return (1);
 }
 

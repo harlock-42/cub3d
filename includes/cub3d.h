@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/26 16:54:51 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/27 17:04:36 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ typedef	struct		s_sprite
 {
 	int				num;
 	void			*img;
-	float				*x;
-	float				*y;
+	float			*x;
+	float			*y;
 	float			X;
 	float			Y;
 	float			inv_det;
@@ -157,16 +157,16 @@ typedef	struct		s_ray
 
 typedef	struct		s_vars
 {
-	void 	*mlx;
-	void 	*win;
-	char 	**map;
-	int 	res_x;
-	int 	res_y;
-	int 	floor_color;
-	int 	ceil_color;
-	char 	**path_tex;
-	char 	*path_sprite;
-}		t_vars;
+	void	*mlx;
+	void	*win;
+	char	**map;
+	int		res_x;
+	int		res_y;
+	int		floor_color;
+	int		ceil_color;
+	char	**path_tex;
+	char	*path_sprite;
+}					t_vars;
 
 typedef	struct		s_map
 {
@@ -313,8 +313,8 @@ int			init_raycaster(t_env *env);
 /*
 ** key.c
 */
-int		key_pressed(int keycode, t_env *env);
-int		key_released(int keycode, t_env *env);
+int			key_pressed(int keycode, t_env *env);
+int			key_released(int keycode, t_env *env);
 /*
 ** move_player.c
 */
@@ -340,7 +340,8 @@ void	wall_x(t_env *env, int tex_width);
 /*
 ** sprite.c
 */
-int		sprite_pos(t_env *env, int x, int y);
+void	sort_sprite(t_env *env);
+int		sprite_pos(t_env *env);
 void	sprite_distance(t_env *env);
 /*
 ** sprite_2.c

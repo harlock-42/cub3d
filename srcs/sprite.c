@@ -6,13 +6,13 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:35:15 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/25 19:35:39 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/27 17:33:29 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	void		sort_sprite(t_env *env)
+void				sort_sprite(t_env *env)
 {
 	int			i;
 	int			j;
@@ -40,46 +40,41 @@ static	void		sort_sprite(t_env *env)
 	}
 }
 
-static	float		*realloc_sprite_pos(t_env *env, float *tab)
+int				sprite_pos(t_env *env)
 {
-	float		*new;
+	int		start;
+	int		y;
+	int		x;
 	int		i;
 
+	start = 0;
+	y = 0;
+	x = 0;
 	i = 0;
-	if (!(new = (float *)malloc(sizeof(float) * env->sprite.num)))
-		return (NULL);
-	while (i < env->sprite.num - 1)
+	if (!(env->sprite.x = (float *)malloc(sizeof(float) * env->sprite.num)))
+		return (-1);
+	if (!(env->sprite.y = (float *)malloc(sizeof(float) * env->sprite.num)))
+		return (-1);
+	if (!(env->sprite.order = (int *)malloc(sizeof(int) * env->sprite.num)))
+		return (-1);
+	while (is_map_start(env->vars.map[start]) < 0)
+		++start;
+	while (env->vars.map[start + y] != NULL)
 	{
-		new[i] = tab[i];
-		++i;
+		x = 0;
+		while (env->vars.map[start + y][x] != '\0')
+		{
+			if (env->vars.map[start + y][x] == '2')
+			{
+				env->sprite.x[i] = x + 0.5;
+				env->sprite.y[i] = y + 0.5;
+				env->sprite.order[i] = i;
+				++i;
+			}
+			++x;
+		}
+		++y;
 	}
-	free(tab);
-	return (new);
-}
-
-int				sprite_pos(t_env *env, int x, int y)
-{
-	++env->sprite.num;
-	if (env->sprite.x != NULL)
-	{
-		if (!(env->sprite.x = realloc_sprite_pos(env, env->sprite.x)))
-			return (-1);
-	}
-	else
-		if (!(env->sprite.x = (float *)malloc(sizeof(float) *
-		env->sprite.num)))
-			return (-1);
-	if (env->sprite.x != NULL)
-	{
-		if (!(env->sprite.y = realloc_sprite_pos(env, env->sprite.y)))
-			return (-1);
-	}
-	else
-		if (!(env->sprite.y = (float *)malloc(sizeof(float) *
-		env->sprite.num)))
-			return (-1);
-	env->sprite.x[env->sprite.num - 1] = x + 0.5;
-	env->sprite.y[env->sprite.num - 1] = y + 0.5;
 	return (1);
 }
 
