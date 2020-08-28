@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 16:39:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/27 17:33:32 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/28 11:11:10 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int				raycast(t_env *env)
 	y = 0;
 	while (i < env->sprite.num)
 	{
-		printf("%d\n", env->sprite.order[i]);
+		printf("%f\n", env->sprite.distance[i]);
 //		printf("%d = x : %f\n", i, env->sprite.x[env->sprite.order[i]]);
 //		printf("%d = y : %f\n", i, env->sprite.y[env->sprite.order[i]]);
 		++i;

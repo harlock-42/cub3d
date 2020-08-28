@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 13:15:13 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/27 17:16:38 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/28 11:00:19 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static	int		init_env_sprite(t_env *env)
 		return (-1);
 	if (env->sprite.num > 0)
 	{
-		if (!(env->sprite.order = (int *)ft_calloc(env->sprite.num, sizeof(int))))
-			return (-1);
 		if (!(env->sprite.distance = (float *)ft_calloc(env->sprite.num, sizeof(float))))
 			return (-1);
 		if (!(env->sprite.first = (int *)ft_calloc(env->sprite.num, sizeof(int))))
