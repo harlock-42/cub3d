@@ -6,7 +6,7 @@
 #    By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/18 16:35:14 by tallaire          #+#    #+#              #
-#    Updated: 2020/08/23 18:49:48 by tallaire         ###   ########.fr        #
+#    Updated: 2020/08/29 21:32:49 by harlock          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ INCLUDE_NAME		= cub3d.h\
 			  mlx.h
 
 SRC_NAME		= aie_error.c\
+			arg_save.c\
 			check_color_data.c\
 			check_map.c\
 			check_is_map_close.c\
@@ -60,7 +61,7 @@ SRC_NAME		= aie_error.c\
 			raycasting.c\
 			raycasting_2.c\
 			sprite.c\
-			sprite_2.c\
+			sprite_utils.c\
 			utils.c
 
 OBJ_NAME		= $(SRC_NAME:.c=.o)

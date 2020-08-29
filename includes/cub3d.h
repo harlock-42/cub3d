@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/28 11:11:14 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/29 21:53:33 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,18 +206,15 @@ typedef	struct		s_env
 	t_tex		tex;
 }			t_env;
 
-typedef	enum		e_point
-{
-			SOUTH,
-			EAST,
-			NORTH,
-			WEST
-}			t_point;
-
 /*
 ** aie_error.c
 */
 int		aie_error(const char *str);
+/*
+** arg_save.c
+*/
+void	create_bmp_file(t_env *env);
+int		is_arg_save(char *arg);
 /*
 ** check_color_data.c
 */
@@ -327,6 +324,7 @@ int			parsing_file(t_env *emv);
 ** print_texture.c
 */
 void			print_texture(t_env *env, int x, int start, int end);
+void			wall_size(t_env *env);
 /*
 ** raycasting.c
 */
@@ -338,13 +336,13 @@ void	init_dir_player(t_env *env);
 void	init_plane(t_env *env);
 void	wall_x(t_env *env, int tex_width);
 /*
-** sprite.c
+** sprite_utils.c
 */
 void	sort_sprite(t_env *env);
 int		sprite_pos(t_env *env);
 void	sprite_distance(t_env *env);
 /*
-** sprite_2.c
+** sprite.c
 */
 void	sprite(t_env *env);
 /*

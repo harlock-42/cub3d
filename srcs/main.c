@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 16:35:24 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/28 11:11:16 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/29 21:20:02 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 {
 	t_env	env;
 
-	if (argc != 2)
+	if (argc < 2 || argc > 3)
 		return (0);
 	init_env(&env);
 	if (get_file(&env, argv[1]) < 0)
@@ -54,6 +54,10 @@ int	main(int argc, char **argv)
 		return (0);
 	if (init_raycaster(&env) < 0)
 		return (0);
+	ft_printf("argc = %d\n", argc);
+	if (argc == 3)
+		if (is_arg_save(argv[2]) > 0)
+			create_bmp_file(&env);
 	start_game(&env);
 	return (0);
 }

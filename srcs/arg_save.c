@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_2.c                                         :+:      :+:    :+:   */
+/*   arg_save.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/21 14:30:12 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/28 11:01:50 by harlock          ###   ########.fr       */
+/*   Created: 2020/08/29 18:43:03 by harlock           #+#    #+#             */
+/*   Updated: 2020/08/29 21:19:11 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void		sprite(t_env *env)
+int			is_arg_save(char *arg)
 {
-	(void)env;
+	if (arg[0] == '-' && arg[1] == '-' && arg[2] == 's' && arg[3] == 'a' &&
+		arg[4] == 'v' && arg[5] == 'e')
+		return (1);
+	else
+		ft_printf("Error\nThird argument is not recognized\n");
+	return (-1);
 }
 
+void		create_bmp_file(t_env *env)
+{
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	(void)env;
+}
