@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 16:35:27 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/19 13:13:45 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/31 17:42:22 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,22 @@ static	int	get_sprite_path(t_env *env, char *str)
 	return (1);
 }
 
+static	int		get_res_data(char *str, int i, int *res)
+{
+	while (str && str[i] && (str[i] >= '0' && str[i] <= '9'))
+	{
+		*res = *res * 10;
+		*res = *res + (str[i] - '0');
+		if (*res > RES_MAX_X)
+		{
+			while (str && str[i] && str[i] >= '0' && str[i] <= '9')
+				++i;
+			break ;
+		}
+		++i;
+	}
+	return (i);
+}
 
 static	void	get_res(t_env *env, char *str)
 {
@@ -41,20 +57,10 @@ static	void	get_res(t_env *env, char *str)
 		++i;
 	while (str && str[i] && str[i] == ' ')
 		++i;
-	while (str && str[i] && (str[i] >= '0' && str[i] <= '9'))
-	{
-		env->vars.res_x = env->vars.res_x * 10;
-		env->vars.res_x = env->vars.res_x + (str[i] - '0');
-		++i;
-	}
+	i = get_res_data(str, i, &env->vars.res_x);
 	while (str && str[i] && str[i] == ' ')
 		++i;
-	while (str && str[i] && (str[i] >= '0' && str[i] <= '9'))
-	{
-		env->vars.res_y = env->vars.res_y * 10;
-		env->vars.res_y = env->vars.res_y + (str[i] - '0');
-		++i;
-	}
+	i = get_res_data(str, i, &env->vars.res_y);
 	if (env->vars.res_x > RES_MAX_X)
 		env->vars.res_x = RES_MAX_X;
 	if (env->vars.res_y > RES_MAX_Y)

@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/29 21:53:33 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/31 20:19:29 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,9 +176,9 @@ typedef	struct		s_map
 
 typedef	struct		s_player
 {
-	float 		pos_x;
-	float 		pos_y;
-	float 		dir;
+	float		pos_x;
+	float		pos_y;
+	float		dir;
 }			t_player;
 
 typedef	struct		s_check
@@ -213,7 +213,7 @@ int		aie_error(const char *str);
 /*
 ** arg_save.c
 */
-void	create_bmp_file(t_env *env);
+int		create_bmp_file(t_env *env);
 int		is_arg_save(char *arg);
 /*
 ** check_color_data.c
@@ -253,7 +253,7 @@ void		pixel_color(t_env *env, int y, int x);
 /*
 ** display.c
 */
-void		new_image(t_env *env);
+int			new_image(t_env *env);
 /*
 ** draw_column_px.c
 */

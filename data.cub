@@ -1,10 +1,12 @@
-R      2000    1000
+R      1000 1440
 SO ./texture/harlock_drinking.xpm
 NO ./texture/nausica_harlock.xpm
 EA ./texture/harlock_personnage.xpm
 WE ./texture/harlock_rafflesia.xpm
 
 S ./sprite/harlock_arcadia_transparent.xpm
+
+D ./sprite/harlock_arcadia_transparent.xpm
 
 F 220,145, 30
 C 220,255,255

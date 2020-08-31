@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 22:57:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/25 18:01:15 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/08/31 20:19:16 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ void	my_mlx_pixel_put(t_env *env, int x, int y, unsigned int color)
 
 void		draw_column_px(t_env *env, int x, int start, int end)
 {
-//	x = env->vars.res_x - x - 1;
 	return (print_texture(env, x, start, end));
 }

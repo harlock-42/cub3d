@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 16:36:49 by harlock           #+#    #+#             */
-/*   Updated: 2020/08/29 21:30:49 by harlock          ###   ########.fr       */
+/*   Updated: 2020/08/31 18:57:28 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static	int			print_tex_wall(t_env *env, int side, int y, int x)
 	while (y >= env->wall.draw_start && y < env->wall.draw_end)
 	{
 		tex_y = ((y - env->vars.res_y / 2 + env->wall.line_height / 2) *
-		env->tex.height[side]) / env->wall.line_height;
+			env->tex.height[side]) / env->wall.line_height;
 		color = env->tex.tex[side][env->tex.width[side] * (int)floor(tex_y) +
-		env->tex.tex_x];
+			env->tex.tex_x];
 		my_mlx_pixel_put(env, x, y, color);
 		++y;
 	}
