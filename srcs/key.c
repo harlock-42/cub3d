@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:33:59 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/08 18:15:23 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/01 18:21:41 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ int	key_pressed(int keycode, t_env *env)
 		env->key.rot_left = 1;
 	else if (keycode == KEY_RIGHT)
 		env->key.rot_right = 1;
-//	printf("press = %d\n", keycode);
 	return (keycode);
 }

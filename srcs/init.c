@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:56:50 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/20 19:09:51 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/01 20:25:28 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int			init_vars(t_env *env)
 	int		i;
 
 	i = 0;
+	env->vars.save = 0;
 	env->vars.res_x = 0;
 	env->vars.res_y = 0;
 	env->sprite.num = 0;

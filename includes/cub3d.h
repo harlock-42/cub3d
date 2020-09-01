@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/31 20:19:29 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/01 20:25:26 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ typedef	struct		s_vars
 	void	*mlx;
 	void	*win;
 	char	**map;
+	int		save;
 	int		res_x;
 	int		res_y;
 	int		floor_color;
