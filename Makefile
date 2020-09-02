@@ -6,7 +6,7 @@
 #    By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/18 16:35:14 by tallaire          #+#    #+#              #
-#    Updated: 2020/08/29 21:32:49 by harlock          ###   ########.fr        #
+#    Updated: 2020/09/02 17:59:04 by tallaire         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ SRC_NAME		= aie_error.c\
 			check_param_file.c\
 			check_path.c\
 			check_res.c\
-			color.c\
 			display.c\
 			draw_column_px.c\
 			exit_game.c\

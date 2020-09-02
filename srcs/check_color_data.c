@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 14:50:58 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/03 19:26:31 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:46:07 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ static	int	check_coma(char *str)
 		if (str[i] == ',' && is_eol_next(str + i) < 0)
 			++i;
 		else
-			return (aie_error("misplaced coma\n"));
+			return (-1);
 		while (str[i] && (str[i] < '0' || str[i] > '9'))
 		{
 			if (str[i] != ' ')
-				return (aie_error("character forbidden\n"));
+				return (-1);
 			++i;
 		}
 	}
@@ -68,7 +68,7 @@ static		int	check_rgb_size(char *str, size_t *i)
 	{
 		rgb = rgb * 10 + (str[*i] - '0');
 		if (rgb > 255)
-			return (aie_error("rgb color refered exceed 255 \n"));
+			return (-1);
 		++*i;
 	}
 	return (1);
@@ -95,9 +95,9 @@ static	int	check_arg_number(char *str)
 		++i;
 	}
 	if (count < 3)
-		return (aie_error("not enough arguments for rgb color\n"));
+		return (-1);
 	if (count > 3)
-		return (aie_error("too many arguments for rgb color\n"));
+		return (-1);
 	return (1);
 }
 
@@ -123,7 +123,7 @@ int			check_color_data(char *str)
 		while (str[i] && (str[i] < '0' || str[i] > '9'))
 		{
 			if (str[i] != ' ')
-				return (aie_error("forbidden character\n"));
+				return (-1);
 			++i;
 		}
 	}

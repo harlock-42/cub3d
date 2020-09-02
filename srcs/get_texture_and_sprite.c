@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 18:16:00 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/22 21:08:35 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:51:10 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static	int		sprite_copy(t_env * env)
 	i = 0;
 	if (!(env->sprite.img = mlx_xpm_file_to_image(env->vars.mlx,
 	env->vars.path_sprite, &env->sprite.width, &env->sprite.height)))
-		return (-1);
+		return (aie_error("Sprite doesn't download"));
 	env->sprite.addr = (unsigned int *)mlx_get_data_addr(env->sprite.img,
 	&env->sprite.bpp, &env->sprite.line_length, &env->sprite.endian);
 	if (!(env->sprite.sprite = ft_calloc(env->sprite.width *
 	env->sprite.width, sizeof(unsigned int))))
-		return (-1);
+		return (aie_error("Sprite alloc memory failed"));
 	end = env->sprite.width * env->sprite.height;
 	while (i < end)
 	{
@@ -47,12 +47,12 @@ static	int		texture_copy(t_env *env)
 	{
 		if (!(env->tex.img[i] = mlx_xpm_file_to_image(env->vars.mlx,
 		env->vars.path_tex[i], &env->tex.width[i], &env->tex.height[i])))
-			return (aie_error("tex not download\n"));
+			return (aie_error("Texture doesn't download"));
 		env->tex.addr[i] = (unsigned int *)mlx_get_data_addr(env->tex.img[i],
 		&env->tex.bpp, &env->tex.line_length, &env->tex.endian);
 		if (!(env->tex.tex[i] = ft_calloc(env->tex.width[i] *
 		env->tex.height[i], sizeof(unsigned int))))
-			return (-1);
+			return (aie_error("Texture alloc memory failed"));
 		j = 0;
 		end = env->tex.width[i] * env->tex.height[i];
 		while (j < end)

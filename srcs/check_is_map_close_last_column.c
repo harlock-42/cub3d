@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 18:45:54 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/01 20:32:53 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:35:58 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int			last_column(char **map)
 		++y;
 	while (map && map[y])
 	{
-		ft_printf("%s\n", map[y]);
 		x = init_x(map[y]);
 		if (is_line_ok(map, y, x) < 0)
 			return (-1);

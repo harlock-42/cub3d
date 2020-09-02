@@ -1,4 +1,4 @@
-R      10 1
+R      30000 1000
 SO ./texture/harlock_drinking.xpm
 NO ./texture/nausica_harlock.xpm
 EA ./texture/harlock_personnage.xpm

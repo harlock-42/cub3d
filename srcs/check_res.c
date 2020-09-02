@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 14:09:29 by harlock           #+#    #+#             */
-/*   Updated: 2020/08/03 19:22:49 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:10:27 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ int			check_res(char *str, t_env *env)
 	i = 1;
 	count = 0;
 	if (env->check.r == 1)
-		return (aie_error("several data resoution are refered\n"));
+		return (-1);
 	env->check.r = 1;
 	while (str && str[i])
 	{
 		while (str && str[i] && (str[i] < '0' || str[i] > '9'))
 		{
 			if (str[i] != ' ')
-				return (aie_error("forbidden character\n"));
+				return (-1);
 			++i;
 		}
 		if (str[i] >= '0' && str[i] <= '9')
@@ -40,6 +40,6 @@ int			check_res(char *str, t_env *env)
 			++i;
 	}
 	if (count != 2)
-		return (aie_error("wrong number of arguments\n"));
+		return (-1);
 	return (1);
 }

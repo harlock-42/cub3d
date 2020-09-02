@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:12:18 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/27 16:30:00 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:42:40 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	static	parsing_param(t_env *env)
 			++i;
 		if ((ret = is_map_start(env->vars.map[i])) < 0)
 			if (get_param_id(env, env->vars.map[i]) < 0)
-				return (aie_error("parsing error\n"));
+				return (-1);
 		if (ret > 0)
 		{
 			if (get_pos_player(env->vars.map + i, env) < 0)
@@ -100,7 +100,7 @@ int	static	parsing_param(t_env *env)
 int		parsing_file(t_env *env)
 {
 	if (parsing_param(env) < 0)
-		return (aie_error("invalid param data.cub file\n"));
+		return (-1);
 	free_file((void **)env->vars.map);
 	return (1);
 }

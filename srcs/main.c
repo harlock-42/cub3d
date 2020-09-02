@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 16:35:24 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/01 20:11:39 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:54:20 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,12 @@ int	main(int argc, char **argv)
 	t_env	env;
 
 	if (argc < 2 || argc > 3)
+	{
+		aie_error("Wrong number of arguments");
 		return (0);
-	init_env(&env);
+	}
+	if (init_env(&env) < 0)
+		return (0);
 	if (get_file(&env, argv[1]) < 0)
 		return (0);
 	if (init_vars(&env) < 0)

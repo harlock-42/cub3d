@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/01 20:25:26 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:11:36 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,10 +247,6 @@ int		last_column(char **map);
 ** check_res.c
 */
 int		check_res(char *str, t_env *env);
-/*
-** color.c
-*/
-void		pixel_color(t_env *env, int y, int x);
 /*
 ** display.c
 */

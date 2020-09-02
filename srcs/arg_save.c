@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:43:03 by harlock           #+#    #+#             */
-/*   Updated: 2020/09/01 21:00:58 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:53:42 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,39 +25,31 @@ int			is_arg_save(char *arg)
 static	int		insert_img(t_env *env, int fd)
 {
 	unsigned	int	*buffer;
-	int		color;
-	int					i;
-	int					x;
-	int					y;
+	int				color;
+	int				x;
+	int				y;
 
 	y = env->vars.res_y;
 	x = 0;
 	if (!(buffer = ft_calloc(env->vars.res_x *
 		env->vars.res_y, sizeof(unsigned int))))
-		return (-1);
+		return (aie_error("bmp file alloc memory failed"));
 	color = 0;
-	i = 0;
 	while (y)
 	{
-//			ft_printf("y = %d | x = %d\n", y, x);
-		x = 0;
-//		while (x <= env->vars.res_x)
-//		{
-			write(fd, &env->wall.addr[y * env->vars.res_x], env->vars.res_x * 4);
-//			x++;
-//		}
+		write(fd, &env->wall.addr[y * env->vars.res_x], env->vars.res_x * 4);
 		y--;
 	}
-//	write(fd, env->wall.addr, env->vars.res_x * env->vars.res_y * 4);
 	free(buffer);
 	return (1);
 }
 
-static	void	insert_header(t_env *env, int fd)
+static	int		insert_header(t_env *env, int fd)
 {
 	unsigned	char	*header;
 
-	header = ft_calloc(sizeof(unsigned char), 54);
+	if (!(header = ft_calloc(sizeof(unsigned char), 54)))
+		return (aie_error("Header bmp file alloc memory failed"));
 	header[0] = 'B';
 	header[1] = 'M';
 	header[2] = (unsigned char)(54 + env->vars.res_x * env->vars.res_y * 4);
@@ -84,13 +76,14 @@ int			create_bmp_file(t_env *env)
 	int		fd;
 
 	if ((fd = open("./screen_shot.bmp", O_CREAT | O_WRONLY, S_IRWXU)) < 0)
-		return (-1);
+		return (aie_error("bmp file opening failed"));
 	env->vars.mlx = mlx_init();
 	new_image(env);
 	if (get_texture_and_sprite(env) < 0)
 		return (-1);
 	raycast(env);
-	insert_header(env, fd);
+	if (insert_header(env, fd) < 0)
+		return (-1);
 	if (insert_img(env, fd) < 0)
 		return (-1);
 	return (0);

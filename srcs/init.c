@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:56:50 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/01 20:25:28 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:47:29 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			init_vars(t_env *env)
 	env->vars.res_y = 0;
 	env->sprite.num = 0;
 	if (!(env->vars.path_tex = (char **)malloc(sizeof(char *) * 4)))
-		return (-1);
+		return (aie_error("texture alloc memory failed"));
 	while (i < 4)
 	{
 		env->vars.path_tex[i] = NULL;
@@ -37,11 +37,11 @@ static	int	init_env_tex(t_env *env)
 
 	i = 0;
 	if (!(env->tex.tex = (unsigned int **)malloc(sizeof(unsigned int *) * 4)))
-		return (-1);
+		return (aie_error("texture alloc memory failed"));
 	if (!(env->tex.addr = (unsigned int **)malloc(sizeof(unsigned int *) * 4)))
-		return (-1);
+		return (aie_error("texture alloc memory failed"));
 	if (!(env->tex.img = (void **)malloc(sizeof(void *) * 4)))
-		return (-1);
+		return (aie_error("texture alloc memory failed"));
 	while (i < 4)
 	{
 		env->tex.width[i] = 0;
@@ -93,7 +93,7 @@ int		init_env(t_env *env)
 	init_env_key(env);
 	init_dir_player(env);
 	if (init_env_tex(env) < 0)
-		return (-1);
+		return (aie_error("texture alloc memory failed"));
 	init_plane(env);
 	init_check(env);
 	return (1);

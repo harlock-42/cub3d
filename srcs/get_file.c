@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 09:54:40 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/06 12:22:41 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:09:36 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,19 @@ int		get_file(t_env *env, const char *file_name)
 
 	env->vars.map = NULL;
 	if (file_is_cub(file_name) < 0)
-		return (aie_error("wrong file type\n"));
-	fd = open(file_name, O_RDONLY);
+		return (aie_error("wrong file type"));
+	if (!(fd = open(file_name, O_RDONLY)))
+		return (aie_error("Impossible to read data file"));;
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		if (ret < 0)
-			return (-1);
-		realloc_file(env, line);
+			return (aie_error("reading file failed"));
+		if (realloc_file(env, line) < 0)
+			return (aie_error("failed realloc memory data file"));
 		free(line);
 	}
 	if (env->vars.map == NULL)
-		return (aie_error("data.cub file empty\n"));
+		return (aie_error("data file empty\n"));
 	free(line);
 	return (1);
 }

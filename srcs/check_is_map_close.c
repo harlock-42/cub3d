@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 16:19:30 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/06 12:16:17 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:34:49 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,11 @@ static		int		check_left_and_right(char **map)
 	{
 		x = 0;
 		if (map[y][0] != '1')
-		{
-			ft_printf("char : %d\nline : %d\n", (int)x, (int)y);
 			return (-1);
-		}
 		while (map[y] && map[y][x + 1])
 			++x;
 		if (map[y][x] != '1')
-		{
-			ft_printf("char : %d\nline : %d\n", (int)x, (int)y);
 			return (-1);
-		}
 		++y;
 	}
 	return (1);
@@ -60,7 +54,6 @@ static		int		check_down(char **map, size_t y, size_t x)
 			return (1);
 		++y;
 	}
-	ft_printf("char : %d\nline : %d\n", (int)x, (int)y);
 	return (-1);
 }
 
@@ -76,7 +69,6 @@ static		int		check_up(char **map, size_t y, size_t x)
 			return (1);
 		--y;
 	}
-	ft_printf("char : %d\nline : %d\n", (int)x, (int)y);
 	return (-1);
 }
 

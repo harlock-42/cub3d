@@ -6,25 +6,11 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 20:11:26 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/29 14:49:58 by harlock          ###   ########.fr       */
+/*   Updated: 2020/09/02 18:42:01 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-static	void		print_map(t_env *env)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (env->vars.map[x] != NULL)
-	{
-		ft_printf("%s\n", env->vars.map[x]);
-		++x;
-	}
-}
 
 static	int		**alloc_map(char **map)
 {
@@ -57,7 +43,7 @@ static	int	get_map(char **file, t_env *env)
 
 	y = 0;
 	if (!(env->map.map = alloc_map(file)))
-		return (-1);
+		return (aie_error("map alloc memory failed"));
 	while (file && file[y])
 	{
 		x = 0;
@@ -118,7 +104,6 @@ int		get_pos_player(char **map, t_env *env)
 	if (get_map(map, env) < 0)
 		return (-1);
 	if (sprite_pos(env) < 0)
-		return (-1);
-	print_map(env);
+		return (aie_error("sprite alloc memory failed"));
 	return (1);
 }

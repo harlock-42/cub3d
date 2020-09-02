@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/09 13:15:13 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/01 18:12:04 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:46:05 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,6 @@ int				init_raycaster(t_env *env)
 	init_dir_player(env);
 	init_env_ray(env);
 	if (init_env_sprite(env) < 0)
-		return (-1);
+		return (aie_error("sprite alloc memory failed"));
 	return (1);
 }

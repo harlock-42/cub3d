@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 16:51:52 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/19 15:18:27 by harlock          ###   ########.fr       */
+/*   Updated: 2020/09/02 18:16:59 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int	get_texture_path(t_env *env, char *str)
 	while (str[i] && str[i] == ' ')
 		++i;
 	if (str[i] == '\0')
-		return (-1);
+		return (aie_error("invalid north texture path name\n"));
 	if (check_path(str + i) < 0)
-		return (-1);
+		return (aie_error("invalid north texture path name\n"));
 	if (*str == 'N' && *(str + 1) == 'O')
 		if (!(env->vars.path_tex[2] = strdup_path(str + i)))
 			return (aie_error("invalid north texture path name\n"));
