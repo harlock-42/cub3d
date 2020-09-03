@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/28 16:51:52 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:16:59 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/03 14:06:06 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,22 @@
 /*
 ** verifie que les chemins des textures ont ete referencee qu une seul fois.
 */
+
+static	int	check_reference_allowed(char *str)
+{
+	int	ret;
+
+	ret = (-1);
+	if (str[0] == 'N' && str[1] == 'O')
+		ret = 1;
+	else if (str[0] == 'S' && str[1] == 'O')
+		ret = 1;
+	else if (str[0] == 'W' && str[1] == 'E')
+		ret = 1;
+	else if (str[0] == 'E' && str[1] == 'A')
+		ret = 1;
+	return (ret);
+}
 
 static	int	check_several_reference(t_env *env, char *str)
 {
@@ -45,21 +61,8 @@ static	int	check_several_reference(t_env *env, char *str)
 	return (1);
 }
 
-int	get_texture_path(t_env *env, char *str)
+static	int	get_tex_path(t_env *env, char *str, int i)
 {
-	size_t	i;
-
-	i = 0;
-	if (check_several_reference(env, str) < 0)
-		return (-1);
-	while (str[i] && str[i] != ' ')
-		++i;
-	while (str[i] && str[i] == ' ')
-		++i;
-	if (str[i] == '\0')
-		return (aie_error("invalid north texture path name\n"));
-	if (check_path(str + i) < 0)
-		return (aie_error("invalid north texture path name\n"));
 	if (*str == 'N' && *(str + 1) == 'O')
 		if (!(env->vars.path_tex[2] = strdup_path(str + i)))
 			return (aie_error("invalid north texture path name\n"));
@@ -72,5 +75,27 @@ int	get_texture_path(t_env *env, char *str)
 	if (*str == 'W' && *(str + 1) == 'E')
 		if (!(env->vars.path_tex[3] = strdup_path(str + i)))
 			return (aie_error("invalid west texture path name\n"));
+	return (1);
+}
+
+int	get_texture_path(t_env *env, char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (check_several_reference(env, str) < 0)
+		return (-1);
+	if (check_reference_allowed(str) < 0)
+		return (aie_error("invalid parameter in data file"));
+	while (str[i] && str[i] != ' ')
+		++i;
+	while (str[i] && str[i] == ' ')
+		++i;
+	if (str[i] == '\0')
+		return (aie_error("invalid north texture path name\n"));
+	if (check_path(str + i) < 0)
+		return (aie_error("invalid north texture path name\n"));
+	if (get_tex_path(env, str, i) < 0)
+		return (-1);
 	return (1);
 }

@@ -6,11 +6,37 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 22:11:07 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/27 14:08:33 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/03 15:30:29 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+static	void	move_aside(t_env *env)
+{
+	if (env->key.left == 1)
+	{
+		if (env->map.map[(int)(env->player.pos_y -
+			env->ray.dir_x * MOVE_SPEED)]
+			[(int)(env->player.pos_x + env->ray.dir_y *
+			MOVE_SPEED)] == 0)
+		{
+			env->player.pos_x += env->ray.dir_y * MOVE_SPEED;
+			env->player.pos_y -= env->ray.dir_x * MOVE_SPEED;
+		}
+	}
+	else if (env->key.right == 1)
+	{
+		if (env->map.map[(int)(env->player.pos_y +
+			env->ray.dir_x * MOVE_SPEED)]
+			[(int)(env->player.pos_x - env->ray.dir_y *
+			MOVE_SPEED)] == 0)
+		{
+			env->player.pos_x -= env->ray.dir_y * MOVE_SPEED;
+			env->player.pos_y += env->ray.dir_x * MOVE_SPEED;
+		}
+	}
+}
 
 static	void	move_rot(t_env *env)
 {
@@ -62,5 +88,7 @@ void		move_player(t_env *env)
 		move_back_forward(env);
 	if (env->key.rot_left == 1 || env->key.rot_right == 1)
 		move_rot(env);
+	if (env->key.left == 1 || env->key.right == 1)
+		move_aside(env);
 }
 

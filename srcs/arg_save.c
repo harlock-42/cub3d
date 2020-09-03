@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:43:03 by harlock           #+#    #+#             */
-/*   Updated: 2020/09/02 18:53:42 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:53:29 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static	int		insert_header(t_env *env, int fd)
 {
 	unsigned	char	*header;
 
-	if (!(header = ft_calloc(sizeof(unsigned char), 54)))
+	if (!(header = ft_calloc(sizeof(char), 54)))
 		return (aie_error("Header bmp file alloc memory failed"));
 	header[0] = 'B';
 	header[1] = 'M';
@@ -59,16 +59,18 @@ static	int		insert_header(t_env *env, int fd)
 	header[10] = 54;
 	header[14] = 40;
 	header[18] = (unsigned char)(env->vars.res_x);
-	header[19] = (unsigned char)((env->vars.res_x) >> 8);
-	header[20] = (unsigned char)((env->vars.res_x) >> 16);
-	header[21] = (unsigned char)((env->vars.res_x) >> 24);
+	header[19] = (unsigned char)(env->vars.res_x >> 8);
+	header[20] = (unsigned char)(env->vars.res_x >> 16);
+	header[21] = (unsigned char)(env->vars.res_x >> 24);
 	header[22] = (unsigned char)(env->vars.res_y);
-	header[23] = (unsigned char)((env->vars.res_y) >> 8);
-	header[24] = (unsigned char)((env->vars.res_y) >> 16);
-	header[25] = (unsigned char)((env->vars.res_y) >> 24);
+	header[23] = (unsigned char)(env->vars.res_y >> 8);
+	header[24] = (unsigned char)(env->vars.res_y >> 16);
+	header[25] = (unsigned char)(env->vars.res_y >> 24);
 	header[26] = 1;
 	header[28] = 32;
 	write(fd, header, 54);
+	free(header);
+	return (1);
 }
 
 int			create_bmp_file(t_env *env)

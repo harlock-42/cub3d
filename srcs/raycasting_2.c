@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 17:11:42 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/27 14:23:28 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:53:32 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,55 @@ void		wall_x(t_env *env, int tex_width)
 
 void		init_plane(t_env *env)
 {
-	env->ray.plane_x = 0.0;
-	env->ray.plane_y = 0.66;
+	float	dir;
+
+	dir = env->player.dir;
+	if (dir > (5 * M_PI) / 4 && dir < (7 * M_PI) / 4)
+	{
+		env->ray.plane_x = 0.0;
+		env->ray.plane_y = (0.66);
+	}
+	else if (dir > (7 * M_PI) / 4 || dir < M_PI / 4)
+	{
+		env->ray.plane_x = 0.66;
+		env->ray.plane_y = 0.0;
+	}
+	else if (dir > M_PI / 4 && dir < (3 * M_PI) / 4)
+	{
+		env->ray.plane_x = 0.0;
+		env->ray.plane_y = (-0.66);
+	}
+	else if (dir > (3 * M_PI) / 4 && dir < (5 * M_PI) / 4)
+	{
+		env->ray.plane_x = (-0.66);
+		env->ray.plane_y = 0.0;
+	}
+
 }
 
 void		init_dir_player(t_env *env)
 {
-	env->ray.dir_x = (-1.0);
-	env->ray.dir_y = 0.0;
+	float	dir;
+
+	dir = env->player.dir;
+	if (dir > (5 * M_PI) / 4 && dir < (7 * M_PI) / 4)
+	{
+		env->ray.dir_x = (-1.0);
+		env->ray.dir_y = 0.0;
+	}
+	else if (dir > (7 * M_PI) / 4 || dir < M_PI / 4)
+	{
+		env->ray.dir_x = 0.0;
+		env->ray.dir_y = 1.0;
+	}
+	else if (dir > M_PI / 4 && dir < (3 * M_PI) / 4)
+	{
+		env->ray.dir_x = 1.0;
+		env->ray.dir_y = 0.0;
+	}
+	else if (dir > (3 * M_PI) / 4 && dir < (5 * M_PI) / 4)
+	{
+		env->ray.dir_x = 0.0;
+		env->ray.dir_y = (-1.0);
+	}
 }

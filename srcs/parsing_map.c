@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:12:18 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:42:40 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/03 14:07:24 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,12 @@ int	static	get_param_id(t_env *env, char *str)
 	if (str[i + k] != ' ')
 		return (-1);
 	if (k == 1)
+	{
+		if (str[i] != 'R' && str[i] != 'S' && str[i] != 'D'
+			&& str[i] != 'F' && str[i] != 'C')
+			return (aie_error("invalid parameter in data file"));
 		return (get_data_id(env, str + i + k - 1));
+	}
 	if (k == 2)
 		return (get_texture_path(env, str + i + k - 2));
 	return (-1);

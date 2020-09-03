@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:11:36 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/03 11:22:06 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,8 @@ typedef	struct		s_ray
 	float	side_dist_x;
 	float	side_dist_y;
 	float	perp_wall_dist;
-	int		map_x;
-	int		map_y;
+	float		map_x;
+	float		map_y;
 	int		side;
 }					t_ray;
 
@@ -320,6 +320,7 @@ int			parsing_file(t_env *emv);
 /*
 ** print_texture.c
 */
+int			wich_plan(t_env *env);
 void			print_texture(t_env *env, int x, int start, int end);
 void			wall_size(t_env *env);
 /*

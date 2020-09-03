@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 16:36:49 by harlock           #+#    #+#             */
-/*   Updated: 2020/08/31 18:57:28 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/03 12:36:03 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	int			print_tex_wall(t_env *env, int side, int y, int x)
 	return (y);
 }
 
-static	int			wich_plan(t_env *env)
+int			wich_plan(t_env *env)
 {
 	int		side;
 
@@ -68,9 +68,9 @@ static	int			tex_x_calcul(t_env *env, int side)
 			env->ray.ray_dir_x;
 	wall_x = wall_x - floor(wall_x);
 	tex_x = (int)(wall_x * (float)env->tex.width[side]);
-	if (side == 2)
+	if (side == 0)
 		tex_x = env->tex.width[side] - tex_x - 1;
-	if (side == 1)
+	if (side == 3)
 		tex_x = env->tex.width[side] - tex_x - 1;
 	return (tex_x);
 }
@@ -108,6 +108,8 @@ void				wall_size(t_env *env)
 		env->ray.perp_wall_dist = (env->ray.map_y -
 			env->player.pos_y + (1 - (int)env->ray.step_y) / 2) /
 			env->ray.ray_dir_y;
+	if (env->ray.perp_wall_dist < 0.005)
+		env->ray.perp_wall_dist = 0.005;
 	env->wall.line_height = (int)(env->vars.res_y /
 		env->ray.perp_wall_dist);
 	env->wall.draw_start = -env->wall.line_height / 2 +

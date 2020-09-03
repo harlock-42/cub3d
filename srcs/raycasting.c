@@ -6,7 +6,7 @@
 /*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 16:39:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/08/31 19:12:38 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/03 12:26:45 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,27 @@
 static		void	dda(t_env *env)
 {
 	int		hit;
+	int		side;
 
 	hit = 0;
-		while (hit == 0)
+	while (hit == 0)
+	{
+		if (env->ray.side_dist_x < env->ray.side_dist_y)
 		{
-			if (env->ray.side_dist_x < env->ray.side_dist_y)
-			{
-				env->ray.side_dist_x += env->ray.delta_dist_x;
-				env->ray.map_x += env->ray.step_x;
-				env->ray.side = 0;
-			}
-			else
-			{
-				env->ray.side_dist_y += env->ray.delta_dist_y;
-				env->ray.map_y += env->ray.step_y;
-				env->ray.side = 1;
-			}
-			if (env->map.map[(int)(env->ray.map_y)][(int)(env->ray.map_x)] > 0)
-				hit = 1;
+			env->ray.side_dist_x += env->ray.delta_dist_x;
+			env->ray.map_x += env->ray.step_x;
+			env->ray.side = 0;
 		}
+		else
+		{
+			env->ray.side_dist_y += env->ray.delta_dist_y;
+			env->ray.map_y += env->ray.step_y;
+			env->ray.side = 1;
+		}
+		if (env->map.map[(int)(env->ray.map_y)][(int)(env->ray.map_x)] > 0)
+			hit = 1;
+	}
+	side = wich_plan(env);
 }
 
 static		void	init_step_and_side_dist(t_env *env)
