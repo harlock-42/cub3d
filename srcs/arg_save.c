@@ -6,7 +6,7 @@
 /*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 18:43:03 by harlock           #+#    #+#             */
-/*   Updated: 2020/09/03 16:53:29 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/03 18:31:13 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static	int		insert_img(t_env *env, int fd)
 		env->vars.res_y, sizeof(unsigned int))))
 		return (aie_error("bmp file alloc memory failed"));
 	color = 0;
-	while (y)
+	while (y >= 0)
 	{
 		write(fd, &env->wall.addr[y * env->vars.res_x], env->vars.res_x * 4);
 		y--;
