@@ -27,7 +27,7 @@
 /*
 ** key for mac
 */
-
+/*
 #define KEY_A 0
 #define KEY_D 2
 #define KEY_S 1
@@ -42,13 +42,12 @@
 #define KEY_RELEASE 3
 #define KEY_EXPOSE_HOOK 12
 #define KEY_EXIT_HOOK 53
-
+*/
 
 /*
 ** key for linux
 */
 
-/*
 #define KEY_A 97
 #define KEY_D 100
 #define KEY_S 115
@@ -56,7 +55,6 @@
 #define KEY_LEFT 65361
 #define KEY_RIGHT 65363
 #define KEY_EXIT_HOOK 65307
-*/
 
 typedef	struct		s_sprite
 {
@@ -347,6 +345,7 @@ void	sprite(t_env *env);
 ** utils.c
 */
 void		free_map(t_env *env);
+void		res_max(t_env *env);
 char		*strdup_path(char *str);
 
 #endif

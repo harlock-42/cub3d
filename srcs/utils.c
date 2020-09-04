@@ -47,3 +47,16 @@ char		*strdup_path(char *str)
 	return (new);
 }
 
+void		res_max(t_env *env)
+{
+	int	res_x_max;
+	int	res_y_max;
+
+	res_x_max = 0;
+	res_y_max = 0;
+	mlx_get_screen_size(env->vars.mlx, &res_x_max, &res_y_max);
+	if (env->vars.res_x > res_x_max)
+		env->vars.res_x = res_x_max;
+	if (env->vars.res_y > res_y_max)
+		env->vars.res_y = res_y_max;
+}

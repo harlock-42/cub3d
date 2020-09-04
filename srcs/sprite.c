@@ -27,22 +27,35 @@ static		void	sprite_display(t_env *env, int y)
 		while (stripe < env->sprite.draw_end_x)
 		{
 			//	texX
-			tex_x = (int)(256 * (stripe - (-env->sprite.width_sprite / 2 + env->sprite.screen_x)) * env->sprite.width / env->sprite.width_sprite) / 256;
+			tex_x = (int)(256 * (stripe -
+				(-env->sprite.width_sprite / 2 +
+				 env->sprite.screen_x)) * env->sprite.width
+				/ env->sprite.width_sprite) / 256;
 
 			//	conditions d'affichage du sprite
-			if (env->sprite.transform_y > 0 && stripe >= 0 && stripe < env->vars.res_x && env->sprite.transform_y < env->sprite.z_buffer[stripe])
+			if (env->sprite.transform_y > 0 && stripe >= 0 &&
+				stripe < env->vars.res_x &&
+				env->sprite.transform_y <
+				env->sprite.z_buffer[stripe])
 			{
 				y = env->sprite.draw_start_y;
 				while (y < env->sprite.draw_end_y)
 				{
 					//	d
-					d = y * 256 - env->vars.res_y * 128 + env->sprite.height_sprite * 128;
+				ft_printf("y = %d\nres_y = %d\nsprite.height = %d\n", y, env->vars.res_y, env->sprite.height_sprite);
+				d = y * 256 - env->vars.res_y * 128
+						+ env->sprite.height_sprite
+						* 128;
+	ft_printf("d = %d\n", d);
 
 					//	texY
-					tex_y = ((d * env->sprite.height) / env->sprite.height_sprite) / 256;
+					tex_y = ((d * env->sprite.height) /
+						env->sprite.height_sprite) /
+						256;
 
 					//	color
-					color = env->sprite.sprite[env->sprite.width * tex_y + tex_x];
+					color = env->sprite.sprite[env->sprite.width
+						* tex_y + tex_x];
 
 					my_mlx_pixel_put(env, stripe, y, color);
 					++y;

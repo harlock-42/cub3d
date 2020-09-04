@@ -29,7 +29,7 @@ static	int		insert_img(t_env *env, int fd)
 	int				x;
 	int				y;
 
-	y = env->vars.res_y;
+	y = env->vars.res_y - 1;
 	x = 0;
 	if (!(buffer = ft_calloc(env->vars.res_x *
 		env->vars.res_y, sizeof(unsigned int))))
@@ -52,10 +52,10 @@ static	int		insert_header(t_env *env, int fd)
 		return (aie_error("Header bmp file alloc memory failed"));
 	header[0] = 'B';
 	header[1] = 'M';
-	header[2] = (unsigned char)(54 + env->vars.res_x * env->vars.res_y * 4);
-	header[3] = (unsigned char)((54 + env->vars.res_x * env->vars.res_y * 4) >> 8);
-	header[4] = (unsigned char)((54 + env->vars.res_x * env->vars.res_y * 4) >> 16);
-	header[5] = (unsigned char)((54 + env->vars.res_x * env->vars.res_y * 4) >> 24);
+	header[2] = (unsigned char)(54 + env->vars.res_x * (env->vars.res_y - 1) * 4);
+	header[3] = (unsigned char)((54 + env->vars.res_x * (env->vars.res_y - 1) * 4) >> 8);
+	header[4] = (unsigned char)((54 + env->vars.res_x * (env->vars.res_y - 1) * 4) >> 16);
+	header[5] = (unsigned char)((54 + env->vars.res_x * (env->vars.res_y - 1) * 4) >> 24);
 	header[10] = 54;
 	header[14] = 40;
 	header[18] = (unsigned char)(env->vars.res_x);
@@ -80,6 +80,7 @@ int			create_bmp_file(t_env *env)
 	if ((fd = open("./screen_shot.bmp", O_CREAT | O_WRONLY, S_IRWXU)) < 0)
 		return (aie_error("bmp file opening failed"));
 	env->vars.mlx = mlx_init();
+	res_max(env);
 	new_image(env);
 	if (get_texture_and_sprite(env) < 0)
 		return (-1);

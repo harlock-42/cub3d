@@ -91,7 +91,6 @@ int				raycast(t_env *env)
 	int		x;
 
 	x = 0;
-
 	while (x < env->vars.res_x)
 	{
 		init_data(env, x);

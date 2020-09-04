@@ -61,10 +61,6 @@ static	void	get_res(t_env *env, char *str)
 	while (str && str[i] && str[i] == ' ')
 		++i;
 	i = get_res_data(str, i, &env->vars.res_y);
-	if (env->vars.res_x > RES_MAX_X)
-		env->vars.res_x = RES_MAX_X;
-	if (env->vars.res_y > RES_MAX_Y)
-		env->vars.res_y = RES_MAX_Y;
 }
 
 int	get_data_id(t_env *env, char *str)
