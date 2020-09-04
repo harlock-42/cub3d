@@ -18,11 +18,18 @@ void		wall_x(t_env *env, int tex_width)
 	(void)tex_width;
 }
 
+static	void	init(t_env *env)
+{
+	env->ray.plane_x = 0.0;
+	env->ray.plane_y = 0.0;
+}
+
 void		init_plane(t_env *env)
 {
 	float	dir;
 
 	dir = env->player.dir;
+	init(env);
 	if (dir > (5 * M_PI) / 4 && dir < (7 * M_PI) / 4)
 	{
 		env->ray.plane_x = 0.0;
@@ -51,6 +58,8 @@ void		init_dir_player(t_env *env)
 	float	dir;
 
 	dir = env->player.dir;
+	env->ray.dir_x = 0.0;
+	env->ray.dir_y = 0.0;
 	if (dir > (5 * M_PI) / 4 && dir < (7 * M_PI) / 4)
 	{
 		env->ray.dir_x = (-1.0);

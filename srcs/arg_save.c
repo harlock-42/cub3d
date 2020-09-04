@@ -77,6 +77,7 @@ int			create_bmp_file(t_env *env)
 {
 	int		fd;
 
+	env->vars.save = 1;
 	if ((fd = open("./screen_shot.bmp", O_CREAT | O_WRONLY, S_IRWXU)) < 0)
 		return (aie_error("bmp file opening failed"));
 	env->vars.mlx = mlx_init();
@@ -89,5 +90,8 @@ int			create_bmp_file(t_env *env)
 		return (-1);
 	if (insert_img(env, fd) < 0)
 		return (-1);
+	free_img(env);
+	free(env->vars.mlx);
+	exit_game(env);
 	return (0);
 }

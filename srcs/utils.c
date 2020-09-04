@@ -23,6 +23,7 @@ void		free_map(t_env *env)
 		env->map.map[i] = NULL;
 		++i;
 	}
+	free(env->map.map);
 	env->map.map = NULL;
 }
 

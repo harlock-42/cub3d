@@ -50,6 +50,7 @@ static	int		texture_copy(t_env *env)
 			return (aie_error("Texture doesn't download"));
 		env->tex.addr[i] = (unsigned int *)mlx_get_data_addr(env->tex.img[i],
 		&env->tex.bpp, &env->tex.line_length, &env->tex.endian);
+//		free(env->tex.img[i]);
 		if (!(env->tex.tex[i] = ft_calloc(env->tex.width[i] *
 		env->tex.height[i], sizeof(unsigned int))))
 			return (aie_error("Texture alloc memory failed"));

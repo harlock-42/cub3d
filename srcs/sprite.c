@@ -42,11 +42,11 @@ static		void	sprite_display(t_env *env, int y)
 				while (y < env->sprite.draw_end_y)
 				{
 					//	d
-				ft_printf("y = %d\nres_y = %d\nsprite.height = %d\n", y, env->vars.res_y, env->sprite.height_sprite);
 				d = y * 256 - env->vars.res_y * 128
 						+ env->sprite.height_sprite
 						* 128;
-	ft_printf("d = %d\n", d);
+				if (d < 0)
+					d = 0;
 
 					//	texY
 					tex_y = ((d * env->sprite.height) /

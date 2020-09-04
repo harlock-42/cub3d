@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_data.c                                        :+:      :+:    :+:   */
+/*   exit_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/06 17:03:19 by tallaire          #+#    #+#             */
-/*   Updated: 2020/07/06 17:03:20 by tallaire         ###   ########.fr       */
+/*   Created: 2020/07/06 14:52:04 by tallaire          #+#    #+#             */
+/*   Updated: 2020/07/06 14:52:06 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void		free_img(t_env *env)
+int		escape_game(t_env *env)
 {
-	if (env->wall.img != NULL)
-		mlx_destroy_image(env->vars.mlx, env->wall.img);
+	free_img(env);
+	mlx_clear_window(env->vars.mlx, env->vars.win);
+	mlx_destroy_window(env->vars.mlx, env->vars.win);
+	exit_game(env);
+	exit(0);
+	return (1);
 }

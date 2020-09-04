@@ -33,6 +33,7 @@ static	int		**alloc_map(char **map)
 			return (NULL);
 		++y;
 	}
+	new_map[y] = NULL;
 	return (new_map);
 }
 

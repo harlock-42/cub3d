@@ -42,6 +42,7 @@ SRC_NAME		= aie_error.c\
 			check_res.c\
 			display.c\
 			draw_column_px.c\
+			escape_game.c\
 			exit_game.c\
 			free_data.c\
 			get_color.c\

@@ -26,8 +26,7 @@ static	int	game(t_env *env)
 
 static	int	start_game(t_env *env)
 {
-	ft_printf("res_x = %d\nres_y = %d\n", env->vars.res_x, env->vars.res_y);
-	ft_printf("%p\n", mlx_init());
+	env->vars.mlx = mlx_init();
 	res_max(env);
 	env->vars.win = mlx_new_window(env->vars.mlx,
 		env->vars.res_x, env->vars.res_y, "Cub3d");

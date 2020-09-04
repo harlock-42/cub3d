@@ -81,8 +81,6 @@ typedef	struct		s_sprite
 	int				line_length;
 	int				endian;
 	unsigned	int	*sprite;
-	int				*first;
-	int				*second;
 	float			*z_buffer;
 	float			*distance;
 	int				*order;
@@ -91,7 +89,6 @@ typedef	struct		s_sprite
 typedef	struct		s_tex
 {
 	void	**img;
-	unsigned	int			**buffer;
 	unsigned int	**addr;
 	int		bpp;
 	int		line_length;
@@ -257,7 +254,11 @@ void		my_mlx_pixel_put(t_env *env, int x, int y, unsigned int color);
 /*
 ** exit_game.c
 */
-int		exit_game(t_env *env);
+void		exit_game(t_env *env);
+/*
+** escape_game.c
+*/
+int		escape_game(t_env *env);
 /*
 ** free_data.c
 */

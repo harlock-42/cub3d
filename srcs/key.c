@@ -28,14 +28,13 @@ int	key_released(int keycode, t_env *env)
 		env->key.rot_right = 0;
 	else if (keycode == KEY_EXIT_HOOK)
 		env->key.escape = 1;
-//	printf("release = %d\n", keycode);
 	return (keycode);
 }
 
 int	key_pressed(int keycode, t_env *env)
 {
 	if (keycode == KEY_EXIT_HOOK)
-		exit_game(env);
+		escape_game(env);
 	else if (keycode == KEY_W)
 		env->key.forward = 1;
 	else if (keycode == KEY_S)

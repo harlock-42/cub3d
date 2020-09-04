@@ -21,10 +21,6 @@ static	int		init_env_sprite(t_env *env)
 	{
 		if (!(env->sprite.distance = (float *)ft_calloc(env->sprite.num, sizeof(float))))
 			return (-1);
-		if (!(env->sprite.first = (int *)ft_calloc(env->sprite.num, sizeof(int))))
-			return (-1);
-		if (!(env->sprite.second = (int *)ft_calloc(env->sprite.num, sizeof(int))))
-			return (-1);
 	}
 	env->sprite.img = NULL;
 	env->sprite.X = 0;
@@ -77,29 +73,8 @@ void			init_check(t_env *env)
 	env->check.c = 0;
 }
 
-static	int		alloc_buffer_texture(t_env *env)
-{
-	size_t	y;
-
-	y = 0;
-	if (!(env->tex.buffer = (unsigned int **)malloc(sizeof(unsigned int *)
-	* env->vars.res_y)))
-		return (aie_error("alloc memory for buffer texture failed\n"));
-	while (y < (size_t)env->vars.res_y)
-	{
-		if (!(env->tex.buffer[y] = malloc(sizeof(unsigned int)
-		* env->vars.res_x)))
-			return (aie_error("alloc memory for buffer texture failed\n"));
-		++y;
-	}
-	env->tex.buffer[y] = NULL;
-	return (1);
-}
-
 int				init_raycaster(t_env *env)
 {
-	if (alloc_buffer_texture(env) < 0)
-		return (-1);
 	init_plane(env);
 	init_dir_player(env);
 	init_env_ray(env);

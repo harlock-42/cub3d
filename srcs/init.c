@@ -91,7 +91,9 @@ int		init_env(t_env *env)
 {
 	init_env_wall(env);
 	init_env_key(env);
-	init_dir_player(env);
+	env->player.dir = 0.0;
+	env->player.pos_x = 0.0;
+	env->player.pos_y = 0.0;
 	if (init_env_tex(env) < 0)
 		return (aie_error("texture alloc memory failed"));
 	init_plane(env);
