@@ -37,12 +37,8 @@ static	int		**alloc_map(char **map)
 	return (new_map);
 }
 
-static	int		get_map(char **file, t_env *env)
+static	int		get_map(char **file, t_env *env, size_t y, size_t x)
 {
-	size_t	x;
-	size_t	y;
-
-	y = 0;
 	if (!(env->map.map = alloc_map(file)))
 		return (aie_error("map alloc memory failed"));
 	while (file && file[y])
@@ -55,7 +51,7 @@ static	int		get_map(char **file, t_env *env)
 				env->sprite.num += 1;
 				env->map.map[y][x] = 2;
 			}
-				else if (file[y][x] == ' ' || file[y][x] == '1')
+			else if (file[y][x] == ' ' || file[y][x] == '1')
 				env->map.map[y][x] = 1;
 			else
 				env->map.map[y][x] = 0;
@@ -71,7 +67,12 @@ static	int		get_map(char **file, t_env *env)
 
 static	int		get_map_and_sprite_pos(char **map, t_env *env)
 {
-	if (get_map(map, env) < 0)
+	size_t	x;
+	size_t	y;
+
+	x = 0;
+	y = 0;
+	if (get_map(map, env, y, x) < 0)
 		return (-1);
 	if (sprite_pos(env) < 0)
 		return (aie_error("sprite alloc memory failed"));
