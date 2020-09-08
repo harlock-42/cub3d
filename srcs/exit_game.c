@@ -39,8 +39,8 @@ static	void	free_texture_sprite(t_env *env)
 	{
 		if (env->tex.tex)
 			free(env->tex.tex[i]);
-//		if (env->tex.img)
-//			free(env->tex.img[i]);
+		if (env->tex.img)
+			free(env->tex.img[i]);
 		if (env->vars.path_tex)
 			free(env->vars.path_tex[i]);
 		++i;

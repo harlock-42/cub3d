@@ -48,7 +48,6 @@ char		*strdup_path(char *str)
 	return (new);
 }
 
-/*
 void		res_max(t_env *env)
 {
 	int	res_x_max;
@@ -62,4 +61,3 @@ void		res_max(t_env *env)
 	if (env->vars.res_y > res_y_max)
 		env->vars.res_y = res_y_max;
 }
-*/

@@ -21,8 +21,8 @@ static	int			print_tex_wall(t_env *env, int side, int y, int x)
 	color = 0;
 	while (y >= env->wall.draw_start && y < env->wall.draw_end)
 	{
-		tex_y = ((y - env->vars.res_y / 2 + env->wall.line_height / 2) *
-			env->tex.height[side]) / env->wall.line_height;
+		tex_y = (int)(((y - env->vars.res_y / 2 + env->wall.line_height / 2) *
+			env->tex.height[side]) / env->wall.line_height);
 		color = env->tex.tex[side][env->tex.width[side] * (int)floor(tex_y) +
 			env->tex.tex_x];
 		my_mlx_pixel_put(env, x, y, color);
@@ -112,12 +112,12 @@ void				wall_size(t_env *env)
 		env->ray.perp_wall_dist = 0.005;
 	env->wall.line_height = (int)(env->vars.res_y /
 		env->ray.perp_wall_dist);
-	env->wall.draw_start = -env->wall.line_height / 2 +
-		env->vars.res_y / 2;
+	env->wall.draw_start = (int)(-env->wall.line_height / 2 +
+		env->vars.res_y / 2);
 	if (env->wall.draw_start < 0)
 		env->wall.draw_start = 0;
-	env->wall.draw_end = env->wall.line_height / 2 +
-		env->vars.res_y / 2;
+	env->wall.draw_end = (int)(env->wall.line_height / 2 +
+		env->vars.res_y / 2);
 	if (env->wall.draw_end >= env->vars.res_y)
 		env->wall.draw_end = env->vars.res_y;
 }

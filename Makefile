@@ -22,8 +22,8 @@ LS		= ls -la
 
 CFLAGS		= -Werror -Wextra -Wall -c
 
-LFLAGS		= -framework OpenGL -framework AppKit
-#LFLAGS		= -lm -lbsd -lX11 -lXext
+#LFLAGS		= -framework OpenGL -framework AppKit
+LFLAGS		= -lm -lbsd -lX11 -lXext
 
 INCLUDE_NAME		= cub3d.h\
 			  ft_printf.h\
@@ -87,7 +87,7 @@ LIBFT_SRC_PATH		= ./ft_printf/libft
 
 LIBPRINTF_SRC_PATH	= ./ft_printf
 
-MLX_LINUX_PATH		= ./minilibx-linux
+MLX_LINUX_PATH		= ./minilibx_linux
 
 INCLUDE			= $(addprefix $(INCLUDE_PATH)/, $(INCLUDE_NAME))
 
@@ -115,9 +115,9 @@ $(LIB_PATH):
 	@echo Creating library directory
 	@mkdir -p $(LIB_PATH)
 
-$(NAME): $(OBJ) $(LIBPRINTF) $(LIBFT) $(LIBMLX_MAC) $(INCLUDE)
+$(NAME): $(OBJ) $(LIBPRINTF) $(LIBFT) $(LIBMLX_LINUX) $(INCLUDE)
 	@echo Compiling executable $(NAME)..
-	@$(CC) -o $(NAME) $(OBJ) $(LIBPRINTF) $(LIBFT) $(LIBMLX_MAC) $(LFLAGS)
+	@$(CC) -o $(NAME) $(OBJ) $(LIBPRINTF) $(LIBFT) $(LIBMLX_LINUX) $(LFLAGS)
 	@$(LS)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
@@ -140,9 +140,9 @@ $(LIBFT_SRC):
 	@echo Compiling LIBFT..
 	@(cd $(LIBFT_SRC_PATH) && $(MAKE))
 
-#$(LIBMLX_LINUX):
-#	@echo Compiling minilibx linux..
-#	@(cd $(MLX_LINUX_PATH) && $(MAKE))
+$(LIBMLX_LINUX):
+	@echo Compiling minilibx linux..
+	@(cd $(MLX_LINUX_PATH) && $(MAKE))
 
 clean:
 	@echo Delete $(OBJ)..
@@ -150,8 +150,8 @@ clean:
 	@echo Delete library files and directory
 	@$(RM) $(LIBFT) $(LIBPRINTF) $(LIB_PATH)
 	@(cd $(LIBPRINTF_SRC_PATH) && $(MAKE) clean)
-#	@$(LS)
-#	@(cd $(MLX_LINUX_PATH) && $(MAKE) clean)
+	@$(LS)
+	@(cd $(MLX_LINUX_PATH) && $(MAKE) clean)
 	@$(LS)
 
 fclean: clean

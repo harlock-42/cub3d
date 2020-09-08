@@ -32,7 +32,7 @@ static		void	dda(t_env *env)
 			env->ray.map_y += env->ray.step_y;
 			env->ray.side = 1;
 		}
-		if (env->map.map[(int)(env->ray.map_y)][(int)(env->ray.map_x)] > 0)
+		if (env->map.map[(int)(env->ray.map_y)][(int)(env->ray.map_x)] == 1)
 			hit = 1;
 	}
 	side = wich_plan(env);

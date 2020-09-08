@@ -26,7 +26,7 @@ static	int	game(t_env *env)
 static	int	start_game(t_env *env)
 {
 	env->vars.mlx = mlx_init();
-//	res_max(env);
+	res_max(env);
 	env->vars.win = mlx_new_window(env->vars.mlx,
 		env->vars.res_x, env->vars.res_y, "Cub3d");
 	if (get_texture_and_sprite(env) < 0)

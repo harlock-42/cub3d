@@ -51,8 +51,11 @@ static	int		get_map(char **file, t_env *env)
 		while (file[y][x])
 		{
 			if (file[y][x] == '2')
+			{
 				env->sprite.num += 1;
-			if (file[y][x] == ' ' || file[y][x] == '1')
+				env->map.map[y][x] = 2;
+			}
+				else if (file[y][x] == ' ' || file[y][x] == '1')
 				env->map.map[y][x] = 1;
 			else
 				env->map.map[y][x] = 0;

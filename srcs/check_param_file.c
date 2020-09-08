@@ -44,8 +44,8 @@ int				check_param_file(t_env *env)
 	size_t		j;
 	int			ret;
 
-	i = 0;
 	j = 0;
+	ret = 0;
 	if (is_a_map(env->vars.map) < 0)
 		return (aie_error("map missing"));
 	while (env->vars.map && env->vars.map[j])

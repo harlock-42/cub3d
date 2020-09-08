@@ -25,6 +25,7 @@
 /*
 ** key for mac
 */
+/*
 #define KEY_A 0
 #define KEY_D 2
 #define KEY_S 1
@@ -39,11 +40,11 @@
 #define KEY_RELEASE 3
 #define KEY_EXPOSE_HOOK 12
 #define KEY_EXIT_HOOK 53
-
+*/
 /*
 ** key for linux
 */
-/*
+
 #define KEY_A 97
 #define KEY_D 100
 #define KEY_S 115
@@ -51,7 +52,6 @@
 #define KEY_LEFT 65361
 #define KEY_RIGHT 65363
 #define KEY_EXIT_HOOK 65307
-*/
 
 typedef	struct		s_sprite
 {
@@ -212,12 +212,13 @@ int		is_arg_save(char *arg);
 ** check_color_data.c
 */
 int		check_color_data(char *str);
-
 /*
 ** check_map.c
 */
 int			check_map(char **map);
-
+/*
+** free_data.c
+*/
 void		free_file(void **map);
 /*
 ** check_param_file.c
@@ -260,7 +261,9 @@ int		escape_game(t_env *env);
 ** free_data.c
 */
 void		free_img(t_env *env);
-
+/*
+** parsing_map.c
+*/
 int		is_map_start(char *map);
 int		parsing_file(t_env *env);
 /*
@@ -275,9 +278,6 @@ int		get_data_id(t_env *env, char *str);
 ** get_file.c
 */
 int		get_file(t_env *env, const char *file_name);
-
-
-int		get_north(t_vars *vars, char * str);
 /*
 ** get_map.c
 */
