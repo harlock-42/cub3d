@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/05 22:57:44 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/01 19:46:48 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 11:54:09 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 11:54:27 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	my_mlx_pixel_put(t_env *env, int x, int y, unsigned int color)
+void		my_mlx_pixel_put(t_env *env, int x, int y, unsigned int color)
 {
 	unsigned int	*dst;
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture_and_sprite.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/04 18:16:00 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:51:10 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 12:04:16 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 12:05:29 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	int		sprite_copy(t_env * env)
+static	int		sprite_copy(t_env *env)
 {
 	int		end;
 	int		i;
@@ -50,7 +50,6 @@ static	int		texture_copy(t_env *env)
 			return (aie_error("Texture doesn't download"));
 		env->tex.addr[i] = (unsigned int *)mlx_get_data_addr(env->tex.img[i],
 		&env->tex.bpp, &env->tex.line_length, &env->tex.endian);
-//		free(env->tex.img[i]);
 		if (!(env->tex.tex[i] = ft_calloc(env->tex.width[i] *
 		env->tex.height[i], sizeof(unsigned int))))
 			return (aie_error("Texture alloc memory failed"));

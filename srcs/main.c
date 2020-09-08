@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/18 16:35:24 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/03 16:48:17 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 12:36:10 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 12:36:35 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 static	int	game(t_env *env)
 {
 	free_img(env);
-	if (new_image(env) < 0)
-		return (-1);
+	new_image(env);
 	move_player(env);
 	raycast(env);
 	mlx_put_image_to_window(env->vars.mlx, env->vars.win, env->wall.img, 0,
@@ -27,7 +26,7 @@ static	int	game(t_env *env)
 static	int	start_game(t_env *env)
 {
 	env->vars.mlx = mlx_init();
-	res_max(env);
+//	res_max(env);
 	env->vars.win = mlx_new_window(env->vars.mlx,
 		env->vars.res_x, env->vars.res_y, "Cub3d");
 	if (get_texture_and_sprite(env) < 0)
@@ -39,7 +38,7 @@ static	int	start_game(t_env *env)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_env	env;
 
@@ -49,15 +48,15 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	if (init_env(&env) < 0)
-		return (0);
+		return (exit_game(&env));
 	if (get_file(&env, argv[1]) < 0)
-		return (0);
+		return (exit_game(&env));
 	if (init_vars(&env) < 0)
-		return (0);
+		return (exit_game(&env));
 	if (parsing_file(&env) < 0)
-		return (0);
+		return (exit_game(&env));
 	if (init_raycaster(&env) < 0)
-		return (0);
+		return (exit_game(&env));
 	if (argc == 3)
 		if (is_arg_save(argv[2]) > 0)
 			return (create_bmp_file(&env));

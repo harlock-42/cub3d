@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/10 17:34:28 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:14:56 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 11:58:16 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 11:58:37 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ int				get_color_ceil_and_floor(t_env *env, char *str)
 	}
 	return (1);
 }
-

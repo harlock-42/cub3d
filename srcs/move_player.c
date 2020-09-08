@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/06 22:11:07 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/03 15:30:29 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 12:37:19 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 12:37:48 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static	void	move_rot(t_env *env)
 {
 	float	old_dir_x;
 	float	old_plane_x;
-	int	rot;
+	int		rot;
 
 	if (env->key.rot_left == 1)
 		rot = (-1);
@@ -82,7 +82,7 @@ static	void	move_back_forward(t_env *env)
 	}
 }
 
-void		move_player(t_env *env)
+void			move_player(t_env *env)
 {
 	if (env->key.forward == 1 || env->key.back == 1)
 		move_back_forward(env);
@@ -91,4 +91,3 @@ void		move_player(t_env *env)
 	if (env->key.left == 1 || env->key.right == 1)
 		move_aside(env);
 }
-

@@ -1,10 +1,10 @@
-R  600 21
+R  1500 1000
 SO ./texture/harlock_drinking.xpm
-NO ./texture/nausica_harlock.xpm
-EA ./texture/harlock_personnage.xpm
+NO ./texture/mayu_harlock.xpm
+EA ./texture/mazone_harlock.xpm
 WE ./texture/harlock_rafflesia.xpm
 
-S ./sprite/harlock_arcadia_transparent.xpm
+S ./sprite/mazone_forest_harlock.xpm
 
 F 220, 145, 30
 C 220, 255, 255

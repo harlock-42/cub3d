@@ -6,13 +6,12 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/03 11:22:06 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/08 12:17:15 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEF_CUB3D_H
 # define DEF_CUB3D_H
-
 # define RES_MAX_X 2560
 # define RES_MAX_Y 1440
 # define FOV ((3 * M_PI) / 8)
@@ -23,11 +22,9 @@
 # include "libft.h"
 # include "ft_printf.h"
 # include "mlx.h"
-
 /*
 ** key for mac
 */
-/*
 #define KEY_A 0
 #define KEY_D 2
 #define KEY_S 1
@@ -42,12 +39,11 @@
 #define KEY_RELEASE 3
 #define KEY_EXPOSE_HOOK 12
 #define KEY_EXIT_HOOK 53
-*/
 
 /*
 ** key for linux
 */
-
+/*
 #define KEY_A 97
 #define KEY_D 100
 #define KEY_S 115
@@ -55,6 +51,7 @@
 #define KEY_LEFT 65361
 #define KEY_RIGHT 65363
 #define KEY_EXIT_HOOK 65307
+*/
 
 typedef	struct		s_sprite
 {
@@ -245,7 +242,7 @@ int		check_res(char *str, t_env *env);
 /*
 ** display.c
 */
-int			new_image(t_env *env);
+void			new_image(t_env *env);
 /*
 ** draw_column_px.c
 */
@@ -254,7 +251,7 @@ void		my_mlx_pixel_put(t_env *env, int x, int y, unsigned int color);
 /*
 ** exit_game.c
 */
-void		exit_game(t_env *env);
+int			exit_game(t_env *env);
 /*
 ** escape_game.c
 */
@@ -303,6 +300,10 @@ int			init_vars(t_env *env);
 */
 void		init_check(t_env *env);
 int			init_raycaster(t_env *env);
+/*
+** init_3.c
+*/
+void		init_env_tex_2(t_env *env);
 /*
 ** key.c
 */

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_color_data.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/31 14:50:58 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:46:07 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 11:39:58 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 11:41:35 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	int	is_eol_next(char *str)
+static		int	is_eol_next(char *str)
 {
 	size_t		i;
 
@@ -30,7 +30,7 @@ static	int	is_eol_next(char *str)
 ** check le positionnement des virgules pour le floor et le ciel.
 */
 
-static	int	check_coma(char *str)
+static		int	check_coma(char *str)
 {
 	size_t		i;
 
@@ -79,7 +79,7 @@ static		int	check_rgb_size(char *str, size_t *i)
 ** il ne doit y en avoir seulement 3.
 */
 
-static	int	check_arg_number(char *str)
+static		int	check_arg_number(char *str)
 {
 	size_t	i;
 	size_t	count;
@@ -92,7 +92,8 @@ static	int	check_arg_number(char *str)
 			++count;
 		while (str[i] && str[i] >= '0' && str[i] <= '9')
 			++i;
-		++i;
+		if (str[i] != '\0')
+			++i;
 	}
 	if (count < 3)
 		return (-1);
@@ -105,7 +106,7 @@ static	int	check_arg_number(char *str)
 ** check la validite des couleur du floor et du ceil.
 */
 
-int			check_color_data(char *str)
+int				check_color_data(char *str)
 {
 	size_t	i;
 	size_t	count;

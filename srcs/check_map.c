@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/31 18:29:21 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:35:54 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 11:43:55 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 11:48:19 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ int			check_map(char **map)
 	if (check_space(map) < 0)
 		return (-1);
 	if (check_is_map_close(map) < 0)
-		return (aie_error("The map is not close"));
+		return (-1);
 	return (1);
 }

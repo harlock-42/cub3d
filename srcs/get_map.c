@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/29 20:11:26 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:42:01 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 12:00:59 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 12:12:18 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	int		**alloc_map(char **map)
 {
-	int	**new_map;
+	int		**new_map;
 	size_t	y;
 	size_t	x;
 	size_t	size;
@@ -37,7 +37,7 @@ static	int		**alloc_map(char **map)
 	return (new_map);
 }
 
-static	int	get_map(char **file, t_env *env)
+static	int		get_map(char **file, t_env *env)
 {
 	size_t	x;
 	size_t	y;
@@ -66,6 +66,15 @@ static	int	get_map(char **file, t_env *env)
 	return (1);
 }
 
+static	int		get_map_and_sprite_pos(char **map, t_env *env)
+{
+	if (get_map(map, env) < 0)
+		return (-1);
+	if (sprite_pos(env) < 0)
+		return (aie_error("sprite alloc memory failed"));
+	return (1);
+}
+
 static	void	get_dir_player(t_env *env, char pos)
 {
 	if (pos == 'S')
@@ -78,7 +87,7 @@ static	void	get_dir_player(t_env *env, char pos)
 		env->player.dir = M_PI / 2;
 }
 
-int		get_pos_player(char **map, t_env *env)
+int				get_pos_player(char **map, t_env *env)
 {
 	int	x;
 	int	y;
@@ -102,9 +111,7 @@ int		get_pos_player(char **map, t_env *env)
 		}
 		++y;
 	}
-	if (get_map(map, env) < 0)
+	if (get_map_and_sprite_pos(map, env) < 0)
 		return (-1);
-	if (sprite_pos(env) < 0)
-		return (aie_error("sprite alloc memory failed"));
 	return (1);
 }

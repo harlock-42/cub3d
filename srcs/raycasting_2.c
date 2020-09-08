@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/04 17:11:42 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/03 16:53:32 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 12:46:43 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 12:47:11 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void		wall_x(t_env *env, int tex_width)
+void			wall_x(t_env *env, int tex_width)
 {
 	(void)env;
 	(void)tex_width;
@@ -24,7 +24,7 @@ static	void	init(t_env *env)
 	env->ray.plane_y = 0.0;
 }
 
-void		init_plane(t_env *env)
+void			init_plane(t_env *env)
 {
 	float	dir;
 
@@ -50,10 +50,9 @@ void		init_plane(t_env *env)
 		env->ray.plane_x = (-0.66);
 		env->ray.plane_y = 0.0;
 	}
-
 }
 
-void		init_dir_player(t_env *env)
+void			init_dir_player(t_env *env)
 {
 	float	dir;
 

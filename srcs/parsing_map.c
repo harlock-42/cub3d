@@ -6,13 +6,13 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 15:12:18 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/03 14:07:24 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/08 12:40:09 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int		is_map_start(char *map)
+int				is_map_start(char *map)
 {
 	size_t	i;
 
@@ -35,7 +35,7 @@ int		is_map_start(char *map)
 	return (-1);
 }
 
-int	static	get_param_id(t_env *env, char *str)
+static	int		get_param_id(t_env *env, char *str)
 {
 	size_t	i;
 	size_t	k;
@@ -60,7 +60,7 @@ int	static	get_param_id(t_env *env, char *str)
 	return (-1);
 }
 
-void		free_file(void **map)
+void			free_file(void **map)
 {
 	size_t	i;
 
@@ -75,10 +75,10 @@ void		free_file(void **map)
 	map = NULL;
 }
 
-int	static	parsing_param(t_env *env)
+static	int		parsing_param(t_env *env)
 {
 	size_t	i;
-	int	ret;
+	int		ret;
 
 	i = 0;
 	ret = 0;
@@ -102,7 +102,7 @@ int	static	parsing_param(t_env *env)
 	return (1);
 }
 
-int		parsing_file(t_env *env)
+int				parsing_file(t_env *env)
 {
 	if (parsing_param(env) < 0)
 		return (-1);

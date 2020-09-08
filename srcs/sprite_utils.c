@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite.c                                           :+:      :+:    :+:   */
+/*   sprite_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 18:35:15 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:42:45 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/08 13:38:02 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void				sort_sprite(t_env *env)
+void			sort_sprite(t_env *env)
 {
 	int			i;
 	int			j;
@@ -30,7 +30,7 @@ void				sort_sprite(t_env *env)
 				tmp = env->sprite.distance[j];
 				env->sprite.distance[j] = env->sprite.distance[j + 1];
 				env->sprite.distance[j + 1] = tmp;
-				tmp = env->sprite.order[j];;
+				tmp = env->sprite.order[j];
 				env->sprite.order[j] = env->sprite.order[j + 1];
 				env->sprite.order[j + 1] = tmp;
 			}
@@ -40,25 +40,13 @@ void				sort_sprite(t_env *env)
 	}
 }
 
-int				sprite_pos(t_env *env)
+static	void	sprite_pos_loop(t_env *env, int start, int i)
 {
-	int		start;
-	int		y;
 	int		x;
-	int		i;
+	int		y;
 
-	start = 0;
-	y = 0;
 	x = 0;
-	i = 0;
-	if (!(env->sprite.x = (float *)malloc(sizeof(float) * env->sprite.num)))
-		return (-1);
-	if (!(env->sprite.y = (float *)malloc(sizeof(float) * env->sprite.num)))
-		return (-1);
-	if (!(env->sprite.order = (int *)malloc(sizeof(int) * env->sprite.num)))
-		return (-1);
-	while (is_map_start(env->vars.map[start]) < 0)
-		++start;
+	y = 0;
 	while (env->vars.map[start + y] != NULL)
 	{
 		x = 0;
@@ -74,6 +62,24 @@ int				sprite_pos(t_env *env)
 		}
 		++y;
 	}
+}
+
+int				sprite_pos(t_env *env)
+{
+	int		start;
+	int		i;
+
+	start = 0;
+	i = 0;
+	if (!(env->sprite.x = (float *)malloc(sizeof(float) * env->sprite.num)))
+		return (-1);
+	if (!(env->sprite.y = (float *)malloc(sizeof(float) * env->sprite.num)))
+		return (-1);
+	if (!(env->sprite.order = (int *)malloc(sizeof(int) * env->sprite.num)))
+		return (-1);
+	while (is_map_start(env->vars.map[start]) < 0)
+		++start;
+	sprite_pos_loop(env, start, i);
 	return (1);
 }
 
@@ -94,11 +100,3 @@ void			sprite_distance(t_env *env)
 		++i;
 	}
 }
-
-
-
-
-
-
-
-

@@ -3,25 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/09 13:15:13 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/03 10:22:19 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 12:31:53 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 13:23:54 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	int		init_env_sprite(t_env *env)
+static	void	init_env_sprite_2(t_env *env)
 {
-	if (!(env->sprite.z_buffer = (float *)ft_calloc(env->vars.res_x,
-	sizeof(float))))
-		return (-1);
-	if (env->sprite.num > 0)
-	{
-		if (!(env->sprite.distance = (float *)ft_calloc(env->sprite.num, sizeof(float))))
-			return (-1);
-	}
 	env->sprite.img = NULL;
 	env->sprite.X = 0;
 	env->sprite.Y = 0;
@@ -41,6 +33,22 @@ static	int		init_env_sprite(t_env *env)
 	env->sprite.bpp = 0;
 	env->sprite.line_length = 0;
 	env->sprite.endian = 0;
+}
+
+static	int		init_env_sprite(t_env *env)
+{
+	env->sprite.z_buffer = NULL;
+	env->sprite.sprite = NULL;
+	if (!(env->sprite.z_buffer = (float *)ft_calloc(env->vars.res_x,
+	sizeof(float))))
+		return (-1);
+	init_env_sprite_2(env);
+	if (env->sprite.num > 0)
+	{
+		if (!(env->sprite.distance = (float *)ft_calloc(env->sprite.num,
+			sizeof(float))))
+			return (-1);
+	}
 	return (1);
 }
 

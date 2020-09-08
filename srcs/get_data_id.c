@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_param_id_file.c                                :+:      :+:    :+:   */
+/*   get_data_id.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 16:35:27 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/03 13:38:09 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 11:58:50 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 11:59:14 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static	int	get_sprite_path(t_env *env, char *str)
+static	int		get_sprite_path(t_env *env, char *str)
 {
 	size_t		i;
 
@@ -63,7 +63,7 @@ static	void	get_res(t_env *env, char *str)
 	i = get_res_data(str, i, &env->vars.res_y);
 }
 
-int	get_data_id(t_env *env, char *str)
+int				get_data_id(t_env *env, char *str)
 {
 	if (*str == 'R')
 	{

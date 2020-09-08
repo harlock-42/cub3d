@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_texture_id_file.c                              :+:      :+:    :+:   */
+/*   get_texture_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/28 16:51:52 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/03 14:06:06 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 12:08:12 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 12:08:14 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static	int	get_tex_path(t_env *env, char *str, int i)
 	return (1);
 }
 
-int	get_texture_path(t_env *env, char *str)
+int			get_texture_path(t_env *env, char *str)
 {
 	size_t	i;
 

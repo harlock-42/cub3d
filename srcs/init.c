@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/06 13:56:50 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 17:47:29 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 12:08:33 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 12:15:48 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int			init_vars(t_env *env)
+int				init_vars(t_env *env)
 {
 	int		i;
 
@@ -21,6 +21,7 @@ int			init_vars(t_env *env)
 	env->vars.res_x = 0;
 	env->vars.res_y = 0;
 	env->sprite.num = 0;
+	env->vars.path_tex = NULL;
 	if (!(env->vars.path_tex = (char **)malloc(sizeof(char *) * 4)))
 		return (aie_error("texture alloc memory failed"));
 	while (i < 4)
@@ -31,11 +32,14 @@ int			init_vars(t_env *env)
 	return (1);
 }
 
-static	int	init_env_tex(t_env *env)
+static	int		init_env_tex(t_env *env)
 {
 	int		i;
 
 	i = 0;
+	env->tex.tex = NULL;
+	env->tex.addr = NULL;
+	env->tex.img = NULL;
 	if (!(env->tex.tex = (unsigned int **)malloc(sizeof(unsigned int *) * 4)))
 		return (aie_error("texture alloc memory failed"));
 	if (!(env->tex.addr = (unsigned int **)malloc(sizeof(unsigned int *) * 4)))
@@ -50,14 +54,7 @@ static	int	init_env_tex(t_env *env)
 		env->tex.addr[i] = NULL;
 		++i;
 	}
-	env->tex.bpp = 0;
-	env->tex.line_length = 0;
-	env->tex.endian = 0;
-	env->tex.line_height = 0;
-	env->tex.tex_x = 0;
-	env->tex.tex_y = 0;
-	env->tex.wall_x = 0.0;
-	env->tex.step = 0.0;
+	init_env_tex_2(env);
 	return (1);
 }
 
@@ -87,16 +84,28 @@ static	void	init_env_wall(t_env *env)
 	env->wall.floor_color = 0;
 }
 
-int		init_env(t_env *env)
+int				init_env(t_env *env)
 {
 	init_env_wall(env);
 	init_env_key(env);
 	env->player.dir = 0.0;
 	env->player.pos_x = 0.0;
 	env->player.pos_y = 0.0;
+	env->sprite.distance = NULL;
+	env->sprite.order = NULL;
+	env->sprite.y = NULL;
+	env->sprite.x = NULL;
+	env->tex.tex = NULL;
+	env->tex.img = NULL;
+	env->vars.path_tex = NULL;
+	env->vars.path_sprite = NULL;
+	env->sprite.z_buffer = NULL;
+	env->sprite.sprite = NULL;
+	env->sprite.addr = NULL;
+	env->map.map = NULL;
 	if (init_env_tex(env) < 0)
 		return (aie_error("texture alloc memory failed"));
 	init_plane(env);
 	init_check(env);
-	return (1);
+	return (0);
 }

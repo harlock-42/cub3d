@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   get_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/27 09:54:40 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:09:36 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 11:59:40 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 12:00:46 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	static	free_data_file(t_env *env)
+static	void	free_data_file(t_env *env)
 {
 	size_t	i;
 
@@ -25,7 +25,7 @@ void	static	free_data_file(t_env *env)
 	free(env->vars.map);
 }
 
-static	int	realloc_file(t_env *env, char *line)
+static	int		realloc_file(t_env *env, char *line)
 {
 	size_t		nb_line;
 	size_t		i;
@@ -53,7 +53,7 @@ static	int	realloc_file(t_env *env, char *line)
 ** Verifie que le fichier passer en paramettre possede l extention .cub
 */
 
-static	int	file_is_cub(const char *str)
+static	int		file_is_cub(const char *str)
 {
 	size_t		i;
 
@@ -71,17 +71,17 @@ static	int	file_is_cub(const char *str)
 	return (1);
 }
 
-int		get_file(t_env *env, const char *file_name)
+int				get_file(t_env *env, const char *file_name)
 {
-	int	fd;
-	int	ret;
+	int		fd;
+	int		ret;
 	char	*line;
 
 	env->vars.map = NULL;
 	if (file_is_cub(file_name) < 0)
 		return (aie_error("wrong file type"));
 	if (!(fd = open(file_name, O_RDONLY)))
-		return (aie_error("Impossible to read data file"));;
+		return (aie_error("Impossible to read data file"));
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		if (ret < 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/12 16:36:49 by harlock           #+#    #+#             */
-/*   Updated: 2020/09/03 12:36:03 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 12:41:44 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 12:42:54 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static	int			print_tex_wall(t_env *env, int side, int y, int x)
 	return (y);
 }
 
-int			wich_plan(t_env *env)
+int					wich_plan(t_env *env)
 {
 	int		side;
 

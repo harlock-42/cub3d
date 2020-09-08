@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_param_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/27 19:58:52 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/03 13:36:10 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 11:46:49 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 11:49:27 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,14 @@ static	int		is_a_map(char **map)
 ** sont situee en premier character de la ligne.
 */
 
-int		check_param_file(t_env *env)
+int				check_param_file(t_env *env)
 {
 	size_t		i;
 	size_t		j;
-	int		ret;
+	int			ret;
 
 	i = 0;
 	j = 0;
-	ret = 0;
 	if (is_a_map(env->vars.map) < 0)
 		return (aie_error("map missing"));
 	while (env->vars.map && env->vars.map[j])

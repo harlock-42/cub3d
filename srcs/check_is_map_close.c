@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_is_map_close.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/01 16:19:30 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:34:49 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 11:41:50 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 11:42:47 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static		int		check_down(char **map, size_t y, size_t x)
 	size_t	size;
 
 	size = y;
-	while (map[size + 1] && ft_strlen(map[size + 1]) > x && map[size + 1][x] != ' ')
+	while (map[size + 1] && ft_strlen(map[size + 1]) > x &&
+		map[size + 1][x] != ' ')
 		++size;
 	while (y < size && map[y + 1])
 	{
@@ -74,11 +75,11 @@ static		int		check_up(char **map, size_t y, size_t x)
 
 /*
 ** verifie que la map est entouree uniquement de 1.
-** Pour cela, la fonction verifie si un 1 existe audessus, en dessous, 
+** Pour cela, la fonction verifie si un 1 existe audessus, en dessous,
 ** a droite et gauche de toute les cases qui ne sont pas des 1.
 */
 
-int			check_is_map_close(char **map)
+int					check_is_map_close(char **map)
 {
 	size_t		y;
 	size_t		x;

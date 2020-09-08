@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   arg_save.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: harlock <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/29 18:43:03 by harlock           #+#    #+#             */
-/*   Updated: 2020/09/03 18:31:13 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/07 21:54:53 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 11:39:45 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int			is_arg_save(char *arg)
+int				is_arg_save(char *arg)
 {
 	if (arg[0] == '-' && arg[1] == '-' && arg[2] == 's' && arg[3] == 'a' &&
 		arg[4] == 'v' && arg[5] == 'e')
@@ -44,7 +44,7 @@ static	int		insert_img(t_env *env, int fd)
 	return (1);
 }
 
-static	int		insert_header(t_env *env, int fd)
+static	int		insert_header(int fd, int res_x, int res_y)
 {
 	unsigned	char	*header;
 
@@ -52,20 +52,20 @@ static	int		insert_header(t_env *env, int fd)
 		return (aie_error("Header bmp file alloc memory failed"));
 	header[0] = 'B';
 	header[1] = 'M';
-	header[2] = (unsigned char)(54 + env->vars.res_x * (env->vars.res_y - 1) * 4);
-	header[3] = (unsigned char)((54 + env->vars.res_x * (env->vars.res_y - 1) * 4) >> 8);
-	header[4] = (unsigned char)((54 + env->vars.res_x * (env->vars.res_y - 1) * 4) >> 16);
-	header[5] = (unsigned char)((54 + env->vars.res_x * (env->vars.res_y - 1) * 4) >> 24);
+	header[2] = (unsigned char)(54 + res_x * (res_y - 1) * 4);
+	header[3] = (unsigned char)((54 + res_x * (res_y - 1) * 4) >> 8);
+	header[4] = (unsigned char)((54 + res_x * (res_y - 1) * 4) >> 16);
+	header[5] = (unsigned char)((54 + res_x * (res_y - 1) * 4) >> 24);
 	header[10] = 54;
 	header[14] = 40;
-	header[18] = (unsigned char)(env->vars.res_x);
-	header[19] = (unsigned char)(env->vars.res_x >> 8);
-	header[20] = (unsigned char)(env->vars.res_x >> 16);
-	header[21] = (unsigned char)(env->vars.res_x >> 24);
-	header[22] = (unsigned char)(env->vars.res_y);
-	header[23] = (unsigned char)(env->vars.res_y >> 8);
-	header[24] = (unsigned char)(env->vars.res_y >> 16);
-	header[25] = (unsigned char)(env->vars.res_y >> 24);
+	header[18] = (unsigned char)(res_x);
+	header[19] = (unsigned char)(res_x >> 8);
+	header[20] = (unsigned char)(res_x >> 16);
+	header[21] = (unsigned char)(res_x >> 24);
+	header[22] = (unsigned char)(res_y);
+	header[23] = (unsigned char)(res_y >> 8);
+	header[24] = (unsigned char)(res_y >> 16);
+	header[25] = (unsigned char)(res_y >> 24);
 	header[26] = 1;
 	header[28] = 32;
 	write(fd, header, 54);
@@ -73,7 +73,7 @@ static	int		insert_header(t_env *env, int fd)
 	return (1);
 }
 
-int			create_bmp_file(t_env *env)
+int				create_bmp_file(t_env *env)
 {
 	int		fd;
 
@@ -81,12 +81,12 @@ int			create_bmp_file(t_env *env)
 	if ((fd = open("./screen_shot.bmp", O_CREAT | O_WRONLY, S_IRWXU)) < 0)
 		return (aie_error("bmp file opening failed"));
 	env->vars.mlx = mlx_init();
-	res_max(env);
+//	res_max(env);
 	new_image(env);
 	if (get_texture_and_sprite(env) < 0)
 		return (-1);
 	raycast(env);
-	if (insert_header(env, fd) < 0)
+	if (insert_header(fd, env->vars.res_x, env->vars.res_y) < 0)
 		return (-1);
 	if (insert_img(env, fd) < 0)
 		return (-1);

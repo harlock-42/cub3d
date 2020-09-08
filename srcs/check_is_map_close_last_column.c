@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_is_map_close_last_column.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tallaire <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/01 18:45:54 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/02 18:35:58 by tallaire         ###   ########.fr       */
+/*   Created: 2020/09/08 11:42:58 by tallaire          #+#    #+#             */
+/*   Updated: 2020/09/08 11:43:33 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** verifie que le reste de la ligne ne comporte que des 1.
 */
 
-static		int	is_last_one(char *line)
+static		int		is_last_one(char *line)
 {
 	size_t	i;
 
@@ -34,7 +34,7 @@ static		int	is_last_one(char *line)
 ** verifie que la gine est fermee par 1 valide.
 */
 
-static		int	is_line_ok(char **map, size_t y, size_t x)
+static		int		is_line_ok(char **map, size_t y, size_t x)
 {
 	int		k;
 
@@ -59,7 +59,7 @@ static		int	is_line_ok(char **map, size_t y, size_t x)
 ** en partant de la fin de la ligne.
 */
 
-static		int	init_x(char *line)
+static		int		init_x(char *line)
 {
 	size_t	x;
 
@@ -73,7 +73,7 @@ static		int	init_x(char *line)
 ** verifie que la derniere colomne de la map ne contienne que des 1.
 */
 
-int			last_column(char **map)
+int					last_column(char **map)
 {
 	size_t	y;
 	size_t	x;
