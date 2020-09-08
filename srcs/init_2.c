@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 12:31:53 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/08 13:23:54 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/08 16:52:42 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static	void	init_env_sprite_2(t_env *env)
 {
 	env->sprite.img = NULL;
-	env->sprite.X = 0;
-	env->sprite.Y = 0;
+	env->sprite.x_s = 0;
+	env->sprite.y_s = 0;
 	env->sprite.inv_det = 0;
 	env->sprite.transform_x = 0;
 	env->sprite.transform_y = 0;

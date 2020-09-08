@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 13:13:02 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/08 13:25:51 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/08 16:53:46 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,16 +88,16 @@ static		void	sprite_size(t_env *env)
 
 static		void	sprite_screen(t_env *env, int i)
 {
-	env->sprite.X = env->sprite.x[env->sprite.order[i]] -
+	env->sprite.x_s = env->sprite.x[env->sprite.order[i]] -
 		env->player.pos_x;
-	env->sprite.Y = env->sprite.y[env->sprite.order[i]] -
+	env->sprite.y_s = env->sprite.y[env->sprite.order[i]] -
 		env->player.pos_y;
 	env->sprite.inv_det = 1.0 / (env->ray.plane_x * env->ray.dir_y -
 		env->ray.dir_x * env->ray.plane_y);
 	env->sprite.transform_x = -env->sprite.inv_det * (env->ray.dir_y *
-		env->sprite.X - env->ray.dir_x * env->sprite.Y);
+		env->sprite.x_s - env->ray.dir_x * env->sprite.y_s);
 	env->sprite.transform_y = env->sprite.inv_det * (-env->ray.plane_y *
-		env->sprite.X + env->ray.plane_x * env->sprite.Y);
+		env->sprite.x_s + env->ray.plane_x * env->sprite.y_s);
 	env->sprite.screen_x = (int)(env->vars.res_x / 2) * (1.0 +
 		env->sprite.transform_x / env->sprite.transform_y);
 }
