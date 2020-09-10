@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 12:36:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/08 12:36:35 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/10 15:22:20 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ static	int	game(t_env *env)
 static	int	start_game(t_env *env)
 {
 	env->vars.mlx = mlx_init();
-	res_max(env);
+//	res_max(env);
 	env->vars.win = mlx_new_window(env->vars.mlx,
 		env->vars.res_x, env->vars.res_y, "Cub3d");
 	if (get_texture_and_sprite(env) < 0)
 		return (-1);
 	mlx_hook(env->vars.win, 2, 1L << 0, key_pressed, env);
 	mlx_hook(env->vars.win, 3, 1L << 1, key_released, env);
+	mlx_hook(env->vars.win, 17, 1L << 17, red_cross, env);
 	mlx_loop_hook(env->vars.mlx, game, env);
 	mlx_loop(env->vars.mlx);
 	return (1);
@@ -51,7 +52,7 @@ int			main(int argc, char **argv)
 		return (exit_game(&env));
 	if (get_file(&env, argv[1]) < 0)
 		return (exit_game(&env));
-	if (init_vars(&env) < 0)
+	if (init_vars(&env) < 1)
 		return (exit_game(&env));
 	if (parsing_file(&env) < 0)
 		return (exit_game(&env));

@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 21:54:53 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/08 11:39:45 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/10 13:59:55 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int				create_bmp_file(t_env *env)
 	if ((fd = open("./screen_shot.bmp", O_CREAT | O_WRONLY, S_IRWXU)) < 0)
 		return (aie_error("bmp file opening failed"));
 	env->vars.mlx = mlx_init();
-	res_max(env);
+//	res_max(env);
 	new_image(env);
 	if (get_texture_and_sprite(env) < 0)
 		return (-1);

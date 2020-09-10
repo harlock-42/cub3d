@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/08 12:34:52 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/08 12:35:42 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/10 15:22:26 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,11 @@ int	key_pressed(int keycode, t_env *env)
 	else if (keycode == KEY_RIGHT)
 		env->key.rot_right = 1;
 	return (keycode);
+}
+
+int	red_cross(int keycode, t_env *env)
+{
+	(void)env;
+	(void)keycode;
+	exit(0);
 }

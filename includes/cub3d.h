@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/18 17:04:10 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/08 17:17:54 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/10 15:22:29 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,28 @@
 ** key for mac
 */
 
-/*
-** define KEY_A				0
-** define KEY_D				2
-** define KEY_S				1
-** define KEY_Q				12
-** define KEY_W				13
-** define KEY_E				14
-** define KEY_LEFT			123
-** define KEY_RIGHT			124
-** define KEY_UP:			126
-** define KEY_DOWN			125
-** define KEY_PRESS			2
-** define KEY_RELEASE		3
-** define KEY_EXPOSE_HOOK	12
-** define KEY_EXIT_HOOK		53
-*/
+
+# define KEY_A				0
+# define KEY_D				2
+# define KEY_S				1
+# define KEY_Q				12
+# define KEY_W				13
+# define KEY_E				14
+# define KEY_LEFT			123
+# define KEY_RIGHT			124
+# define KEY_UP				126
+# define KEY_DOWN			125
+# define KEY_PRESS			2
+# define KEY_RELEASE		3
+# define KEY_EXPOSE_HOOK	12
+# define KEY_EXIT_HOOK		53
+
 
 /*
 ** key for linux
 */
 
+/*
 # define KEY_A				97
 # define KEY_D				100
 # define KEY_S				115
@@ -55,6 +56,7 @@
 # define KEY_LEFT			65361
 # define KEY_RIGHT			65363
 # define KEY_EXIT_HOOK		65307
+*/
 
 typedef	struct		s_sprite
 {
@@ -313,6 +315,7 @@ void				init_env_tex_2(t_env *env);
 */
 int					key_pressed(int keycode, t_env *env);
 int					key_released(int keycode, t_env *env);
+int					red_cross(int keycode, t_env *env);
 /*
 ** move_player.c
 */

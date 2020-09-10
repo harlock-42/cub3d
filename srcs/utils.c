@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:55:12 by tallaire          #+#    #+#             */
-/*   Updated: 2020/09/08 13:38:56 by tallaire         ###   ########.fr       */
+/*   Updated: 2020/09/10 13:49:52 by harlock          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char		*strdup_path(char *str)
 	return (new);
 }
 
+/*
 void		res_max(t_env *env)
 {
 	int	res_x_max;
@@ -61,3 +62,4 @@ void		res_max(t_env *env)
 	if (env->vars.res_y > res_y_max)
 		env->vars.res_y = res_y_max;
 }
+*/
