@@ -53,6 +53,6 @@ int	key_pressed(int keycode, t_env *env)
 int	red_cross(int keycode, t_env *env)
 {
 	(void)env;
-	(void)keycode;
 	exit(0);
+	return (keycode);
 }

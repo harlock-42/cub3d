@@ -26,11 +26,15 @@ static	int	game(t_env *env)
 static	int	start_game(t_env *env)
 {
 	env->vars.mlx = mlx_init();
-//	res_max(env);
+	res_max(env);
+	if (get_texture_and_sprite(env) < 0)
+	{
+		free(env->vars.mlx);
+		exit_game(env);
+		return (-1);
+	}
 	env->vars.win = mlx_new_window(env->vars.mlx,
 		env->vars.res_x, env->vars.res_y, "Cub3d");
-	if (get_texture_and_sprite(env) < 0)
-		return (-1);
 	mlx_hook(env->vars.win, 2, 1L << 0, key_pressed, env);
 	mlx_hook(env->vars.win, 3, 1L << 1, key_released, env);
 	mlx_hook(env->vars.win, 17, 1L << 17, red_cross, env);

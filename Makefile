@@ -22,8 +22,8 @@ LS		= ls -la
 
 CFLAGS		= -Werror -Wextra -Wall -c
 
-LFLAGS		= -framework OpenGL -framework AppKit
-#LFLAGS		= -lm -lbsd -lX11 -lXext
+#LFLAGS		= -framework OpenGL -framework AppKit
+LFLAGS		= -lm -lbsd -lX11 -lXext
 
 INCLUDE_NAME		= cub3d.h\
 			  ft_printf.h\
@@ -115,9 +115,9 @@ $(LIB_PATH):
 	@echo Creating library directory
 	@mkdir -p $(LIB_PATH)
 
-$(NAME): $(OBJ) $(LIBPRINTF) $(LIBFT) $(LIBMLX_MAC) $(INCLUDE)
+$(NAME): $(OBJ) $(LIBPRINTF) $(LIBFT) $(LIBMLX_LINUX) $(INCLUDE)
 	@echo Compiling executable $(NAME)..
-	@$(CC) -o $(NAME) $(OBJ) $(LIBPRINTF) $(LIBFT) $(LIBMLX_MAC) $(LFLAGS)
+	@$(CC) -o $(NAME) $(OBJ) $(LIBPRINTF) $(LIBFT) $(LIBMLX_LINUX) $(LFLAGS)
 	@$(LS)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
@@ -151,8 +151,8 @@ clean:
 	@$(RM) $(LIBFT) $(LIBPRINTF) $(LIB_PATH)
 	@(cd $(LIBPRINTF_SRC_PATH) && $(MAKE) clean)
 	@$(LS)
-#	@(cd $(MLX_LINUX_PATH) && $(MAKE) clean)
-#	@$(LS)
+	@(cd $(MLX_LINUX_PATH) && $(MAKE) clean)
+	@$(LS)
 
 fclean: clean
 	@echo Delete executable $(NAME)..
